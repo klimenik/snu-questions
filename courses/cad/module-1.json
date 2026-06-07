@@ -1,0 +1,288 @@
+{
+  "id": "cad-module-1",
+  "course": "cad",
+  "title": "Module 1: Application Development Overview",
+  "description": "Application development concepts, technical fit, the scoped application model, development vs. deployment, JavaScript modes, and required skills.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is at the core/foundation of the ServiceNow platform?",
+      "choices": [
+        { "key": "A", "text": "A NoSQL document store" },
+        { "key": "B", "text": "A relational database" },
+        { "key": "C", "text": "A graphics rendering engine" },
+        { "key": "D", "text": "A file-based storage system" }
+      ],
+      "correct": ["B"],
+      "explanation": "ServiceNow is an aPaaS built on a relational database at its core."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Which statement about a ServiceNow cloud-based application is correct?",
+      "choices": [
+        { "key": "A", "text": "Each user must install an executable client module." },
+        { "key": "B", "text": "The customer is responsible for hosting the hardware." },
+        { "key": "C", "text": "There is nothing to install; it is delivered over the internet and accessed through a web browser." },
+        { "key": "D", "text": "It can only be accessed through a dedicated ServiceNow desktop app." }
+      ],
+      "correct": ["C"],
+      "explanation": "Cloud-based: nothing to install, delivered over the internet via a browser; ServiceNow manages the hardware."
+    },
+    {
+      "id": "q3",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which of the following are characteristics of a process that is a **good** technical fit for a ServiceNow application? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "The process follows a \"request-fulfill\" pattern." },
+        { "key": "B", "text": "The data is primarily unstructured streaming media." },
+        { "key": "C", "text": "The data can be modeled in a relational database." },
+        { "key": "D", "text": "The process needs workflows/flows to manage it and reporting capability." }
+      ],
+      "correct": ["A", "C", "D"],
+      "explanation": "Request-fulfill pattern, relational-modelable data, and need for flows/reporting are all good-fit signs. (B is a bad-fit characteristic.)"
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "A team wants to build an application whose core feature is streaming live video with a real-time multiplayer graphics engine. Why is this a **bad** technical fit for ServiceNow?",
+      "choices": [
+        { "key": "A", "text": "ServiceNow cannot store any binary data at all." },
+        { "key": "B", "text": "The data is unstructured and the app requires a graphics engine, with no clear process flow." },
+        { "key": "C", "text": "ServiceNow does not support JavaScript." },
+        { "key": "D", "text": "ServiceNow applications cannot use forms." }
+      ],
+      "correct": ["B"],
+      "explanation": "Unstructured data + graphics engine + no process flow are all bad-fit indicators."
+    },
+    {
+      "id": "q5",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "A developer saves a new custom application record with a chosen scope. The next day they want to move that application from its private scope into the global scope. What is true?",
+      "choices": [
+        { "key": "A", "text": "They can change the scope at any time from the application record." },
+        { "key": "B", "text": "An application's scope cannot be changed once the record is saved to the database." },
+        { "key": "C", "text": "They can change scope only if they have the admin role." },
+        { "key": "D", "text": "Scope can be changed, but only within the first 24 hours after creation." }
+      ],
+      "correct": ["B"],
+      "explanation": "Scope cannot be changed once the record is saved; there is no migration path."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which scope contains baseline applications and custom applications that were built on ServiceNow versions prior to scoping?",
+      "choices": [
+        { "key": "A", "text": "Private scope" },
+        { "key": "B", "text": "Delegated scope" },
+        { "key": "C", "text": "Global scope" },
+        { "key": "D", "text": "System scope" }
+      ],
+      "correct": ["C"],
+      "explanation": "Global scope: baseline apps + custom apps built before scoping."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which capability is available to **scoped** applications but **not** to global applications?",
+      "choices": [
+        { "key": "A", "text": "Publish to the application repository" },
+        { "key": "B", "text": "Easy file management" },
+        { "key": "C", "text": "Delegated Development" },
+        { "key": "D", "text": "Use of business rules" }
+      ],
+      "correct": ["C"],
+      "explanation": "Delegated Development is unique to scoped apps. (Repository publish and file management are available to both.)"
+    },
+    {
+      "id": "q8",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "A scoped application namespace identifier is `x_acme_book_rooms`. Which statements about scope namespaces are correct? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "All scoped application namespaces begin with the `x_` prefix." },
+        { "key": "B", "text": "The company code (`acme` here) comes from the `glide.appcreator.company.code` system property and is 2 to 5 characters long." },
+        { "key": "C", "text": "The total namespace identifier can be at most 18 characters long." },
+        { "key": "D", "text": "The company code is chosen freely by the developer at app-creation time." }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "x_ prefix, 2-5 char company code from glide.appcreator.company.code, 18-char total max. (D is wrong: ServiceNow generates the company code per customer; it is not freely chosen.)"
+    },
+    {
+      "id": "q9",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is the recommended best practice for where to develop new functionality?",
+      "choices": [
+        { "key": "A", "text": "Always in the global scope" },
+        { "key": "B", "text": "In a private scoped application" },
+        { "key": "C", "text": "In a personal developer instance only" },
+        { "key": "D", "text": "In Compatibility Mode scripts" }
+      ],
+      "correct": ["B"],
+      "explanation": "Best practice is to develop in a private scoped application."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "In the **baseline** configuration, what database access does one custom (scoped) application have to another custom application's table records?",
+      "choices": [
+        { "key": "A", "text": "Full read and write access" },
+        { "key": "B", "text": "Read access only; no other database operations without explicit configuration" },
+        { "key": "C", "text": "No access of any kind" },
+        { "key": "D", "text": "Write access only" }
+      ],
+      "correct": ["B"],
+      "explanation": "Baseline: read access to other apps' table records only; no other DB operations without explicit configuration."
+    },
+    {
+      "id": "q11",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "Which of the following are common, legitimate reasons to build in the **global** scope instead of a private scope? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "Modifications to legacy customizations already done in global." },
+        { "key": "B", "text": "Changes to base instance code that exists in global." },
+        { "key": "C", "text": "Building a brand-new, self-contained utility application." },
+        { "key": "D", "text": "Access is required to global application files that is not available to scoped applications." }
+      ],
+      "correct": ["A", "B", "D"],
+      "explanation": "Legacy global modifications, base instance code changes, and needing global-only file access are valid global-scope reasons. (C is a textbook scoped-app case.)"
+    },
+    {
+      "id": "q12",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which statement about Delegated Development is correct?",
+      "choices": [
+        { "key": "A", "text": "Delegated access can be granted to both global and scoped applications." },
+        { "key": "B", "text": "Delegated access can be granted only to scoped applications." },
+        { "key": "C", "text": "Delegated developers automatically have permissions across every application." },
+        { "key": "D", "text": "Delegated Development requires the user to already have the admin role." }
+      ],
+      "correct": ["B"],
+      "explanation": "Delegated access can be granted only to scoped applications."
+    },
+    {
+      "id": "q13",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "An admin wants a non-admin developer to be able to create advanced business rules (which contain scripts) in a scoped application. Which two developer permissions does that developer need? (Choose 2)",
+      "choices": [
+        { "key": "A", "text": "All File Types" },
+        { "key": "B", "text": "Allow Scripting" },
+        { "key": "C", "text": "Security Admin" },
+        { "key": "D", "text": "Publish to Store" }
+      ],
+      "correct": ["A", "B"],
+      "explanation": "All File Types + Allow Scripting are both required to create advanced (scripted) business rules."
+    },
+    {
+      "id": "q14",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which tools can be used to **deploy** a completed application? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "Update Sets" },
+        { "key": "B", "text": "Application Repository" },
+        { "key": "C", "text": "ServiceNow Store" },
+        { "key": "D", "text": "Mozilla Rhino" }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "Update Sets, Application Repository, and ServiceNow Store are deployment options. (Mozilla Rhino is the server-side JS engine, not a deployment tool.)"
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "During the **development** process (saving incremental work), what does ServiceNow Studio use to track contributions?",
+      "choices": [
+        { "key": "A", "text": "Git commits" },
+        { "key": "B", "text": "Update Sets" },
+        { "key": "C", "text": "The ServiceNow Store" },
+        { "key": "D", "text": "Flow Designer" }
+      ],
+      "correct": ["B"],
+      "explanation": "Studio uses named incremental Update Sets to track development."
+    },
+    {
+      "id": "q16",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the **default** JavaScript mode for new server-side scripts in current ServiceNow releases?",
+      "choices": [
+        { "key": "A", "text": "Compatibility Mode" },
+        { "key": "B", "text": "ES5 Standards Mode" },
+        { "key": "C", "text": "ECMAScript 2021 (ES12)" },
+        { "key": "D", "text": "ECMAScript 5.1 Legacy Mode" }
+      ],
+      "correct": ["C"],
+      "explanation": "ECMAScript 2021 (ES12) is the default mode."
+    },
+    {
+      "id": "q17",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "Which statements about JavaScript modes in ServiceNow are correct? (Choose 2)",
+      "choices": [
+        { "key": "A", "text": "Compatibility Mode is used for all scripts developed before the Helsinki release and for all global scripts." },
+        { "key": "B", "text": "Third-party JavaScript libraries are fully supported in Compatibility Mode." },
+        { "key": "C", "text": "ECMAScript 2021 (ES12) supports features such as `let`, `const`, default function parameters, and `for-of` loops." },
+        { "key": "D", "text": "ES5 Standards Mode is the default mode for all new applications." }
+      ],
+      "correct": ["A", "C"],
+      "explanation": "Compatibility Mode covers pre-Helsinki and all global scripts; ES12 supports let/const/default params/for-of. (B is wrong: third-party libs are NOT supported in Compatibility Mode. D is wrong: ES12 is the default, not ES5.)"
+    },
+    {
+      "id": "q18",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the key difference between the ServiceNow **Store** and the **Developer Share** site?",
+      "choices": [
+        { "key": "A", "text": "The Store is free, while Developer Share apps always cost money." },
+        { "key": "B", "text": "Store apps are vetted and come with support; Developer Share apps are free and are not vetted by ServiceNow." },
+        { "key": "C", "text": "Developer Share apps are vetted by ServiceNow; Store apps are not." },
+        { "key": "D", "text": "Both are vetted identically; the only difference is the URL." }
+      ],
+      "correct": ["B"],
+      "explanation": "Store = vetted + supported (may cost money); Developer Share = free + not vetted."
+    },
+    {
+      "id": "q19",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Which statement best captures the **philosophy of scoped apps**?",
+      "choices": [
+        { "key": "A", "text": "Scope makes applications run faster by caching their records in memory." },
+        { "key": "B", "text": "Scope protects an application from being damaged by, or causing damage to, other applications, and an app must be explicitly configured to let out-of-scope apps act on its records." },
+        { "key": "C", "text": "Scope automatically grants every application admin-level access to all tables." },
+        { "key": "D", "text": "Scope removes the need for access controls within an application." }
+      ],
+      "correct": ["B"],
+      "explanation": "Scope shields apps from each other; out-of-scope access must be explicitly configured."
+    },
+    {
+      "id": "q20",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What does the term **artifact** refer to in the context of a scoped application?",
+      "choices": [
+        { "key": "A", "text": "A deprecated application file that should be deleted." },
+        { "key": "B", "text": "Any of the application files comprising an application (e.g. Access Controls, Business Rules, Script Includes, Tables, Client Scripts), existing within the app's scope." },
+        { "key": "C", "text": "A backup copy of the application stored in the repository." },
+        { "key": "D", "text": "A record that exists only in the global scope." }
+      ],
+      "correct": ["B"],
+      "explanation": "Artifacts are the application files that make up an app, living within its scope."
+    }
+  ]
+}

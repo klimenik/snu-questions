@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "title": "ServiceNow University Question Bank",
+  "courses": [
+    {
+      "id": "cad",
+      "title": "Certified Application Developer (CAD)",
+      "description": "ServiceNow Custom Application Development - building scoped applications on the Now Platform.",
+      "coursePath": "courses/cad/course.json",
+      "quizzes": [
+        {
+          "id": "cad-module-1",
+          "title": "Module 1: Application Development Overview",
+          "path": "courses/cad/module-1.json",
+          "questionCount": 20
+        }
+      ]
+    }
+  ]
+}

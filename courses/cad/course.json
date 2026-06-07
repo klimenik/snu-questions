@@ -1,0 +1,13 @@
+{
+  "id": "cad",
+  "title": "Certified Application Developer (CAD)",
+  "description": "ServiceNow Custom Application Development. Covers building scoped applications on the Now Platform, from fundamentals through the full development lifecycle, using the Loaner Request application as the running example.",
+  "provider": "ServiceNow University",
+  "modules": [
+    {
+      "id": "cad-module-1",
+      "title": "Module 1: Application Development Overview",
+      "quizPath": "courses/cad/module-1.json"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/klimenik/servicenow-university-questions/schema/quiz.schema.json",
+  "title": "PrepNow Quiz",
+  "description": "A single quiz: a titled set of multiple-choice questions with answer keys.",
+  "type": "object",
+  "required": ["id", "title", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "description": "Unique quiz id, e.g. cad-module-1." },
+    "course": { "type": "string", "description": "Course id this quiz belongs to, e.g. cad." },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/question" }
+    }
+  },
+  "definitions": {
+    "question": {
+      "type": "object",
+      "required": ["id", "type", "prompt", "choices", "correct"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "description": "Unique within the quiz, e.g. q1." },
+        "type": {
+          "type": "string",
+          "enum": ["single", "multi"],
+          "description": "single = exactly one correct answer; multi = more than one."
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": ["easy", "medium", "hard"]
+        },
+        "prompt": { "type": "string", "description": "The question text. May contain Markdown." },
+        "choices": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["key", "text"],
+            "additionalProperties": false,
+            "properties": {
+              "key": { "type": "string", "description": "Choice label, e.g. A, B, C, D." },
+              "text": { "type": "string", "description": "Choice text. May contain Markdown." }
+            }
+          }
+        },
+        "correct": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "description": "Keys of the correct choice(s). For type=single this has exactly one entry."
+        },
+        "explanation": { "type": "string", "description": "Shown after submit. May contain Markdown." }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "servicenow-university-questions",
+  "version": "1.0.0",
+  "description": "Structured JSON question bank for ServiceNow University courses (consumed by PrepNow).",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.mjs"
+  },
+  "license": "MIT"
+}
