@@ -1,0 +1,50 @@
+{
+  "id": "test-sample",
+  "course": "test",
+  "title": "Sample Test Quiz",
+  "description": "A tiny 3-question quiz for exercising the app (single + multi select).",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is the capital of France?",
+      "choices": [
+        { "key": "A", "text": "Berlin" },
+        { "key": "B", "text": "Paris" },
+        { "key": "C", "text": "Madrid" },
+        { "key": "D", "text": "Rome" }
+      ],
+      "correct": ["B"],
+      "explanation": "Paris is the capital of France."
+    },
+    {
+      "id": "q2",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which of these numbers are **prime**? (Choose 2)",
+      "choices": [
+        { "key": "A", "text": "9" },
+        { "key": "B", "text": "7" },
+        { "key": "C", "text": "15" },
+        { "key": "D", "text": "11" }
+      ],
+      "correct": ["B", "D"],
+      "explanation": "7 and 11 are prime. 9 = 3×3 and 15 = 3×5, so both are composite."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Which planet is the largest in our solar system?",
+      "choices": [
+        { "key": "A", "text": "Earth" },
+        { "key": "B", "text": "Saturn" },
+        { "key": "C", "text": "Jupiter" },
+        { "key": "D", "text": "Mars" }
+      ],
+      "correct": ["C"],
+      "explanation": "Jupiter is the largest planet by both mass and diameter."
+    }
+  ]
+}

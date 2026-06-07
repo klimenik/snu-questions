@@ -49,6 +49,9 @@ courses/<course>/          # one folder per course
 }
 ```
 
+> **Note:** Do not reference option letters (A/B/C/D) in `explanation` text. The app shuffles
+> answer choices, so letter positions are not stable. Refer to the answer *content* instead.
+
 ## Adding content
 
 1. Create or edit a quiz file under `courses/<course>/`, following the schema.
@@ -60,3 +63,19 @@ courses/<course>/          # one folder per course
 
 This repo is published via GitHub Pages, so the app can fetch
 `https://klimenik.github.io/servicenow-university-questions/manifest.json` directly.
+
+## Disclaimer
+
+This is an independent, community study aid. It is **not affiliated with, authorized,
+sponsored, or endorsed by ServiceNow, Inc.** "ServiceNow", "ServiceNow University", "Now
+Platform", and related names are trademarks of ServiceNow, Inc., referenced here only
+descriptively to indicate which exam/course the questions relate to.
+
+The questions are **original, independently written** study material based on publicly taught
+course concepts. They are **not** official exam questions and contain no verbatim reproduction
+of ServiceNow's copyrighted course materials. If you are a rights holder with a concern, please
+open an issue and the relevant content will be addressed promptly.
+
+## License
+
+Content is released under the [MIT License](LICENSE).

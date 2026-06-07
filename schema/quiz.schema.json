@@ -53,7 +53,7 @@
           "items": { "type": "string" },
           "description": "Keys of the correct choice(s). For type=single this has exactly one entry."
         },
-        "explanation": { "type": "string", "description": "Shown after submit. May contain Markdown." }
+        "explanation": { "type": "string", "description": "Shown after submit (on incorrect answers). May contain Markdown. Do NOT reference option letters (A/B/C/D) here: the app shuffles choices, so letters are not stable. Refer to the answer content instead." }
       }
     }
   }
