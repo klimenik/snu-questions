@@ -62,7 +62,7 @@ courses/<course>/          # one folder per course
 ## Hosting
 
 This repo is published via GitHub Pages, so the app can fetch
-`https://klimenik.github.io/servicenow-university-questions/manifest.json` directly.
+`https://klimenik.github.io/snu-questions/manifest.json` directly.
 
 ## Disclaimer
 

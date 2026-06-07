@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/klimenik/servicenow-university-questions/schema/quiz.schema.json",
+  "$id": "https://github.com/klimenik/snu-questions/schema/quiz.schema.json",
   "title": "PrepNow Quiz",
   "description": "A single quiz: a titled set of multiple-choice questions with answer keys.",
   "type": "object",
