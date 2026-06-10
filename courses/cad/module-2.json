@@ -1,0 +1,302 @@
+{
+  "id": "cad-module-2",
+  "course": "cad",
+  "title": "Module 2: Application Analysis and Design",
+  "description": "Planning and design before building: the three design areas, the application development checklist, defining process and stakeholders, inputs/outputs, the data model, client-side vs server-side architecture, UI options, and ServiceNow design recommendations.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is the central principle motivating the analysis and design work in this module?",
+      "choices": [
+        { "key": "A", "text": "Always build a prototype first and design afterward." },
+        { "key": "B", "text": "Design and plan before building, because reworking a built application is far more costly than changing a plan." },
+        { "key": "C", "text": "The user interface should be finalized before any data modeling." },
+        { "key": "D", "text": "Applications should be built without a checklist to stay flexible." }
+      ],
+      "correct": ["B"],
+      "explanation": "The module's guiding idea is to plan well up front, because changing something on paper is far cheaper than reworking a built application."
+    },
+    {
+      "id": "q2",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "The module breaks application design into three areas. Which of the following are those three design areas? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "Business logic" },
+        { "key": "B", "text": "Database logic" },
+        { "key": "C", "text": "Deployment logic" },
+        { "key": "D", "text": "User interface" }
+      ],
+      "correct": ["A", "B", "D"],
+      "explanation": "Design is analyzed as business logic, database logic, and user interface. Deployment is a separate concern, not one of the three design areas."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why does the recommended design sequence put business logic and database logic before the user interface?",
+      "choices": [
+        { "key": "A", "text": "Because the user interface cannot be built until security is fully applied." },
+        { "key": "B", "text": "Because cosmetic UI changes are comparatively cheap, while changing the underlying data model and server logic after the build is costly." },
+        { "key": "C", "text": "Because ServiceNow forbids designing the UI before the data model exists." },
+        { "key": "D", "text": "Because the UI determines which tables the database needs." }
+      ],
+      "correct": ["B"],
+      "explanation": "The logic underneath (data model, server-side behavior) is hard and expensive to change later, while the UI is comparatively easy to adjust, so the foundational logic is settled first."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "According to the module, what must exist before you decide you need to build an application?",
+      "choices": [
+        { "key": "A", "text": "A clear business problem to solve." },
+        { "key": "B", "text": "An approved budget for cloud hosting." },
+        { "key": "C", "text": "A finished data model diagram." },
+        { "key": "D", "text": "A list of required integrations." }
+      ],
+      "correct": ["A"],
+      "explanation": "If you are not solving a business problem, you do not need an application. A clear, stated business problem is the starting point."
+    },
+    {
+      "id": "q5",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "How should the desired outcomes / definition of done for an application be written?",
+      "choices": [
+        { "key": "A", "text": "As broad aspirational goals so the team has flexibility." },
+        { "key": "B", "text": "In clear, observable, and measurable language, agreed upon before development begins." },
+        { "key": "C", "text": "Only after the application is built, based on what was achieved." },
+        { "key": "D", "text": "As a list of tables and columns to be created." }
+      ],
+      "correct": ["B"],
+      "explanation": "Outcomes should be observable and measurable and agreed before development, so you can test whether you succeeded and avoid discovering at the end that the wrong problem was solved."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "In ServiceNow, user personas defined during design largely map to which platform concept used to apply security?",
+      "choices": [
+        { "key": "A", "text": "Update Sets" },
+        { "key": "B", "text": "Roles" },
+        { "key": "C", "text": "Client Scripts" },
+        { "key": "D", "text": "Business Rules" }
+      ],
+      "correct": ["B"],
+      "explanation": "Personas largely equate to roles in ServiceNow, and security is generally applied to applications and their records using roles."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the recommendation regarding the minimum roles an application should define?",
+      "choices": [
+        { "key": "A", "text": "A single Admin role is sufficient for any application." },
+        { "key": "B", "text": "At least a User role and an Admin role." },
+        { "key": "C", "text": "One role per table in the application." },
+        { "key": "D", "text": "No application-specific roles; reuse the global admin role only." }
+      ],
+      "correct": ["B"],
+      "explanation": "It is recommended that every application have at least a User role and an Admin role."
+    },
+    {
+      "id": "q8",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which of the following are valid output methods to consider when defining a process? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "Dashboards" },
+        { "key": "B", "text": "Reports" },
+        { "key": "C", "text": "Email notifications" },
+        { "key": "D", "text": "Access Control Lists" }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "Outputs can take the form of dashboards, reports, and email. ACLs are a security mechanism, not an output method."
+    },
+    {
+      "id": "q9",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "When planning inputs, what does the \"coalesce\" consideration address?",
+      "choices": [
+        { "key": "A", "text": "How frequently the data is received." },
+        { "key": "B", "text": "What makes a record unique, so duplicate data can be matched and updated rather than re-inserted." },
+        { "key": "C", "text": "Which role is allowed to submit the input." },
+        { "key": "D", "text": "The visual layout of the input form." }
+      ],
+      "correct": ["B"],
+      "explanation": "Coalesce concerns what makes data unique, which is how the platform decides whether incoming data matches an existing record (to avoid duplicates) versus creating a new one."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which input method is suggested for loading data that arrives as a spreadsheet file?",
+      "choices": [
+        { "key": "A", "text": "A custom Service Portal widget" },
+        { "key": "B", "text": "An Import Set" },
+        { "key": "C", "text": "A Business Rule" },
+        { "key": "D", "text": "A Scheduled Report" }
+      ],
+      "correct": ["B"],
+      "explanation": "Spreadsheet input is retrieved via an Import Set."
+    },
+    {
+      "id": "q11",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What does a data model describe?",
+      "choices": [
+        { "key": "A", "text": "The visual theme and branding of the application." },
+        { "key": "B", "text": "The data the application reads from and writes to the database, and how it is stored." },
+        { "key": "C", "text": "The sequence of automated email notifications." },
+        { "key": "D", "text": "The roles assigned to each persona." }
+      ],
+      "correct": ["B"],
+      "explanation": "The data model describes the data the application reads from and writes to the database and how it is stored, captured as tables, columns, and relationships."
+    },
+    {
+      "id": "q12",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which of the following are examples of foundation data that is shared by many different applications? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "user" },
+        { "key": "B", "text": "cmdb_ci" },
+        { "key": "C", "text": "task" },
+        { "key": "D", "text": "A custom application-specific table" }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "user, cmdb_ci, and task are foundation data shared by many applications. Application-specific tables are unique to a given app."
+    },
+    {
+      "id": "q13",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "To represent people in a new application without breaking existing relationships, what approach is recommended?",
+      "choices": [
+        { "key": "A", "text": "Extend the user table directly so the new app inherits all user fields." },
+        { "key": "B", "text": "Create a custom table whose name/reference field points to the existing user table, preserving existing many-to-many relationships such as users-groups and users-roles." },
+        { "key": "C", "text": "Duplicate all user records into a new standalone table." },
+        { "key": "D", "text": "Store people as comma-separated values in a single string field." }
+      ],
+      "correct": ["B"],
+      "explanation": "Rather than extending the user table, build a custom table that references the existing user table, so the established many-to-many relationships (users-groups, users-roles, and so on) remain intact."
+    },
+    {
+      "id": "q14",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the guidance on client-side scripting in a scoped application's architecture?",
+      "choices": [
+        { "key": "A", "text": "Maximize client-side scripting to reduce server load." },
+        { "key": "B", "text": "Keep client-side scripting to a minimum (thin client)." },
+        { "key": "C", "text": "Client-side scripting is not allowed in scoped applications." },
+        { "key": "D", "text": "All logic must run client-side for performance." }
+      ],
+      "correct": ["B"],
+      "explanation": "Client-side scripting should be kept thin, with reusable logic placed server-side."
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which artifact provides a single location for reusable server-side functions, reducing maintenance effort?",
+      "choices": [
+        { "key": "A", "text": "Client Script" },
+        { "key": "B", "text": "UI Policy" },
+        { "key": "C", "text": "Script Include" },
+        { "key": "D", "text": "Notification" }
+      ],
+      "correct": ["C"],
+      "explanation": "Script Includes provide a single location for reusable functions, reducing maintenance and time-to-completion."
+    },
+    {
+      "id": "q16",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "When designing the user experience, which of the following are valid ways users might interact with an application? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "Standard catalog item or record producer" },
+        { "key": "B", "text": "Workspace" },
+        { "key": "C", "text": "Portal or mobile experience" },
+        { "key": "D", "text": "Update Set" }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "Interaction options include a standard catalog item, record producer, workspace, portal, and mobile experience. An Update Set is a deployment/configuration-transfer mechanism, not a user interaction method."
+    },
+    {
+      "id": "q17",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Regardless of how the application is ultimately presented to users, what foundation does the course say every application starts from?",
+      "choices": [
+        { "key": "A", "text": "Records, tables, and forms." },
+        { "key": "B", "text": "Service Portal widgets." },
+        { "key": "C", "text": "REST integrations." },
+        { "key": "D", "text": "Scheduled reports." }
+      ],
+      "correct": ["A"],
+      "explanation": "Whatever UI is layered on top, the foundation is always records, tables, and forms."
+    },
+    {
+      "id": "q18",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "Which of the following are ServiceNow design recommendations highlighted in this module? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "Develop private-scoped applications." },
+        { "key": "B", "text": "Give every process its own scope." },
+        { "key": "C", "text": "Track development tasks." },
+        { "key": "D", "text": "Put all logic in the global scope for easier sharing." }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "The recommendations are to develop private-scoped applications, give every process its own scope, follow delegated development practices, and track development tasks. Defaulting everything to global scope contradicts this guidance."
+    },
+    {
+      "id": "q19",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Why is producing a flowchart during the design phase especially valuable in ServiceNow?",
+      "choices": [
+        { "key": "A", "text": "It is required before any table can be created." },
+        { "key": "B", "text": "It maps nicely onto automation tools such as Flow Designer when it is time to build workflows." },
+        { "key": "C", "text": "It automatically generates the application's ACLs." },
+        { "key": "D", "text": "It replaces the need for a data model." }
+      ],
+      "correct": ["B"],
+      "explanation": "A detailed process flowchart lends itself directly to automation tools like Flow Designer, making the later build easier."
+    },
+    {
+      "id": "q20",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What does the Application Development Checklist represent in this course?",
+      "choices": [
+        { "key": "A", "text": "A legally mandated sequence every ServiceNow app must follow exactly." },
+        { "key": "B", "text": "A foundational roadmap and starting point, which teams may adapt with their own wording and order." },
+        { "key": "C", "text": "A list of release features delivered in the latest version." },
+        { "key": "D", "text": "A set of ACL rules applied automatically at deployment." }
+      ],
+      "correct": ["B"],
+      "explanation": "The checklist is a good foundation and roadmap, not a rigid law; your own checklist need not use the same exact words or order."
+    },
+    {
+      "id": "q21",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "An application administrator will need a way to adjust application settings after go-live without code changes. What should the developer do about this?",
+      "choices": [
+        { "key": "A", "text": "Nothing; settings can always be added instantly at the end of development." },
+        { "key": "B", "text": "Plan for it during design, for example by including a properties/options module so settings are configurable." },
+        { "key": "C", "text": "Hard-code all settings and require a new deployment to change them." },
+        { "key": "D", "text": "Store settings only in client-side scripts." }
+      ],
+      "correct": ["B"],
+      "explanation": "Conveniences like a properties module for configurable settings must be planned for during design; they cannot simply be snapped into place at the end of the development cycle."
+    }
+  ]
+}
