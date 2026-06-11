@@ -13,6 +13,11 @@
       "id": "cad-module-2",
       "title": "Module 2: Application Analysis and Design",
       "quizPath": "courses/cad/module-2.json"
+    },
+    {
+      "id": "cad-module-3",
+      "title": "Module 3: Create Application and Modules",
+      "quizPath": "courses/cad/module-3.json"
     }
   ]
 }

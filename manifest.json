@@ -19,6 +19,12 @@
           "title": "Module 2: Application Analysis and Design",
           "path": "courses/cad/module-2.json",
           "questionCount": 11
+        },
+        {
+          "id": "cad-module-3",
+          "title": "Module 3: Create Application and Modules",
+          "path": "courses/cad/module-3.json",
+          "questionCount": 38
         }
       ]
     }

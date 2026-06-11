@@ -1,0 +1,540 @@
+{
+  "id": "cad-module-3",
+  "course": "cad",
+  "title": "Module 3: Create Application and Modules",
+  "description": "Creating scoped applications in ServiceNow Studio, application scope and namespaces, the extend-vs-create data model decision, default fields and inheritance, application access and cross-scope privileges, application menus and modules, and deployment via update sets and the application repository.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "How is the scope (namespace) prefix of a new scoped application constructed?",
+      "choices": [
+        { "key": "A", "text": "x_ + the company code from glide.appcreator.company.code + a truncated form of the application name" },
+        { "key": "B", "text": "The full application name, lowercased, with spaces replaced by underscores" },
+        { "key": "C", "text": "global_ + the developer's user ID + the application name" },
+        { "key": "D", "text": "A random GUID assigned at creation time" }
+      ],
+      "correct": ["A"],
+      "explanation": "Scope is built automatically as x_ + the glide.appcreator.company.code value + a truncated application name (e.g. x_cdltd_loaner_r_0). If a truncated name collides with an existing app, the appended number increments."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which statement about the glide.appcreator.company.code system property is correct?",
+      "choices": [
+        { "key": "A", "text": "It is set by ServiceNow and is not user-changeable, and is typically 2 to 5 characters long" },
+        { "key": "B", "text": "Developers should change it for each new application to avoid scope collisions" },
+        { "key": "C", "text": "It is always exactly the same as the application's sys_id" },
+        { "key": "D", "text": "It only applies to applications built in the global scope" }
+      ],
+      "correct": ["A"],
+      "explanation": "The company code property is set by ServiceNow, is not user-changeable, and is typically 2 to 5 characters. It becomes part of every scoped app's namespace and must match across instances for the application repository to work."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "When you create a new scoped application in ServiceNow Studio, which roles does it create by default?",
+      "choices": [
+        { "key": "A", "text": "An Admin role and a User role" },
+        { "key": "B", "text": "Only the system administrator (admin) role" },
+        { "key": "C", "text": "No roles; you must always create them manually" },
+        { "key": "D", "text": "An Approver role and a Fulfiller role" }
+      ],
+      "correct": ["A"],
+      "explanation": "Studio creates a scoped Admin role and a User role by default. You can keep them, delete them, or assign existing roles instead. The created Admin role is an application admin role, not the platform-wide sysadmin role."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "A developer extends an existing table to create a new child table. What does the child table contain immediately after creation?",
+      "choices": [
+        { "key": "A", "text": "The parent's columns but none of the parent's data (no rows)" },
+        { "key": "B", "text": "A full copy of the parent's columns and all of its existing records" },
+        { "key": "C", "text": "Only the six default audit fields and nothing inherited" },
+        { "key": "D", "text": "A live reference to the parent's rows that updates automatically" }
+      ],
+      "correct": ["A"],
+      "explanation": "Extending copies the parent's structure (columns), not its data. The child table starts empty. It also inherits the parent's server-side business logic, such as business rules and ACLs."
+    },
+    {
+      "id": "q5",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "When a table extends a parent table, which behaviors are inherited automatically (for free) versus optionally? Select all statements that are TRUE. (Choose 2)",
+      "choices": [
+        { "key": "A", "text": "Server-side business logic such as business rules and access controls is inherited automatically" },
+        { "key": "B", "text": "Client-side logic such as UI policies and client scripts can be inherited, controlled by a field on each such record" },
+        { "key": "C", "text": "The parent's records (rows of data) are inherited along with the columns" },
+        { "key": "D", "text": "Inheritance of business rules must be enabled individually on each child table" }
+      ],
+      "correct": ["A", "B"],
+      "explanation": "Extending inherits the parent's server-side customizations (business rules, ACLs) automatically. Client-side records like UI policies and client scripts have a field that determines whether they apply to extended tables, so that inheritance is optional. Data (rows) is never inherited."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which condition must be met before a table can be extended by another table?",
+      "choices": [
+        { "key": "A", "text": "The table must have the Extensible option selected" },
+        { "key": "B", "text": "The table must contain at least one record" },
+        { "key": "C", "text": "The table must be in the global scope" },
+        { "key": "D", "text": "The table must already have auto-numbering configured" }
+      ],
+      "correct": ["A"],
+      "explanation": "A table must have Extensible selected to be extended. You also cannot extend a system table or a database view table."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which type of table CANNOT be extended?",
+      "choices": [
+        { "key": "A", "text": "A database view table" },
+        { "key": "B", "text": "A table that extends the Task table" },
+        { "key": "C", "text": "A custom table created from scratch with Extensible selected" },
+        { "key": "D", "text": "A table that already has child tables" }
+      ],
+      "correct": ["A"],
+      "explanation": "System tables and database view tables cannot be extended. A custom or extended table can itself be extended as long as it is marked Extensible."
+    },
+    {
+      "id": "q8",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Most approval workflow activities work only on which tables?",
+      "choices": [
+        { "key": "A", "text": "Tables that extend the Task table" },
+        { "key": "B", "text": "Any table in any scope" },
+        { "key": "C", "text": "Only the global cmdb_ci table" },
+        { "key": "D", "text": "Only tables created from scratch (not extended)" }
+      ],
+      "correct": ["A"],
+      "explanation": "All approval activities except the User Approval activity work only on tables that extend Task. The User Approval activity works with all tables. This is a key reason to extend Task when modeling assignable work."
+    },
+    {
+      "id": "q9",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "Which fields are created by default on EVERY new table? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "Sys ID (sys_id)" },
+        { "key": "B", "text": "Updates (sys_mod_count)" },
+        { "key": "C", "text": "Created by (sys_created_by)" },
+        { "key": "D", "text": "Class (sys_class_name)" }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "Every table gets six default audit fields: sys_id, sys_created_by, sys_created_on, sys_updated_by, sys_updated_on, and sys_mod_count. The Class (sys_class_name) field is only added when the table is marked Extensible."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Under what condition is the Class field (sys_class_name) added to a table?",
+      "choices": [
+        { "key": "A", "text": "When the table is marked Extensible" },
+        { "key": "B", "text": "On every table by default" },
+        { "key": "C", "text": "Only when the table has auto-numbering enabled" },
+        { "key": "D", "text": "Only on database view tables" }
+      ],
+      "correct": ["A"],
+      "explanation": "If a table is extensible, a Class (sys_class_name) field is added to indicate which child table actually contains each record. It is not one of the six standard default fields."
+    },
+    {
+      "id": "q11",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What data type is the sys_id field?",
+      "choices": [
+        { "key": "A", "text": "A GUID (unique record identifier)" },
+        { "key": "B", "text": "A glide_date_time timestamp" },
+        { "key": "C", "text": "A numeric counter" },
+        { "key": "D", "text": "A reference to the sys_user table" }
+      ],
+      "correct": ["A"],
+      "explanation": "sys_id is a GUID that uniquely identifies every record in every table, automatically populated by the system on insert."
+    },
+    {
+      "id": "q12",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Application Access settings on a table primarily provide what kind of protection?",
+      "choices": [
+        { "key": "A", "text": "Runtime protection governing access from scripts in other scopes and from web service calls" },
+        { "key": "B", "text": "Design-time protection preventing other developers from opening the table in Studio" },
+        { "key": "C", "text": "Encryption of the table's data at rest" },
+        { "key": "D", "text": "Row-level security based on the logged-in user's group membership" }
+      ],
+      "correct": ["A"],
+      "explanation": "Application Access provides runtime protection of application tables against read/write/create/delete operations coming from scripts and web service calls, and governs cross-scope and integration access. It is distinct from ACL/role-based record security."
+    },
+    {
+      "id": "q13",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "The 'Can read/create/update/delete' Application Access options control access for which callers?",
+      "choices": [
+        { "key": "A", "text": "Scripts from OTHER application scopes; they never apply to the application's own scope" },
+        { "key": "B", "text": "Only users who hold the application's admin role" },
+        { "key": "C", "text": "All users regardless of scope or role" },
+        { "key": "D", "text": "Only scheduled jobs running in the global scope" }
+      ],
+      "correct": ["A"],
+      "explanation": "These options allow scripts from other application scopes to perform database operations on the table. They never apply to the current application's own scope, which always has access to its own tables."
+    },
+    {
+      "id": "q14",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "For a cross-scope privilege to let Application B access Application A's data, what must happen? (Choose 2)",
+      "choices": [
+        { "key": "A", "text": "Application A's developer must allow application access so others can request permission" },
+        { "key": "B", "text": "Application B's developer must request permission via a cross scope privilege record" },
+        { "key": "C", "text": "Both applications must be merged into a single scope" },
+        { "key": "D", "text": "Both applications must be published to the ServiceNow Store first" }
+      ],
+      "correct": ["A", "B"],
+      "explanation": "Cross-scope access must be allowed on both sides: the owning app (A) enables Application Access so others can ask, and the requesting app (B) asks for permission through a cross scope privilege record. After publication, runtime requests run only if a valid cross-scope privilege record exists."
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When a table is created, what is the default name of the module created for it?",
+      "choices": [
+        { "key": "A", "text": "The plural form of the table's name" },
+        { "key": "B", "text": "The table's name with the scope prefix removed" },
+        { "key": "C", "text": "Always 'All Records'" },
+        { "key": "D", "text": "The singular form of the application menu's name" }
+      ],
+      "correct": ["A"],
+      "explanation": "The default module name is the plural of the table name (e.g. a Shipping table yields a Shippings module). It displays a list of all records from the table and can be renamed by editing the module."
+    },
+    {
+      "id": "q16",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On a module record, what happens if the Roles field is left blank?",
+      "choices": [
+        { "key": "A", "text": "The application's roles are inherited and the module is visible to all users who have them" },
+        { "key": "B", "text": "The module is hidden from everyone, including admins" },
+        { "key": "C", "text": "Only the system administrator can see the module" },
+        { "key": "D", "text": "The module is automatically deleted" }
+      ],
+      "correct": ["A"],
+      "explanation": "If Roles is blank, the module inherits the application's roles. Populating Roles restricts the module to those specific roles."
+    },
+    {
+      "id": "q17",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "What is the purpose of the 'Override application menu roles' option on a module?",
+      "choices": [
+        { "key": "A", "text": "It lets users access the module even without permission to view the containing application menu, though they must still meet the module's own role requirements" },
+        { "key": "B", "text": "It removes all role requirements from the module entirely" },
+        { "key": "C", "text": "It hides the module from the application menu but keeps it accessible by URL only" },
+        { "key": "D", "text": "It grants the module's roles to the parent application menu" }
+      ],
+      "correct": ["A"],
+      "explanation": "Override application menu roles allows a user to open the module even if they cannot see the containing menu. The user must still satisfy the module's own Roles requirement."
+    },
+    {
+      "id": "q18",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On a module, which field is the key field that determines what kind of link the module opens (for example, a list of records or a new record form)?",
+      "choices": [
+        { "key": "A", "text": "Link type" },
+        { "key": "B", "text": "Order" },
+        { "key": "C", "text": "Hint" },
+        { "key": "D", "text": "Active" }
+      ],
+      "correct": ["A"],
+      "explanation": "Link type specifies what the module opens (List of Records, New Record, etc.). Depending on the link type, additional fields such as Filter, Content Page, or Arguments may be required."
+    },
+    {
+      "id": "q19",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "In the main ServiceNow window, what does a red ring around the scope selection (globe) icon indicate?",
+      "choices": [
+        { "key": "A", "text": "You are NOT in the global scope (you are in a custom application scope)" },
+        { "key": "B", "text": "An error has occurred with the current application" },
+        { "key": "C", "text": "The current update set is complete and locked" },
+        { "key": "D", "text": "Domain separation is disabled" }
+      ],
+      "correct": ["A"],
+      "explanation": "A red ring around the globe means you are working in a custom (non-global) application scope, a visual reminder to confirm you are creating records in the intended scope."
+    },
+    {
+      "id": "q20",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "The scope selection menu in the main ServiceNow window provides which pickers? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "Application scope" },
+        { "key": "B", "text": "Update set" },
+        { "key": "C", "text": "Domain scope" },
+        { "key": "D", "text": "JavaScript mode" }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "The scope selection menu exposes the Application scope, Update set, and Domain scope pickers (domain only appears with domain separation). JavaScript mode is switched from the application's App settings, not this menu."
+    },
+    {
+      "id": "q21",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Which capability does ServiceNow Studio NOT provide, requiring a different mechanism?",
+      "choices": [
+        { "key": "A", "text": "Pushing application files to an external source control repository" },
+        { "key": "B", "text": "Cross-scope development across global and custom scopes" },
+        { "key": "C", "text": "Code search across application files" },
+        { "key": "D", "text": "Deployment through update sets" }
+      ],
+      "correct": ["A"],
+      "explanation": "Studio cannot push to external source control; update sets are used instead. It also does not provide script intellectual-property protection. It does support cross-scope development, code search, and deployment via update sets or the internal application repository."
+    },
+    {
+      "id": "q22",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is an update set?",
+      "choices": [
+        { "key": "A", "text": "A container that captures customizations (configuration changes) and can be exported as XML" },
+        { "key": "B", "text": "A backup of the instance's table data only" },
+        { "key": "C", "text": "A scheduled job that applies patches automatically" },
+        { "key": "D", "text": "A role that grants deployment permissions" }
+      ],
+      "correct": ["A"],
+      "explanation": "An update set is a container for capturing customizations, stored on the sys_update_xml table and exportable as XML. By default it captures configuration changes, not data."
+    },
+    {
+      "id": "q23",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "By default, what does an update set capture?",
+      "choices": [
+        { "key": "A", "text": "Customizations and configurations, but not data" },
+        { "key": "B", "text": "Both customizations and all table data" },
+        { "key": "C", "text": "Only data records, not configuration" },
+        { "key": "D", "text": "Only the application's roles" }
+      ],
+      "correct": ["A"],
+      "explanation": "By default an update set captures customizations and configurations; data is not included unless specifically arranged."
+    },
+    {
+      "id": "q24",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "What does the 'Publish to Update Set' action on an application do?",
+      "choices": [
+        { "key": "A", "text": "Packages the entire current application into a new, Completed update set (a full snapshot, not just recent changes)" },
+        { "key": "B", "text": "Captures only the files changed since the last update set was completed" },
+        { "key": "C", "text": "Permanently deletes the application after exporting it" },
+        { "key": "D", "text": "Publishes the application directly to the ServiceNow Store" }
+      ],
+      "correct": ["A"],
+      "explanation": "Publish to Update Set copies the latest version of every application file into a new update set and marks it Complete. It is a full snapshot, not a delta, which makes it useful as an initial 'commit' right after creating an app."
+    },
+    {
+      "id": "q25",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Which statement best describes the relationship between application scope and update sets?",
+      "choices": [
+        { "key": "A", "text": "Update sets are subservient to application scope; a single scope can contain several update sets" },
+        { "key": "B", "text": "Each update set can span multiple application scopes simultaneously" },
+        { "key": "C", "text": "An application scope can belong to only one update set at a time" },
+        { "key": "D", "text": "Scope and update set are two names for the same container" }
+      ],
+      "correct": ["A"],
+      "explanation": "Scope is the larger, umbrella container; update sets live within a scope, and a scope can contain several. Because creating an app starts a new scope, an update set started beforehand would not capture the app itself."
+    },
+    {
+      "id": "q26",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Setting an update set's State to 'Complete' has what effect?",
+      "choices": [
+        { "key": "A", "text": "It closes the update set and makes it retrievable on a connected instance" },
+        { "key": "B", "text": "It immediately deploys the changes to every instance in the stack" },
+        { "key": "C", "text": "It permanently deletes the update set after export" },
+        { "key": "D", "text": "It reverts all changes captured in the update set" }
+      ],
+      "correct": ["A"],
+      "explanation": "Marking an update set Complete stops the 'recording' of changes and makes it retrievable from a connected instance so it can be previewed and committed there."
+    },
+    {
+      "id": "q27",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the correct order of the final steps when deploying an update set onto a target instance?",
+      "choices": [
+        { "key": "A", "text": "Retrieve, then preview, then commit" },
+        { "key": "B", "text": "Commit, then preview, then retrieve" },
+        { "key": "C", "text": "Preview, then commit, then retrieve" },
+        { "key": "D", "text": "Retrieve, then commit, then preview" }
+      ],
+      "correct": ["A"],
+      "explanation": "On the target, you retrieve the completed update set, preview it to catch problems (such as references to tables that do not exist on the target), and then commit it."
+    },
+    {
+      "id": "q28",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "The system property glide.update_set.auto_preview is set to true. What happens after an update set is retrieved on the target instance?",
+      "choices": [
+        { "key": "A", "text": "The preview process starts automatically" },
+        { "key": "B", "text": "The update set is committed automatically without preview" },
+        { "key": "C", "text": "The update set is rejected and must be re-retrieved" },
+        { "key": "D", "text": "The update set is exported back to the source instance" }
+      ],
+      "correct": ["A"],
+      "explanation": "If glide.update_set.auto_preview is true, the preview starts automatically after retrieval. If false, you must start the preview manually. Preview never auto-commits."
+    },
+    {
+      "id": "q29",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "What is the guidance on moving update sets between instances running different family releases?",
+      "choices": [
+        { "key": "A", "text": "Loading an older-release update set onto a newer-release instance is always allowed, but loading a newer-release set onto an older-release instance needs extra compatibility testing and can risk outages or data loss" },
+        { "key": "B", "text": "Update sets can only be moved between instances on the exact same family release" },
+        { "key": "C", "text": "Newer-to-older transfers are always safe; older-to-newer transfers are blocked" },
+        { "key": "D", "text": "Family release has no bearing on update set compatibility" }
+      ],
+      "correct": ["A"],
+      "explanation": "You can always load an update set from an older family release onto a newer-release instance. Loading a newer-release set onto an older-release instance requires additional testing and, in extreme cases, can cause outages or data loss, so moving updates from newer to older releases should be avoided."
+    },
+    {
+      "id": "q30",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the application repository used for?",
+      "choices": [
+        { "key": "A", "text": "A central repository that distributes an organization's published scoped apps between its own instances (e.g. dev to test to prod)" },
+        { "key": "B", "text": "A public marketplace for selling apps to any company" },
+        { "key": "C", "text": "An external Git service for source-controlling application files" },
+        { "key": "D", "text": "A backup location for table data only" }
+      ],
+      "correct": ["A"],
+      "explanation": "The application repository is a central store for an organization's published scoped applications, used to promote apps between that organization's own instances. You can only see and manage apps published by your own organization."
+    },
+    {
+      "id": "q31",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "Which conditions are required for an instance to use the application repository? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "A valid subscription" },
+        { "key": "B", "text": "A matching glide.appcreator.company.code value across instances" },
+        { "key": "C", "text": "Network access" },
+        { "key": "D", "text": "A connection to an external source control system" }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "Using the application repository requires a valid subscription, network access, and a matching application scope/company code across instances. As a result, personal developer instances cannot connect to it. Source control is unrelated."
+    },
+    {
+      "id": "q32",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why can a personal developer instance (PDI) not connect to the application repository?",
+      "choices": [
+        { "key": "A", "text": "It lacks the valid subscription, matching scope, and network access the repository requires" },
+        { "key": "B", "text": "PDIs do not support scoped applications" },
+        { "key": "C", "text": "PDIs cannot create update sets" },
+        { "key": "D", "text": "The repository only accepts global-scope applications" }
+      ],
+      "correct": ["A"],
+      "explanation": "The application repository requires a valid subscription, matching application scope, and network access. A standalone PDI does not meet these requirements, so it cannot connect."
+    },
+    {
+      "id": "q33",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the difference between rolling back and uninstalling an application deployed via the application repository?",
+      "choices": [
+        { "key": "A", "text": "Roll back reverts to the previous installed version (without affecting the global application record); uninstall removes the app from the instance but leaves it in the repository for reinstall" },
+        { "key": "B", "text": "Roll back deletes the app from the repository; uninstall only hides it" },
+        { "key": "C", "text": "They are identical operations with different names" },
+        { "key": "D", "text": "Roll back removes the app permanently; uninstall cannot be undone" }
+      ],
+      "correct": ["A"],
+      "explanation": "Roll back returns the app to its previous installation and does not affect the global application record. Uninstall removes the app from the instance but not from the repository, so it can be reinstalled later."
+    },
+    {
+      "id": "q34",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Which sharing method would you use to make an application available for purchase by other companies?",
+      "choices": [
+        { "key": "A", "text": "Publish to the ServiceNow Store" },
+        { "key": "B", "text": "Publish to an update set" },
+        { "key": "C", "text": "Publish to the application repository" },
+        { "key": "D", "text": "Export the table data as CSV" }
+      ],
+      "correct": ["A"],
+      "explanation": "The ServiceNow Store is the public marketplace for sharing or selling apps to other companies. Update sets and the application repository keep distribution within your own organization/stack."
+    },
+    {
+      "id": "q35",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which statement about publishing to the ServiceNow Store is correct?",
+      "choices": [
+        { "key": "A", "text": "Apps are reviewed and certified by ServiceNow before becoming available, not published directly" },
+        { "key": "B", "text": "Apps appear in the Store instantly with no review" },
+        { "key": "C", "text": "Only free apps may be published to the Store" },
+        { "key": "D", "text": "ServiceNow assumes all testing responsibility on the buyer's behalf" }
+      ],
+      "correct": ["A"],
+      "explanation": "Store submissions are sent for review and certified by ServiceNow for best-practice compliance before listing; they are not published directly. Apps may be free or fee-based, and the buyer is responsible for testing and assumes the risk."
+    },
+    {
+      "id": "q36",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the default JavaScript mode for a new scoped application?",
+      "choices": [
+        { "key": "A", "text": "ECMAScript 2021 (ES12)" },
+        { "key": "B", "text": "ECMAScript 5 (ES5)" },
+        { "key": "C", "text": "ECMAScript 3 (ES3)" },
+        { "key": "D", "text": "TypeScript" }
+      ],
+      "correct": ["A"],
+      "explanation": "The default JavaScript mode is ECMAScript 2021 (ES12). It can be switched from the application's App settings."
+    },
+    {
+      "id": "q37",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Application files visible in an app's 'Application files' related list are records on which table?",
+      "choices": [
+        { "key": "A", "text": "sys_metadata" },
+        { "key": "B", "text": "sys_app" },
+        { "key": "C", "text": "sys_update_xml" },
+        { "key": "D", "text": "sys_user" }
+      ],
+      "correct": ["A"],
+      "explanation": "Application files are records on the sys_metadata table, shown filtered to the app's scope. The app record itself lives on sys_app, and update set contents live on sys_update_xml."
+    },
+    {
+      "id": "q38",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "How does App Engine Studio (AES) differ from ServiceNow Studio?",
+      "choices": [
+        { "key": "A", "text": "AES is a guided low-code tool that requires an App Engine subscription, whereas Studio is a centralized pro-code IDE" },
+        { "key": "B", "text": "AES is the only tool that can create scoped applications" },
+        { "key": "C", "text": "Studio is low-code and AES is pro-code" },
+        { "key": "D", "text": "AES runs only on personal developer instances" }
+      ],
+      "correct": ["A"],
+      "explanation": "App Engine Studio is a guided, low-code development tool that requires an App Engine subscription (or a product packaged with one). ServiceNow Studio is the centralized integrated tool for pro-code/traditional application development."
+    }
+  ]
+}
