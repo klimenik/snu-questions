@@ -23,6 +23,11 @@
       "id": "cad-module-4",
       "title": "Module 4: Application Forms",
       "quizPath": "courses/cad/module-4.json"
+    },
+    {
+      "id": "cad-module-5",
+      "title": "Module 5: Controlling Access",
+      "quizPath": "courses/cad/module-5.json"
     }
   ]
 }

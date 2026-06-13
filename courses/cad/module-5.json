@@ -1,0 +1,428 @@
+{
+  "id": "cad-module-5",
+  "course": "cad",
+  "title": "Module 5: Controlling Access",
+  "description": "Application/menu/module visibility, Access Control rules (table.None / table.field / table.* and evaluation order), the four ACL permission checks, ACL scripting and debugging, application (cross-scope) access, web service access, caller access, and protection policies.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is ServiceNow's default access posture, and what does it imply for new tables?",
+      "choices": [
+        { "key": "A", "text": "Allow by default, so ACLs are only needed to restrict access." },
+        { "key": "B", "text": "Deny by default, so an ACL must grant access or it is refused." },
+        { "key": "C", "text": "Allow for admins only; all other access must be scripted." },
+        { "key": "D", "text": "Access is determined solely by application menu roles." }
+      ],
+      "correct": ["B"],
+      "explanation": "ServiceNow denies access by default; an ACL must grant it. This is why four basic CRUD ACLs are generated automatically when a table is created with a role."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "An application menu's Roles field is left empty. Who can see that menu?",
+      "choices": [
+        { "key": "A", "text": "No one until a role is added." },
+        { "key": "B", "text": "Only admins." },
+        { "key": "C", "text": "Everyone." },
+        { "key": "D", "text": "Only users who can see at least one of its modules." }
+      ],
+      "correct": ["C"],
+      "explanation": "An application menu with no role listed is visible to everyone (this is how the Self-Service menu works). If roles are listed, a user needs at least one of them."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "A module record has its Roles field left blank. What determines whether a user sees the module?",
+      "choices": [
+        { "key": "A", "text": "Everyone sees it, regardless of the parent menu." },
+        { "key": "B", "text": "It is visible to anyone who can see its parent application menu." },
+        { "key": "C", "text": "Only admins see it." },
+        { "key": "D", "text": "No one sees it until a role is added." }
+      ],
+      "correct": ["B"],
+      "explanation": "For a module, a blank Roles field does not mean everyone. It means the module is visible to anyone who can see its parent application menu. You can also require a different/additional role on the module."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why is hiding application menus and modules considered convenience rather than true security?",
+      "choices": [
+        { "key": "A", "text": "Because menus and modules cannot have roles assigned." },
+        { "key": "B", "text": "Because a user can still reach a table's records by other means, such as a direct link or typing table_name.list." },
+        { "key": "C", "text": "Because menu roles are ignored at runtime." },
+        { "key": "D", "text": "Because only admins can see the navigator." }
+      ],
+      "correct": ["B"],
+      "explanation": "Navigation visibility only hides the UI link. A user can still reach records via a direct link or by typing <table>.list. Actual data access is governed by Access Control rules, not menu/module visibility."
+    },
+    {
+      "id": "q5",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What role must a user elevate to in order to create or edit Access Control rules?",
+      "choices": [
+        { "key": "A", "text": "admin" },
+        { "key": "B", "text": "security_admin" },
+        { "key": "C", "text": "view_changer" },
+        { "key": "D", "text": "itil_admin" }
+      ],
+      "correct": ["B"],
+      "explanation": "Editing/creating ACLs requires elevating to the security_admin role from the user menu. Not all admins have this elevated role, and if Studio still blocks you after elevating, saving any application file refreshes its permissions."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Which ACL type controls access at the row/record level and must be passed before any field can be accessed?",
+      "choices": [
+        { "key": "A", "text": "table.field" },
+        { "key": "B", "text": "table.*" },
+        { "key": "C", "text": "table.None" },
+        { "key": "D", "text": "*.*" }
+      ],
+      "correct": ["C"],
+      "explanation": "A table.None rule governs the table's rows. You must pass it to see the table's list/forms at all; if the table-level check is denied, no field-level rule can grant access."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What does a table.* (wildcard) ACL apply to?",
+      "choices": [
+        { "key": "A", "text": "Every field on the record where there is no field-specific ACL." },
+        { "key": "B", "text": "Only the record's row-level access." },
+        { "key": "C", "text": "Every table in the application scope." },
+        { "key": "D", "text": "Only fields that already have a field-specific ACL." }
+      ],
+      "correct": ["A"],
+      "explanation": "A table.* rule applies to every field on the record where no field-specific (table.field) ACL exists. A more specific field rule overrides the wildcard."
+    },
+    {
+      "id": "q8",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "When two ACLs could both apply to a field, which one wins?",
+      "choices": [
+        { "key": "A", "text": "The more general rule (table.*) overrides the specific one." },
+        { "key": "B", "text": "The more specific rule (table.field) overrides the general one (table.*)." },
+        { "key": "C", "text": "Whichever has the lower Order value." },
+        { "key": "D", "text": "They are combined with AND logic." }
+      ],
+      "correct": ["B"],
+      "explanation": "The more specific rule wins. A field-specific table.field rule overrides a general table.* wildcard rule, similar to CSS specificity."
+    },
+    {
+      "id": "q9",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "How does introducing a table.* ACL change the default assumption about field visibility?",
+      "choices": [
+        { "key": "A", "text": "It makes all fields visible to everyone regardless of role." },
+        { "key": "B", "text": "It flips the assumption: fields become locked unless the user matches the table.* role or a more specific field ACL grants access." },
+        { "key": "C", "text": "It disables all field-specific rules." },
+        { "key": "D", "text": "It only affects the row-level (table.None) check." }
+      ],
+      "correct": ["B"],
+      "explanation": "Without a table.* rule, users are assumed to have access to all fields unless a field rule excludes them (easy to include). Adding table.* flips it: everything is locked unless the user matches the wildcard role or a specific field ACL grants access (easy to exclude/cherry-pick)."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Goal: 'asset' sees all fields, 'catalog' sees ONLY field 3. You have table.None (asset, catalog), table.* Read for asset, and table.field_3 Read for catalog only. What is the result, and the fix?",
+      "choices": [
+        { "key": "A", "text": "It works as intended; no change needed." },
+        { "key": "B", "text": "It fails: asset loses field 3 because the specific field rule overrides asset's wildcard. Fix: add asset to the table.field_3 rule." },
+        { "key": "C", "text": "It fails: catalog sees nothing. Fix: remove the table.* rule." },
+        { "key": "D", "text": "It fails: both lose access. Fix: delete the table.None rule." }
+      ],
+      "correct": ["B"],
+      "explanation": "The table.field_3 rule (catalog only) is more specific than asset's table.*, so it overrides it and asset loses field 3. Adding asset to the table.field_3 rule restores asset's full access while keeping catalog limited to field 3."
+    },
+    {
+      "id": "q11",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "In what order are Access Control rules evaluated for a record object?",
+      "choices": [
+        { "key": "A", "text": "Field-level rules first, then table-level rules." },
+        { "key": "B", "text": "Table-level rules first (most specific to most general), then field-level rules (most specific to most general)." },
+        { "key": "C", "text": "All rules at once, lowest Order wins." },
+        { "key": "D", "text": "Script rules first, then role rules." }
+      ],
+      "correct": ["B"],
+      "explanation": "The system checks table-level rules first, most specific to most general, then field-level rules, most specific to most general. You must pass both a table rule and a field rule to access a record object."
+    },
+    {
+      "id": "q12",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "A user passes the table.None rule but fails the relevant field ACL. What happens?",
+      "choices": [
+        { "key": "A", "text": "They are denied access to the entire table." },
+        { "key": "B", "text": "They can access the record but not that particular field." },
+        { "key": "C", "text": "The field rule is ignored because the table rule passed." },
+        { "key": "D", "text": "They get full access because table rules take priority." }
+      ],
+      "correct": ["B"],
+      "explanation": "Passing the table rule but failing a field rule means the user can interact with the record but cannot access the field described by that field ACL. Failing the table rule, by contrast, denies all fields."
+    },
+    {
+      "id": "q13",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "A single Access Control rule grants access only if all of its checks pass. Which checks are evaluated? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "Role (user has one of the listed roles, or the list is empty)." },
+        { "key": "B", "text": "Condition / data condition (Condition Builder evaluates true, or empty)." },
+        { "key": "C", "text": "Script (advanced script returns true / sets answer to true, or empty)." },
+        { "key": "D", "text": "The user's email domain matches the instance domain." }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "An ACL has four checks evaluated in order, all of which must be true: Role, Security attribute, Condition (data condition), and Script. Email domain is not one of them."
+    },
+    {
+      "id": "q14",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Within a single ACL you specify a role, a data condition, and a script. What must be true for the user to pass?",
+      "choices": [
+        { "key": "A", "text": "Any one of the three checks passes." },
+        { "key": "B", "text": "All three checks pass (AND logic)." },
+        { "key": "C", "text": "Only the role check matters; the rest are advisory." },
+        { "key": "D", "text": "The script overrides the role and condition." }
+      ],
+      "correct": ["B"],
+      "explanation": "Within one ACL, all specified checks must evaluate true (AND). Adding more conditions to a single ACL makes it more specific and harder to pass."
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "There are several separate read ACLs for the same table and operation (for example incident.None read). What does having multiple such ACLs mean?",
+      "choices": [
+        { "key": "A", "text": "Access is more locked down; the user must pass every one of them." },
+        { "key": "B", "text": "Each ACL is a separate case; passing any one grants access (like multiple keys for one lock)." },
+        { "key": "C", "text": "Only the most recently created ACL is evaluated." },
+        { "key": "D", "text": "The ACLs cancel each other out." }
+      ],
+      "correct": ["B"],
+      "explanation": "Multiple ACLs for the same operation each represent a separate context in which a user might pass (OR logic). More ACLs means more ways to be granted access, not a tighter lock. This is contextual security."
+    },
+    {
+      "id": "q16",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When a table is created and the four basic CRUD ACLs are generated, how is the create permission defined by default?",
+      "choices": [
+        { "key": "A", "text": "Create always requires the admin role specifically." },
+        { "key": "B", "text": "Create reuses the write (update) permissions unless you define an explicit create ACL." },
+        { "key": "C", "text": "Create is denied to everyone by default." },
+        { "key": "D", "text": "Create reuses the read permissions." }
+      ],
+      "correct": ["B"],
+      "explanation": "The wildcard create ACL reuses the write permissions, so create permission equals write permission unless an explicit create-operation ACL is defined."
+    },
+    {
+      "id": "q17",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which methods are appropriate inside server-side Access Control scripts? (Choose 2)",
+      "choices": [
+        { "key": "A", "text": "gs.hasRole()" },
+        { "key": "B", "text": "current.isNewRecord()" },
+        { "key": "C", "text": "g_form.getValue()" },
+        { "key": "D", "text": "g_user.hasRole()" }
+      ],
+      "correct": ["A", "B"],
+      "explanation": "ACL scripts run server-side, so GlideSystem (gs.hasRole) and GlideRecord (current.isNewRecord) are valid. g_form and g_user are client-side and unavailable. Also avoid GlideRecord queries in ACL scripts for performance."
+    },
+    {
+      "id": "q18",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why is client-side configuration (such as g_user.hasRole() or hiding a field with a UI policy) unacceptable as a security control?",
+      "choices": [
+        { "key": "A", "text": "Client scripts cannot read roles at all." },
+        { "key": "B", "text": "The data is still sent to the browser and visible in the XML/page source, so hiding it is cosmetic only." },
+        { "key": "C", "text": "UI policies only run for admins." },
+        { "key": "D", "text": "g_user is not available on the client." }
+      ],
+      "correct": ["B"],
+      "explanation": "Client-side hiding only reduces form clutter; the server still sends the data, which remains visible in the XML/page source. Security must be enforced server-side via ACLs and GlideSystem methods."
+    },
+    {
+      "id": "q19",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Where do you enable ACL debugging that shows which rules apply to each field and whether they passed?",
+      "choices": [
+        { "key": "A", "text": "System Security > Debugging > Debug Security Rules" },
+        { "key": "B", "text": "System Definition > Tables" },
+        { "key": "C", "text": "System UI > Forms" },
+        { "key": "D", "text": "System Properties > Security" }
+      ],
+      "correct": ["A"],
+      "explanation": "Debug Security Rules (under System Security > Debugging) adds a bug icon beside each field and an ACL dump at the bottom of pages. Stop via Stop Debugging."
+    },
+    {
+      "id": "q20",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "In the color-coded ACL debug output, what does a gray entry indicate?",
+      "choices": [
+        { "key": "A", "text": "The rule passed." },
+        { "key": "B", "text": "The rule failed." },
+        { "key": "C", "text": "The rule was skipped because a higher rule in the hierarchy already decided access." },
+        { "key": "D", "text": "The result came from cache." }
+      ],
+      "correct": ["C"],
+      "explanation": "Gray = skipped because of an Access Control higher in the hierarchy. Green/blue check = passed, red X = failed, blue = previously cached result. Evaluation order shown is roles, security attribute, condition, script."
+    },
+    {
+      "id": "q21",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the relationship between application access and Access Control rules?",
+      "choices": [
+        { "key": "A", "text": "Application access replaces ACLs for scoped apps." },
+        { "key": "B", "text": "Application access is evaluated in addition to ACLs and is configured per table." },
+        { "key": "C", "text": "Application access only applies to the UI, not scripts." },
+        { "key": "D", "text": "ACLs only apply when application access is set to None." }
+      ],
+      "correct": ["B"],
+      "explanation": "Application access is evaluated in addition to ACLs and is configured on a table-by-table basis via the Application Access tab. It governs cross-scope CRUD, web service, and script access."
+    },
+    {
+      "id": "q22",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Application access controls cross-scope access. To which scripts does it NOT apply?",
+      "choices": [
+        { "key": "A", "text": "Scripts running in the same scope as the table." },
+        { "key": "B", "text": "Scripts running in the global scope." },
+        { "key": "C", "text": "Business rules on the table." },
+        { "key": "D", "text": "Any server-side script." }
+      ],
+      "correct": ["A"],
+      "explanation": "Application access applies to all server-side scripts but does not apply to scripts executing in the same scope as the table. An app can always reach its own tables."
+    },
+    {
+      "id": "q23",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When a table's Accessible from is set to All application scopes, what is the default level of cross-scope access?",
+      "choices": [
+        { "key": "A", "text": "Full CRUD." },
+        { "key": "B", "text": "Read access only." },
+        { "key": "C", "text": "No access until explicitly granted." },
+        { "key": "D", "text": "Create and read only." }
+      ],
+      "correct": ["B"],
+      "explanation": "Granting access to All application scopes defaults to read-only; create, update, and delete must be explicitly enabled."
+    },
+    {
+      "id": "q24",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "A global-scope script runs a GlideRecord update against a table whose application access allows read but not update from other scopes. What happens?",
+      "choices": [
+        { "key": "A", "text": "A runtime error halts the script." },
+        { "key": "B", "text": "The update is silently allowed because GlideRecord bypasses application access." },
+        { "key": "C", "text": "The unauthorized update is skipped, no runtime error occurs, and ServiceNow continues (with a security-restricted log message)." },
+        { "key": "D", "text": "The whole table is locked for all scopes." }
+      ],
+      "correct": ["C"],
+      "explanation": "Unauthorized cross-scope access is prevented at runtime without throwing an error: the offending operation is skipped and ServiceNow keeps running, logging a message like 'Security restricted: Write operation ... refused due to the table's cross-scope access policy.'"
+    },
+    {
+      "id": "q25",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "A user record is flagged 'Web service access only'. What does this restrict?",
+      "choices": [
+        { "key": "A", "text": "The user cannot be added to any groups or roles." },
+        { "key": "B", "text": "The user cannot log into the ServiceNow UI (no interactive session); the credentials are for integration/web service authentication only." },
+        { "key": "C", "text": "The user bypasses all ACLs." },
+        { "key": "D", "text": "The user can only read data, never write." }
+      ],
+      "correct": ["B"],
+      "explanation": "Web service access only prevents interactive UI login; the credentials authenticate web service/integration requests. The user is otherwise normal (groups, roles) and is still subject to ACL security."
+    },
+    {
+      "id": "q26",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What does the 'Allow configuration' option enable?",
+      "choices": [
+        { "key": "A", "text": "Other application scopes to create artifacts (like Dictionary Entries, UI Actions, Client Scripts) on your table." },
+        { "key": "B", "text": "End users to reconfigure forms at runtime." },
+        { "key": "C", "text": "Automatic creation of ACLs for the table." },
+        { "key": "D", "text": "Cross-instance publishing of the application." }
+      ],
+      "correct": ["A"],
+      "explanation": "Allow configuration permits other scopes to create artifacts (Dictionary Entry, UI Action, Client Script, and other metadata) for your table, for example owning a button on an out-of-scope table. It is only selectable when Accessible from is All application scopes."
+    },
+    {
+      "id": "q27",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "With Caller Tracking, what happens when an out-of-scope caller accesses your resource?",
+      "choices": [
+        { "key": "A", "text": "The call is denied until manually approved." },
+        { "key": "B", "text": "The call is automatically approved and a record is created in the Restricted Caller Access table with status Allowed." },
+        { "key": "C", "text": "Nothing is recorded; access depends only on Accessible from." },
+        { "key": "D", "text": "The caller's scope is permanently blocked." }
+      ],
+      "correct": ["B"],
+      "explanation": "Caller Tracking auto-approves the call and records it in the Restricted Caller Access table with status Allowed (an ask-forgiveness paper trail). Caller Restriction instead creates the record as Requested and requires manual approval."
+    },
+    {
+      "id": "q28",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which Caller Access setting requires that each cross-scope request be manually approved?",
+      "choices": [
+        { "key": "A", "text": "--None--" },
+        { "key": "B", "text": "Caller Tracking" },
+        { "key": "C", "text": "Caller Restriction" },
+        { "key": "D", "text": "Caller Logging" }
+      ],
+      "correct": ["C"],
+      "explanation": "Caller Restriction tracks each request with status Requested and requires manual approval (ask-permission). Caller Tracking auto-approves; --None-- defers to the Accessible from value."
+    },
+    {
+      "id": "q29",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Under which circumstances do protection policies actually take effect?",
+      "choices": [
+        { "key": "A", "text": "On the development instance, to hide scripts from other developers." },
+        { "key": "B", "text": "When the app is distributed via an update set." },
+        { "key": "C", "text": "When the app is installed from the ServiceNow Store or migrated from the Application Repository." },
+        { "key": "D", "text": "Whenever a UI policy hides the field." }
+      ],
+      "correct": ["C"],
+      "explanation": "Protection policies apply only when an app is installed from the ServiceNow Store or migrated from the Application Repository. They are not applied via update set and do not affect the development instance, where you use ACLs/roles to restrict artifact access."
+    },
+    {
+      "id": "q30",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which protection policy value makes an artifact's logic completely non-viewable (a black box)?",
+      "choices": [
+        { "key": "A", "text": "--None--" },
+        { "key": "B", "text": "Read-only" },
+        { "key": "C", "text": "Protected" },
+        { "key": "D", "text": "Hidden" }
+      ],
+      "correct": ["C"],
+      "explanation": "Protected = logic is not viewable. Read-only = viewable but not editable. --None-- = viewable and editable. Protection policies apply to artifacts such as UI Actions and Script Includes."
+    }
+  ]
+}
