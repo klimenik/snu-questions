@@ -18,6 +18,11 @@
       "id": "cad-module-3",
       "title": "Module 3: Create Application and Modules",
       "quizPath": "courses/cad/module-3.json"
+    },
+    {
+      "id": "cad-module-4",
+      "title": "Module 4: Application Forms",
+      "quizPath": "courses/cad/module-4.json"
     }
   ]
 }

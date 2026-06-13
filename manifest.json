@@ -25,6 +25,12 @@
           "title": "Module 3: Create Application and Modules",
           "path": "courses/cad/module-3.json",
           "questionCount": 38
+        },
+        {
+          "id": "cad-module-4",
+          "title": "Module 4: Application Forms",
+          "path": "courses/cad/module-4.json",
+          "questionCount": 31
         }
       ]
     }

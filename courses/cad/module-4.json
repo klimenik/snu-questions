@@ -1,0 +1,442 @@
+{
+  "id": "cad-module-4",
+  "course": "cad",
+  "title": "Module 4: Application Forms",
+  "description": "Forms, fields, lists, and views; client-side vs. server-side scripting; UI policies; client scripts; business rules and their execution order; the g_scratchpad object.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why should you choose a field's data type carefully when first creating it?",
+      "choices": [
+        { "key": "A", "text": "The data type cannot be changed once any record exists." },
+        { "key": "B", "text": "Changing the type later can result in data loss." },
+        { "key": "C", "text": "The data type determines the field's column name." },
+        { "key": "D", "text": "Only the first field on a table is allowed to have a non-string type." }
+      ],
+      "correct": ["B"],
+      "explanation": "Field types can be changed, but doing so after data exists can cause data loss, so the type should be chosen carefully up front. Use date/date-time fields for dates and reference/choice fields rather than free-form strings."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "You relabel a field that was originally defined on a parent table. What is the risk?",
+      "choices": [
+        { "key": "A", "text": "The column name is renamed everywhere, breaking existing scripts." },
+        { "key": "B", "text": "The relabel can propagate to the parent table and its sibling tables." },
+        { "key": "C", "text": "The field is automatically deleted from the parent table." },
+        { "key": "D", "text": "All records in that column are cleared." }
+      ],
+      "correct": ["B"],
+      "explanation": "Relabeling a parent-defined field can change the label on the parent and all sibling tables. Relabeling changes only the label (not the column name), and to scope a label change you should relabel on your own table."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What happens to the data in a column's existing records when you delete a user-defined field from a table?",
+      "choices": [
+        { "key": "A", "text": "The entire table records are deleted along with the column." },
+        { "key": "B", "text": "No table records are deleted; only the column is removed." },
+        { "key": "C", "text": "The records are archived to a recovery table." },
+        { "key": "D", "text": "The column is hidden but the data remains queryable." }
+      ],
+      "correct": ["B"],
+      "explanation": "Deleting a field removes the column but does not delete any table records. Note also that inherited fields and system columns cannot be deleted, and in Table Builder you must clear a column's existing data before the column can be deleted."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "After creating a new field on a table, where does it appear automatically?",
+      "choices": [
+        { "key": "A", "text": "On both the form and every list view of the table." },
+        { "key": "B", "text": "On the form's available fields (to drag onto the form), but not in any list view." },
+        { "key": "C", "text": "In all list views, but not on the form." },
+        { "key": "D", "text": "Nowhere; it must be added manually to both forms and lists." }
+      ],
+      "correct": ["B"],
+      "explanation": "A new field is added to the form's available fields so it can be placed on the form, but it is not automatically added to a list view. You must personalize/configure the list layout to add the column."
+    },
+    {
+      "id": "q5",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "When do tabs appear on a form?",
+      "choices": [
+        { "key": "A", "text": "Only when the form has related lists." },
+        { "key": "B", "text": "When the form has two or more sections (tabbed layout is the baseline)." },
+        { "key": "C", "text": "Only when a developer enables them in system properties." },
+        { "key": "D", "text": "On every form, regardless of sections." }
+      ],
+      "correct": ["B"],
+      "explanation": "Tabs appear when there are two or more sections, and tabbed layout is the platform's default/baseline. Users can switch to an accordion layout in their Display preferences. Tabs at the bottom of a form are related lists, not sections."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which method displays a message on a blue background directly below a specific field on a form?",
+      "choices": [
+        { "key": "A", "text": "g_form.addInfoMessage()" },
+        { "key": "B", "text": "g_form.addErrorMessage()" },
+        { "key": "C", "text": "g_form.showFieldMsg()" },
+        { "key": "D", "text": "alert()" }
+      ],
+      "correct": ["C"],
+      "explanation": "showFieldMsg() prints below the named field. addInfoMessage() (blue) and addErrorMessage() (red) print at the top of the form, and alert()/confirm() open JavaScript dialogs."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is a view in ServiceNow?",
+      "choices": [
+        { "key": "A", "text": "A copy of a table's data for reporting." },
+        { "key": "B", "text": "A saved version of a configured form or list defining which fields appear and in what order." },
+        { "key": "C", "text": "A role that grants read-only access." },
+        { "key": "D", "text": "A scheduled job that refreshes form layouts." }
+      ],
+      "correct": ["B"],
+      "explanation": "A view is a saved layout of a form or list. It lets the same record be displayed in different ways for different audiences (for example ESS, ITIL, mobile)."
+    },
+    {
+      "id": "q8",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "A view has the database Name \"ess\" but is shown to users as \"Self Service\". What is \"Self Service\" in this case?",
+      "choices": [
+        { "key": "A", "text": "The view's Title (friendly, human-readable name)." },
+        { "key": "B", "text": "The role required to see the view." },
+        { "key": "C", "text": "The table the view applies to." },
+        { "key": "D", "text": "The column name the view sorts by." }
+      ],
+      "correct": ["A"],
+      "explanation": "Every view has a Name (database name, here \"ess\") and a Title (the friendly name shown to users, here \"Self Service\")."
+    },
+    {
+      "id": "q9",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which role does a user need in order to change the view they are seeing?",
+      "choices": [
+        { "key": "A", "text": "admin" },
+        { "key": "B", "text": "view_changer" },
+        { "key": "C", "text": "itil" },
+        { "key": "D", "text": "personalize_form" }
+      ],
+      "correct": ["B"],
+      "explanation": "The view_changer role is required for a user to switch the view they see. Not all users have permission to change views."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "What makes a View Rule different from forcing a view via a module configuration or a URL parameter?",
+      "choices": [
+        { "key": "A", "text": "A View Rule applies only to list views, never forms." },
+        { "key": "B", "text": "A View Rule forces the view from the server and cannot be overridden by query strings in the URL." },
+        { "key": "C", "text": "A View Rule can only use the condition builder, never script." },
+        { "key": "D", "text": "A View Rule runs on the client and is therefore faster." }
+      ],
+      "correct": ["B"],
+      "explanation": "View Rules force a view from the server-side and cannot be fooled by injecting query strings into the URL, unlike views set via a module or a URL parameter."
+    },
+    {
+      "id": "q11",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "In a scripted View Rule, how do you specify which view to force?",
+      "choices": [
+        { "key": "A", "text": "Return the view's Title from the script." },
+        { "key": "B", "text": "Set the variable named \"answer\" to the system name of the view." },
+        { "key": "C", "text": "Call g_form.setView() with the view name." },
+        { "key": "D", "text": "Set current.view to the desired view." }
+      ],
+      "correct": ["B"],
+      "explanation": "In a scripted view rule you set the answer variable to the system Name of the view you want to force. Server-side JavaScript lets you check role/group membership, and a switch/case block handles complex situations."
+    },
+    {
+      "id": "q12",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which three field attributes are UI Policies specifically designed to toggle?",
+      "choices": [
+        { "key": "A", "text": "Mandatory, Visible, Read-only" },
+        { "key": "B", "text": "Default value, Label, Data type" },
+        { "key": "C", "text": "Active, Order, Scope" },
+        { "key": "D", "text": "Reference, Choice, String" }
+      ],
+      "correct": ["A"],
+      "explanation": "UI Policy Actions toggle whether a field is mandatory, visible, and/or read-only (and can optionally clear the field value)."
+    },
+    {
+      "id": "q13",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "A UI Policy's condition is NOT re-evaluated when a field value changes through which of the following?",
+      "choices": [
+        { "key": "A", "text": "A user manually changing a field on the form." },
+        { "key": "B", "text": "An onChange that updates a field the user typed in." },
+        { "key": "C", "text": "An Import Set, web service, UI Action, or the List Editor." },
+        { "key": "D", "text": "A user editing the field and tabbing out." }
+      ],
+      "correct": ["C"],
+      "explanation": "UI Policy conditions are only re-checked when a user manually changes a field on a form. Changes made via UI Action, context menu, Import Set, web services, or the List Editor do not re-evaluate them. To enforce mandatory/read-only for non-form changes, use Data Policies (which are not scriptable)."
+    },
+    {
+      "id": "q14",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "In a UI Policy, what must be enabled for the \"Execute if false\" script to run?",
+      "choices": [
+        { "key": "A", "text": "The Global checkbox." },
+        { "key": "B", "text": "The \"Reverse if false\" option." },
+        { "key": "C", "text": "The Inherit checkbox." },
+        { "key": "D", "text": "The On load option." }
+      ],
+      "correct": ["B"],
+      "explanation": "The Execute if false script only runs when \"Reverse if false\" is selected. The platform can't infer the inverse of arbitrary script, which is why separate true/false scripts (and this toggle) exist."
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "A UI Policy can hide an entire form section, but a UI Policy Action cannot. What enables hiding a section?",
+      "choices": [
+        { "key": "A", "text": "Setting the section field to read-only." },
+        { "key": "B", "text": "Scripting in the UI Policy's advanced view (Run scripts)." },
+        { "key": "C", "text": "A Data Policy." },
+        { "key": "D", "text": "The Order field." }
+      ],
+      "correct": ["B"],
+      "explanation": "UI Policy Actions can hide individual fields but not sections. Hiding/showing a whole section requires scripting in the UI Policy's advanced view."
+    },
+    {
+      "id": "q16",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Which client script type fires when a record is submitted/saved?",
+      "choices": [
+        { "key": "A", "text": "onLoad()" },
+        { "key": "B", "text": "onChange()" },
+        { "key": "C", "text": "onSubmit()" },
+        { "key": "D", "text": "onCellEdit()" }
+      ],
+      "correct": ["C"],
+      "explanation": "onSubmit() fires on submit/save, onLoad() when the form loads, onChange() when a specified field changes, and onCellEdit() from a list."
+    },
+    {
+      "id": "q17",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which client script type executes from a list rather than a form?",
+      "choices": [
+        { "key": "A", "text": "onLoad()" },
+        { "key": "B", "text": "onCellEdit()" },
+        { "key": "C", "text": "onSubmit()" },
+        { "key": "D", "text": "onChange()" }
+      ],
+      "correct": ["B"],
+      "explanation": "onCellEdit() is the client script type that runs from a list (when a cell is edited). The other three run on forms."
+    },
+    {
+      "id": "q18",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "Client scripts and UI policies both run client-side. Which capabilities belong ONLY to client scripts (not UI policies)? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "Execute on form submit/save." },
+        { "key": "B", "text": "Access to a field's prior value." },
+        { "key": "C", "text": "Access to the Condition Builder." },
+        { "key": "D", "text": "Execute on a list field value change (onCellEdit)." }
+      ],
+      "correct": ["A", "B", "D"],
+      "explanation": "Only client scripts run on submit, can access a field's prior value, and run from a list. The Condition Builder belongs to UI policies, which also resolve after client scripts and require no scripting."
+    },
+    {
+      "id": "q19",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which two client-side classes are auto-instantiated for managing forms and the current user?",
+      "choices": [
+        { "key": "A", "text": "GlideRecord and GlideSystem" },
+        { "key": "B", "text": "GlideForm (g_form) and GlideUser (g_user)" },
+        { "key": "C", "text": "GlideAjax and GlideQuery" },
+        { "key": "D", "text": "GlideSystem (gs) and GlideElement" }
+      ],
+      "correct": ["B"],
+      "explanation": "g_form (GlideForm) manages form fields/values and g_user (GlideUser) exposes current-user info and role checks. Both are client-side and auto-instantiated; GlideSystem (gs) is server-side."
+    },
+    {
+      "id": "q20",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Scoped client scripts are wrapped in an IIFE, blocking some APIs. Which API can NEVER be re-enabled, even by setting glide.script.block.client.globals to false?",
+      "choices": [
+        { "key": "A", "text": "GlideForm" },
+        { "key": "B", "text": "jQuery" },
+        { "key": "C", "text": "GlideRecord" },
+        { "key": "D", "text": "window" }
+      ],
+      "correct": ["C"],
+      "explanation": "Setting glide.script.block.client.globals to false can re-enable blocked APIs except client-side GlideRecord, which can never be turned back on. Use GlideAjax instead for server lookups from the client."
+    },
+    {
+      "id": "q21",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "From a scoped client script you need data from another table. GlideRecord is blocked client-side. What is the recommended replacement?",
+      "choices": [
+        { "key": "A", "text": "jQuery AJAX to a REST endpoint" },
+        { "key": "B", "text": "GlideAjax (calling a server-side Script Include)" },
+        { "key": "C", "text": "GlideSystem on the client" },
+        { "key": "D", "text": "g_form.getReference() only" }
+      ],
+      "correct": ["B"],
+      "explanation": "GlideAjax is the supported way to reach the server from a client script when client-side GlideRecord is unavailable. Server-side queries should run in server scripts."
+    },
+    {
+      "id": "q22",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On a Business Rule record, on what does a Business Rule trigger?",
+      "choices": [
+        { "key": "A", "text": "A user clicking a UI widget." },
+        { "key": "B", "text": "Database access operations (Insert/Update/Delete/Query)." },
+        { "key": "C", "text": "A schedule." },
+        { "key": "D", "text": "An event being generated." }
+      ],
+      "correct": ["B"],
+      "explanation": "Business Rules are server-side automation that run in response to database access (insert/update/delete/query), at before/after/display/async timing. Schedules trigger Scheduled Jobs, events trigger Script Actions, and widget clicks trigger UI Actions."
+    },
+    {
+      "id": "q23",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "What is the correct execution order of business rule types?",
+      "choices": [
+        { "key": "A", "text": "Display, Query, Before, After, Async" },
+        { "key": "B", "text": "Query, Display, Before, After, Async" },
+        { "key": "C", "text": "Before, Query, Display, Async, After" },
+        { "key": "D", "text": "Query, Before, Display, After, Async" }
+      ],
+      "correct": ["B"],
+      "explanation": "Order: Query (as the query runs), Display (as the form renders, before onLoad client scripts), Before (after submit, before the write), After (after the write), Async (in the background like a scheduled job)."
+    },
+    {
+      "id": "q24",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which business rule type runs as the form begins to render, before any onLoad client scripts fire, to make extra server data available?",
+      "choices": [
+        { "key": "A", "text": "Before" },
+        { "key": "B", "text": "After" },
+        { "key": "C", "text": "Display" },
+        { "key": "D", "text": "Async" }
+      ],
+      "correct": ["C"],
+      "explanation": "A Display Business Rule fires as the form renders, before onLoad client scripts, and its purpose is to populate the g_scratchpad object with data the form wouldn't otherwise carry."
+    },
+    {
+      "id": "q25",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which business rule type is best suited to validating a record and rejecting it before it is written to the database?",
+      "choices": [
+        { "key": "A", "text": "Before" },
+        { "key": "B", "text": "After" },
+        { "key": "C", "text": "Async" },
+        { "key": "D", "text": "Display" }
+      ],
+      "correct": ["A"],
+      "explanation": "A Before Business Rule runs after submit but before the record is written, which makes it ideal for validation (for example, aborting when an end date precedes a start date)."
+    },
+    {
+      "id": "q26",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "You need to update records on a different table after a new record is successfully saved. Which business rule type fits best?",
+      "choices": [
+        { "key": "A", "text": "Display" },
+        { "key": "B", "text": "Before" },
+        { "key": "C", "text": "After" },
+        { "key": "D", "text": "Query" }
+      ],
+      "correct": ["C"],
+      "explanation": "An After Business Rule runs once the record is saved on the server, making it well suited to propagating values to or updating other records/tables. For long-running work that shouldn't block the user, an Async rule is preferable."
+    },
+    {
+      "id": "q27",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which business rule type behaves like a scheduled job, running in the background so it doesn't delay returning control to the user?",
+      "choices": [
+        { "key": "A", "text": "Before" },
+        { "key": "B", "text": "Async" },
+        { "key": "C", "text": "Display" },
+        { "key": "D", "text": "Query" }
+      ],
+      "correct": ["B"],
+      "explanation": "An Async Business Rule runs in parallel in the background when the server gets to it, similar to a scheduled job. It suits slow work like web-service integrations. The other four types are synchronous."
+    },
+    {
+      "id": "q28",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "Which statements about the g_scratchpad object are correct? (Choose 2)",
+      "choices": [
+        { "key": "A", "text": "It is populated by a Display Business Rule and read by client-side scripts." },
+        { "key": "B", "text": "All property values must be passed as strings." },
+        { "key": "C", "text": "It comes pre-populated with the record's field values by default." },
+        { "key": "D", "text": "It is fully supported on the mobile platform." }
+      ],
+      "correct": ["A", "B"],
+      "explanation": "g_scratchpad carries data from a Display Business Rule to client-side scripts, and its values must be strings. It has no properties by default and does not exist on the mobile platform."
+    },
+    {
+      "id": "q29",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why does impersonating another user affect the result of a g_user call in a client script?",
+      "choices": [
+        { "key": "A", "text": "g_user caches the admin's roles permanently." },
+        { "key": "B", "text": "g_user executes client-side and reflects the impersonated session's user." },
+        { "key": "C", "text": "g_user can only be used by the admin role." },
+        { "key": "D", "text": "Impersonation rewrites the server-side GlideSystem object." }
+      ],
+      "correct": ["B"],
+      "explanation": "Because g_user runs client-side and reflects the current (impersonated) session, role and identity checks return the impersonated user's values."
+    },
+    {
+      "id": "q30",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "On a script record, what is the Messages field used for?",
+      "choices": [
+        { "key": "A", "text": "Documentation of who wrote the script and why." },
+        { "key": "B", "text": "Localization, matching keys against the sys_ui_message table." },
+        { "key": "C", "text": "Defining when the script runs." },
+        { "key": "D", "text": "Storing the script's error log." }
+      ],
+      "correct": ["B"],
+      "explanation": "The Messages field supports localization: strings listed there are matched by key in sys_ui_message and replaced with a localized version when one exists. The Description field is for documentation, and the trigger defines when the script runs."
+    },
+    {
+      "id": "q31",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Which classes are NOT available in server-side scripts because they are part of the client-side API?",
+      "choices": [
+        { "key": "A", "text": "GlideForm and GlideUser" },
+        { "key": "B", "text": "GlideSystem and GlideRecord" },
+        { "key": "C", "text": "GlideAjax and GlideAggregate" },
+        { "key": "D", "text": "GlideDateTime and GlideElement" }
+      ],
+      "correct": ["A"],
+      "explanation": "GlideForm (g_form) and GlideUser (g_user) are client-side and not available server-side. Server scripts use classes like GlideSystem (gs)."
+    }
+  ]
+}
