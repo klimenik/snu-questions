@@ -1,0 +1,484 @@
+{
+  "id": "cad-module-6",
+  "course": "cad",
+  "title": "Module 6: Automating Work",
+  "description": "Flow Designer (triggers, actions, data pills, testing) and Integration Hub/spokes; application properties; Scheduled Script Executions; Events and the Event Registry; email notifications; Script Actions; and Script Includes.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which elements make up a flow in Flow Designer? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "A trigger that initiates the flow." },
+        { "key": "B", "text": "One or more actions (operations executed by the system)." },
+        { "key": "C", "text": "Data exposed as pills in the Data Panel." },
+        { "key": "D", "text": "A mandatory client script for each action." }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "A flow consists of a trigger, action(s), and the data collected/created (shown as pills in the Data Panel), and may include conditions. Flows can be built with no JavaScript at all; no client script is required."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which of these is a valid record-based trigger for a flow?",
+      "choices": [
+        { "key": "A", "text": "Daily" },
+        { "key": "B", "text": "Created or Updated" },
+        { "key": "C", "text": "Repeat" },
+        { "key": "D", "text": "Run Once" }
+      ],
+      "correct": ["B"],
+      "explanation": "Record triggers are Created, Updated, and Created or Updated. Daily, Repeat, and Run Once are scheduled (time-based) triggers."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the purpose of the Data Panel and its pills in Flow Designer?",
+      "choices": [
+        { "key": "A", "text": "To store the flow's execution logs permanently." },
+        { "key": "B", "text": "To expose data gathered or created as variables that can be dragged and dropped onto action inputs/outputs." },
+        { "key": "C", "text": "To define the roles allowed to run the flow." },
+        { "key": "D", "text": "To write server-side JavaScript for each action." }
+      ],
+      "correct": ["B"],
+      "explanation": "Each variable gathered or generated in a flow appears as a pill in the Data Panel and can be dragged onto an action's input or output, a visual alternative to scripting."
+    },
+    {
+      "id": "q4",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "What should you know about testing a flow inside Flow Designer? (Choose 2)",
+      "choices": [
+        { "key": "A", "text": "The flow executes whether or not the trigger conditions are actually met." },
+        { "key": "B", "text": "There is no rollback; real record changes occur, so test on a non-production instance." },
+        { "key": "C", "text": "Testing runs in a sandbox that automatically reverts all changes." },
+        { "key": "D", "text": "Testing requires publishing the flow first." }
+      ],
+      "correct": ["A", "B"],
+      "explanation": "A flow test runs as if the trigger conditions were met and makes real changes with no rollback, so it should only be done on a non-production instance. Execution details let you verify each step afterward."
+    },
+    {
+      "id": "q5",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is a spoke in the context of Integration Hub?",
+      "choices": [
+        { "key": "A", "text": "A scoped application containing Flow Designer actions for a specific application or record type." },
+        { "key": "B", "text": "A scheduled job that runs integrations on a timer." },
+        { "key": "C", "text": "A type of business rule used for REST calls." },
+        { "key": "D", "text": "A client-side script that calls external APIs." }
+      ],
+      "correct": ["A"],
+      "explanation": "A spoke is a scoped application bundling Flow Designer actions for a particular application or record type. Spokes activate when their parent application is activated. Integration Hub extends Flow Designer with low-code/no-code integrations."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is the primary purpose of application properties?",
+      "choices": [
+        { "key": "A", "text": "To store user passwords securely." },
+        { "key": "B", "text": "To give application admins a single place to manage configurable settings that scripts can retrieve, instead of hard-coding values." },
+        { "key": "C", "text": "To define the data model for a table." },
+        { "key": "D", "text": "To control which users can see an application menu." }
+      ],
+      "correct": ["B"],
+      "explanation": "Application properties collect configurable settings in one place (a properties page), typically editable only by admins, and are retrievable in scripts. They act like global variables, avoiding hard-coded values."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "On a system property, what role does the Description field play when the property is exposed on a properties page?",
+      "choices": [
+        { "key": "A", "text": "It becomes the property's label shown on the properties page." },
+        { "key": "B", "text": "It sets the property's default value." },
+        { "key": "C", "text": "It determines the property's data type." },
+        { "key": "D", "text": "It is the variable name used in scripts." }
+      ],
+      "correct": ["A"],
+      "explanation": "The Description appears as the property's label on the properties page. Without it, the property shows as an unlabeled field. The Suffix/Name (snake_case) is what scripts reference."
+    },
+    {
+      "id": "q8",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why should the 'Ignore cache' checkbox be selected on application properties?",
+      "choices": [
+        { "key": "A", "text": "To improve performance by caching the value indefinitely." },
+        { "key": "B", "text": "To ensure the application uses the current property value rather than a cached one." },
+        { "key": "C", "text": "To prevent admins from editing the property." },
+        { "key": "D", "text": "To allow the property to be a reference field." }
+      ],
+      "correct": ["B"],
+      "explanation": "Ignore cache ensures the app reads the current property value instead of a cached value, so changes take effect immediately."
+    },
+    {
+      "id": "q9",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "What is the relationship between system properties and system property categories?",
+      "choices": [
+        { "key": "A", "text": "Strict parent-child: a property belongs to exactly one category." },
+        { "key": "B", "text": "Many-to-many: a property can appear in multiple categories, with an Order value per association." },
+        { "key": "C", "text": "One-to-one: each category has exactly one property." },
+        { "key": "D", "text": "There is no relationship; categories are cosmetic only." }
+      ],
+      "correct": ["B"],
+      "explanation": "Properties and categories have a many-to-many relationship via a join table whose rows each carry an Order value. A property can be in multiple categories, and a module can include multiple categories."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Because there is no dedicated module link type for properties, how is a properties module configured?",
+      "choices": [
+        { "key": "A", "text": "Link type: List of Records pointing at sys_properties." },
+        { "key": "B", "text": "Link type: URL (from Arguments) using system_properties_ui.do with sysparm_title and sysparm_category." },
+        { "key": "C", "text": "Link type: Separator with the category name." },
+        { "key": "D", "text": "Link type: Script with a GlideRecord query." }
+      ],
+      "correct": ["B"],
+      "explanation": "A properties module uses Link type URL (from Arguments) with system_properties_ui.do?sysparm_title=<header>&sysparm_category=<category name>, since there is no built-in properties module type."
+    },
+    {
+      "id": "q11",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On a system property category, what does the Title field control?",
+      "choices": [
+        { "key": "A", "text": "The text that appears in the URL of the properties page." },
+        { "key": "B", "text": "The heading shown at the top of the properties page (and it can use HTML, graphics, and links)." },
+        { "key": "C", "text": "The roles allowed to edit properties." },
+        { "key": "D", "text": "The order of the properties." }
+      ],
+      "correct": ["B"],
+      "explanation": "The Title appears at the top of the application's properties page and supports HTML, graphics, and links. The category Name appears in the page URL."
+    },
+    {
+      "id": "q12",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What primarily triggers a Scheduled Script Execution?",
+      "choices": [
+        { "key": "A", "text": "A user updating a record." },
+        { "key": "B", "text": "A defined schedule (time-based); it is never triggered by user actions or record modifications." },
+        { "key": "C", "text": "An ACL evaluation." },
+        { "key": "D", "text": "A client script onLoad." }
+      ],
+      "correct": ["B"],
+      "explanation": "A Scheduled Script Execution runs server-side JavaScript on a schedule and is never triggered by user actions or record changes."
+    },
+    {
+      "id": "q13",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Why is the current object not available inside a Scheduled Script Execution?",
+      "choices": [
+        { "key": "A", "text": "Because it runs client-side." },
+        { "key": "B", "text": "Because its trigger has no table field; current/previous exist only in server-side scripts tied to a specific table record." },
+        { "key": "C", "text": "Because scheduled scripts cannot use any GlideRecord." },
+        { "key": "D", "text": "Because current is reserved for business rules only and nothing else." }
+      ],
+      "correct": ["B"],
+      "explanation": "The current and previous objects require a server-side script associated with a specific table record (a table field on the trigger). A scheduled script has no such table context, so you use GlideRecord (or GlideQuery) to access records."
+    },
+    {
+      "id": "q14",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "How can you test a Scheduled Script Execution without waiting for its scheduled time?",
+      "choices": [
+        { "key": "A", "text": "Use the Execute Now button (available after the record is saved)." },
+        { "key": "B", "text": "Change the system clock." },
+        { "key": "C", "text": "Use the Preview button." },
+        { "key": "D", "text": "Impersonate the scheduler user." }
+      ],
+      "correct": ["A"],
+      "explanation": "The Execute Now button fires the scheduled script immediately for testing. It only appears after the Scheduled Script Execution has been saved."
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "If no time zone is selected on a Scheduled Script Execution, in which time zone does it run?",
+      "choices": [
+        { "key": "A", "text": "Always UTC." },
+        { "key": "B", "text": "The time zone of the user who scheduled it." },
+        { "key": "C", "text": "The instance's system time zone." },
+        { "key": "D", "text": "The recipient's time zone." }
+      ],
+      "correct": ["B"],
+      "explanation": "With no time zone selected, the job runs at the entered time in the scheduling user's time zone. Selecting 'Use System Time Zone' runs it in the instance's time zone instead."
+    },
+    {
+      "id": "q16",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is an Event in ServiceNow?",
+      "choices": [
+        { "key": "A", "text": "An action that automatically modifies a record." },
+        { "key": "B", "text": "An entry in the Event Queue indicating something notable occurred; separate logic must respond to it." },
+        { "key": "C", "text": "A client-side message shown to the user." },
+        { "key": "D", "text": "A scheduled job that runs JavaScript." }
+      ],
+      "correct": ["B"],
+      "explanation": "An Event is not an action; it is an entry in the Event Queue signaling that something notable happened. You must write logic (an email notification or script action) to respond to it."
+    },
+    {
+      "id": "q17",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "An event is generated by a script but nothing happens in response. What is the most likely reason?",
+      "choices": [
+        { "key": "A", "text": "The event was not registered in the Event Registry." },
+        { "key": "B", "text": "Events can only be generated by business rules." },
+        { "key": "C", "text": "The event queue is full." },
+        { "key": "D", "text": "Events require a client script to fire." }
+      ],
+      "correct": ["A"],
+      "explanation": "ServiceNow can only respond to registered events. If the event is not in the Event Registry, no response occurs even though it can be generated."
+    },
+    {
+      "id": "q18",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "In gs.eventQueue(event_name, object, parm1, parm2), what is passed as the object argument?",
+      "choices": [
+        { "key": "A", "text": "Always a string literal." },
+        { "key": "B", "text": "current, previous, or a GlideRecord object, so the response can access its field values." },
+        { "key": "C", "text": "The g_form object." },
+        { "key": "D", "text": "The name of the email notification." }
+      ],
+      "correct": ["B"],
+      "explanation": "The object is current, previous, or a GlideRecord object referring to the record that caused the event, giving the response access to that record's field values."
+    },
+    {
+      "id": "q19",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "By convention, what should you pass for parm1 and parm2 in gs.eventQueue() when you don't otherwise need them?",
+      "choices": [
+        { "key": "A", "text": "null and undefined" },
+        { "key": "B", "text": "gs.getUserID() for parm1 and gs.getUserName() for parm2" },
+        { "key": "C", "text": "current.sys_id and current.number" },
+        { "key": "D", "text": "Empty strings" }
+      ],
+      "correct": ["B"],
+      "explanation": "The convention is to pass gs.getUserID() as parm1 and gs.getUserName() as parm2 when those parameters aren't otherwise used. parm1/parm2 are optional string parameters."
+    },
+    {
+      "id": "q20",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On an Event Registration, what happens if the Queue field is left blank?",
+      "choices": [
+        { "key": "A", "text": "The event is never processed." },
+        { "key": "B", "text": "The event goes to the default queue." },
+        { "key": "C", "text": "A new queue is created automatically." },
+        { "key": "D", "text": "The event is processed client-side." }
+      ],
+      "correct": ["B"],
+      "explanation": "If Queue is blank, the event goes to the default queue. User-defined queues require a separate queue-registration process and are useful for very high-frequency events so they don't choke the default queue."
+    },
+    {
+      "id": "q21",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On an Event Registration, what does the 'Fired by' field do?",
+      "choices": [
+        { "key": "A", "text": "It controls which scripts are allowed to fire the event." },
+        { "key": "B", "text": "It documents the workflows/scripts that call the event, for troubleshooting only (not used in processing)." },
+        { "key": "C", "text": "It sets the processing priority." },
+        { "key": "D", "text": "It defines the recipients of the resulting email." }
+      ],
+      "correct": ["B"],
+      "explanation": "Fired by lists the workflows and scripts that call the event; it is documentation for troubleshooting and is not used in event processing."
+    },
+    {
+      "id": "q22",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which 'Send when' options are available for an email notification?",
+      "choices": [
+        { "key": "A", "text": "onLoad, onChange, onSubmit" },
+        { "key": "B", "text": "Record inserted or updated, Event is fired, or Triggered" },
+        { "key": "C", "text": "Before, After, Async" },
+        { "key": "D", "text": "Daily, Weekly, Monthly" }
+      ],
+      "correct": ["B"],
+      "explanation": "An email notification's Send when can be Record inserted or updated, Event is fired (requires an Event name), or Triggered (makes it available to the Flow Designer Send Notification action). Notifications do not require events."
+    },
+    {
+      "id": "q23",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Three notifications are triggered for the same record and recipients with weights 0, 10, and 20. Which are sent?",
+      "choices": [
+        { "key": "A", "text": "Only the weight 20 notification." },
+        { "key": "B", "text": "The weight 0 and the weight 20 notifications." },
+        { "key": "C", "text": "All three." },
+        { "key": "D", "text": "Only the weight 0 notification." }
+      ],
+      "correct": ["B"],
+      "explanation": "Weight 0 always sends. Among non-zero weights, only the highest sends (ties all send). So the 0 and the 20 go out; the 10 is skipped."
+    },
+    {
+      "id": "q24",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Must email notification recipients be ServiceNow user records?",
+      "choices": [
+        { "key": "A", "text": "Yes, only users on the user table can receive notifications." },
+        { "key": "B", "text": "No, recipients can also be groups, users referenced in a field, or any valid email address." },
+        { "key": "C", "text": "No, but only if the notification is triggered by an event." },
+        { "key": "D", "text": "Yes, unless the notification is subscribable." }
+      ],
+      "correct": ["B"],
+      "explanation": "Recipients can be specific users, any valid email address, groups, users/groups referenced in a field, the event creator, or recipients carried in event parm1/parm2. They do not have to be ServiceNow users."
+    },
+    {
+      "id": "q25",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "In an email notification body, what does ${URI_REF} produce?",
+      "choices": [
+        { "key": "A", "text": "The word LINK that opens the record." },
+        { "key": "B", "text": "The record's display name as a clickable link to the record." },
+        { "key": "C", "text": "The raw sys_id of the record." },
+        { "key": "D", "text": "The value of event.parm1." }
+      ],
+      "correct": ["B"],
+      "explanation": "${URI_REF} renders the display name as a link to the triggering record, while ${URI} renders the word LINK. Reference-field variants (${field.URI}, ${field.URI_REF}) link to related records."
+    },
+    {
+      "id": "q26",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "How do you reference event parameters in an email notification's message?",
+      "choices": [
+        { "key": "A", "text": "${event.parm1} and ${event.parm2}" },
+        { "key": "B", "text": "g_form.getValue('parm1')" },
+        { "key": "C", "text": "current.parm1" },
+        { "key": "D", "text": "${parm1} and ${parm2}" }
+      ],
+      "correct": ["A"],
+      "explanation": "Use ${event.parm1} and ${event.parm2} to reference event parameters. Field values use ${field_name}, and dot-walking uses ${reference_field.field_name}."
+    },
+    {
+      "id": "q27",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When an email notification uses an email template, how do the template and notification interact?",
+      "choices": [
+        { "key": "A", "text": "The notification is ignored entirely in favor of the template." },
+        { "key": "B", "text": "The Subject is inherited from the template, but the template's Message is replaced by the notification's Message." },
+        { "key": "C", "text": "The template overrides both the subject and message of the notification." },
+        { "key": "D", "text": "Templates can only be used with SMS." }
+      ],
+      "correct": ["B"],
+      "explanation": "Email template fields are overwritten by the notification's content: the Subject is inherited from the template, while the template's Message is replaced by the notification's Message."
+    },
+    {
+      "id": "q28",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What does the Preview Notification button do?",
+      "choices": [
+        { "key": "A", "text": "It actually sends the email to the recipients." },
+        { "key": "B", "text": "It lets you test how a notification resolves without creating the conditions needed to generate it." },
+        { "key": "C", "text": "It schedules the notification for later." },
+        { "key": "D", "text": "It registers the event that triggers the notification." }
+      ],
+      "correct": ["B"],
+      "explanation": "Preview Notification resolves the recipients, subject, and body for a chosen record without firing it for real. There is no button that actually sends it; you must cause the real trigger."
+    },
+    {
+      "id": "q29",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "In a Script Action that responds to an event, what is the current object?",
+      "choices": [
+        { "key": "A", "text": "The currently logged-in user record." },
+        { "key": "B", "text": "Whatever object was passed into gs.eventQueue() (referred to as current regardless of its original name)." },
+        { "key": "C", "text": "The g_form object." },
+        { "key": "D", "text": "Always a new empty GlideRecord." }
+      ],
+      "correct": ["B"],
+      "explanation": "In a script action, current is the object passed into gs.eventQueue() (even if it was named differently in the call), and the event object exposes event.parm1 and event.parm2."
+    },
+    {
+      "id": "q30",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is unusual about the Active field on a Script Action by default?",
+      "choices": [
+        { "key": "A", "text": "It is checked (active) by default." },
+        { "key": "B", "text": "It is unchecked (inactive) by default." },
+        { "key": "C", "text": "It cannot be changed." },
+        { "key": "D", "text": "There is no Active field on a script action." }
+      ],
+      "correct": ["B"],
+      "explanation": "Script Actions are inactive by default (the Active checkbox is unchecked), which is unusual among ServiceNow records."
+    },
+    {
+      "id": "q31",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which statements about Script Includes are correct? (Choose 2)",
+      "choices": [
+        { "key": "A", "text": "They are reusable server-side JavaScript that is not executed unless called." },
+        { "key": "B", "text": "For a class Script Include, the Script Include name must match the class name." },
+        { "key": "C", "text": "They execute automatically on every record insert." },
+        { "key": "D", "text": "They run on the client side using g_form." }
+      ],
+      "correct": ["A", "B"],
+      "explanation": "Script Includes are reusable server-side JavaScript, run only when called, and (for class types) require the name to match the class name. They are server-side, so g_form is unavailable."
+    },
+    {
+      "id": "q32",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "When does the initialize function of a class Script Include run, and why is it useful?",
+      "choices": [
+        { "key": "A", "text": "Only when explicitly called by name; it stores the class's return value." },
+        { "key": "B", "text": "Automatically when an object of the class is instantiated; variables it sets on 'this' are available to all the class's methods." },
+        { "key": "C", "text": "On a schedule, like a scheduled job." },
+        { "key": "D", "text": "When the script include is saved in Studio." }
+      ],
+      "correct": ["B"],
+      "explanation": "The initialize function runs automatically when an object is instantiated. Variables it defines on 'this' (such as property values via gs.getProperty() or a GlideRecord lookup) are available across all the class's methods, avoiding repetition."
+    },
+    {
+      "id": "q33",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When calling gs.getProperty() to read an application property, what does the optional second argument provide?",
+      "choices": [
+        { "key": "A", "text": "The data type to cast the value to." },
+        { "key": "B", "text": "A default value used when the property has no value." },
+        { "key": "C", "text": "The role required to read the property." },
+        { "key": "D", "text": "The category the property belongs to." }
+      ],
+      "correct": ["B"],
+      "explanation": "The second argument to gs.getProperty() is a default value returned when the property has no value, a common pattern in a Script Include's initialize function."
+    },
+    {
+      "id": "q34",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which Script Include flavor is the recommended way to build a reusable library of related server-side functions?",
+      "choices": [
+        { "key": "A", "text": "A classless (on-demand) function." },
+        { "key": "B", "text": "A class (Utils) Script Include whose properties are methods." },
+        { "key": "C", "text": "One that extends AbstractAjaxProcessor." },
+        { "key": "D", "text": "A client script attached to the table." }
+      ],
+      "correct": ["B"],
+      "explanation": "A class-based Utils Script Include (e.g. named with the Utils convention) groups related methods into one reusable library. Classless functions are single on-demand functions; extending AbstractAjaxProcessor is for GlideAjax."
+    }
+  ]
+}

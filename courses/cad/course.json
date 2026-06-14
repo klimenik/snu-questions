@@ -28,6 +28,11 @@
       "id": "cad-module-5",
       "title": "Module 5: Controlling Access",
       "quizPath": "courses/cad/module-5.json"
+    },
+    {
+      "id": "cad-module-6",
+      "title": "Module 6: Automating Work",
+      "quizPath": "courses/cad/module-6.json"
     }
   ]
 }

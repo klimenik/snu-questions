@@ -37,6 +37,12 @@
           "title": "Module 5: Controlling Access",
           "path": "courses/cad/module-5.json",
           "questionCount": 30
+        },
+        {
+          "id": "cad-module-6",
+          "title": "Module 6: Automating Work",
+          "path": "courses/cad/module-6.json",
+          "questionCount": 34
         }
       ]
     }
