@@ -49,6 +49,12 @@
           "title": "Module 7: Importing and Integrating",
           "path": "courses/cad/module-7.json",
           "questionCount": 29
+        },
+        {
+          "id": "cad-module-8",
+          "title": "Module 8: Test with Automated Test Framework (ATF)",
+          "path": "courses/cad/module-8.json",
+          "questionCount": 16
         }
       ]
     }

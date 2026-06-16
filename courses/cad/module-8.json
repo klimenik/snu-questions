@@ -1,0 +1,232 @@
+{
+  "id": "cad-module-8",
+  "course": "cad",
+  "title": "Module 8: Test with Automated Test Framework (ATF)",
+  "description": "The software testing lifecycle and ServiceNow's built-in testing options: the Test Management application, the Automated Test Framework (ATF), and the Script Debugger.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is the Automated Test Framework (ATF) used for?",
+      "choices": [
+        { "key": "A", "text": "Creating and running automated tests inside a ServiceNow instance" },
+        { "key": "B", "text": "Managing manual user acceptance testing on a Test Board" },
+        { "key": "C", "text": "Monitoring production performance and system uptime metrics" },
+        { "key": "D", "text": "Migrating application code and update sets between two separate ServiceNow instances" }
+      ],
+      "correct": ["A"],
+      "explanation": "ATF is a built-in application for creating and running automated tests within a ServiceNow instance, used for regression testing, test-driven development, and confirming the instance still works after a change."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "By default, the system property that allows tests and test suites to run is set how, and why?",
+      "choices": [
+        { "key": "A", "text": "Enabled, so that newly created tests run automatically on every instance" },
+        { "key": "B", "text": "Disabled, so that tests are not accidentally run on a production system" },
+        { "key": "C", "text": "Enabled, but only for users holding the script_debugger role" },
+        { "key": "D", "text": "Disabled, because ATF requires a separate license to be purchased first" }
+      ],
+      "correct": ["B"],
+      "explanation": "The property to run tests/test suites is disabled (false) by default to prevent tests from accidentally running on production. It should be enabled only on sub-production instances, since running tests can cause data corruption and outages."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On which type of instance should ATF tests be run?",
+      "choices": [
+        { "key": "A", "text": "Only on the production instance, after a change is live" },
+        { "key": "B", "text": "On any instance, since ATF never modifies real data" },
+        { "key": "C", "text": "On development, test, and other non-production instances" },
+        { "key": "D", "text": "Only on instances that have the Test Management plugin active" }
+      ],
+      "correct": ["C"],
+      "explanation": "Tests should be run only on development, test, and other non-production instances. Running them on production risks data corruption and outages, which is why the run property defaults to disabled."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What does ATF do with the data created while a test runs?",
+      "choices": [
+        { "key": "A", "text": "It tracks the data and rolls it back after the test completes" },
+        { "key": "B", "text": "It commits the data permanently to the target tables" },
+        { "key": "C", "text": "It exports the data to an attachment for manual review" },
+        { "key": "D", "text": "It copies the data into a separate archive instance" }
+      ],
+      "correct": ["A"],
+      "explanation": "ATF tracks the data created by running tests and rolls those changes back after testing. Even records you modify during the same session while a test runs are rolled back when the test completes."
+    },
+    {
+      "id": "q5",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which statements about the Automated Test Framework are correct? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "It is upgrade safe and keeps working after platform upgrades" },
+        { "key": "B", "text": "It does not require a separate license purchase" },
+        { "key": "C", "text": "It supports tests with no scripting as well as scripted tests" },
+        { "key": "D", "text": "It can only test server-side logic, never client-side forms" }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "ATF is part of the platform, so it is upgrade safe and needs no separate license, and tests can be built with no scripting or with scripting. It tests both client-side (forms via the Test Runner) and server-side behavior."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "The Test Management application is primarily a tool for what?",
+      "choices": [
+        { "key": "A", "text": "Automatically executing scheduled regression tests in the background overnight" },
+        { "key": "B", "text": "Debugging synchronous server-side business rule scripts" },
+        { "key": "C", "text": "Managing the phases of the manual software testing process" },
+        { "key": "D", "text": "Importing test data from external spreadsheets into tables" }
+      ],
+      "correct": ["C"],
+      "explanation": "Test Management streamlines the management of the manual testing process, providing a repository for tests, test cases, and test suites and supporting test execution, environments, and plans. ATF is the tool for automated testing."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "In Test Management terminology, what is a test suite?",
+      "choices": [
+        { "key": "A", "text": "A repository that holds a group of test cases" },
+        { "key": "B", "text": "A single condition checked during execution" },
+        { "key": "C", "text": "The instance where testing will take place" },
+        { "key": "D", "text": "The tasks describing how a feature is to be tested" }
+      ],
+      "correct": ["A"],
+      "explanation": "A test suite is a repository of test cases. A test case is a collection of related tests, a test is a collection of conditions/steps, the test environment is the instance, and a test plan describes how testing is done."
+    },
+    {
+      "id": "q8",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "In Test Management, how is a test case defined?",
+      "choices": [
+        { "key": "A", "text": "A collection of several related individual tests" },
+        { "key": "B", "text": "A repository that stores many test suites" },
+        { "key": "C", "text": "An instance designated for running the tests" },
+        { "key": "D", "text": "A single step that submits a form to the server" }
+      ],
+      "correct": ["A"],
+      "explanation": "A test case is a collection of related tests. Test cases are themselves grouped into a test suite (a repository of test cases)."
+    },
+    {
+      "id": "q9",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which role is required to use the Script Debugger?",
+      "choices": [
+        { "key": "A", "text": "atf_test_designer" },
+        { "key": "B", "text": "tm_test_manager" },
+        { "key": "C", "text": "script_debugger" },
+        { "key": "D", "text": "admin only, with no specific debugging role" }
+      ],
+      "correct": ["C"],
+      "explanation": "The Script Debugger is available to users with the script_debugger role. The atf_test roles are for ATF, and the tm_ roles are for Test Management."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the Script Debugger primarily used for?",
+      "choices": [
+        { "key": "A", "text": "Validating that client-side UI policies hide the correct fields" },
+        { "key": "B", "text": "Debugging Business Rules and other synchronous server-side scripts" },
+        { "key": "C", "text": "Recording browser actions in order to generate automated UI test steps for ATF" },
+        { "key": "D", "text": "Rolling back records that were changed during a failed test run" }
+      ],
+      "correct": ["B"],
+      "explanation": "The Script Debugger is the primary strategy for debugging Business Rules and other synchronous server-side scripts. It can pause any server-side script running in an interactive transaction, such as script includes, script actions, or UI actions."
+    },
+    {
+      "id": "q11",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which statement best reflects the modern view of software testing in the testing lifecycle?",
+      "choices": [
+        { "key": "A", "text": "Testing is a single line-item task performed once the product is fully built" },
+        { "key": "B", "text": "Testing is a series of activities included before and during development" },
+        { "key": "C", "text": "Testing should be performed by the developers who wrote the code" },
+        { "key": "D", "text": "Testing only matters for applications that integrate with outside systems" }
+      ],
+      "correct": ["B"],
+      "explanation": "The software testing lifecycle is a methodical series of activities, increasingly included before and during development rather than only at the end, to maximize quality and catch regressions early."
+    },
+    {
+      "id": "q12",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "What is the correct order of the software testing lifecycle (STLC) phases?",
+      "choices": [
+        { "key": "A", "text": "Test planning, Requirement analysis, Environment setup, Test case development, Test execution, Test cycle closure" },
+        { "key": "B", "text": "Requirement analysis, Test planning, Test case development, Environment setup, Test execution, Test cycle closure" },
+        { "key": "C", "text": "Requirement analysis, Environment setup, Test planning, Test execution, Test case development, Test cycle closure" },
+        { "key": "D", "text": "Test case development, Requirement analysis, Test planning, Environment setup, Test cycle closure, Test execution" }
+      ],
+      "correct": ["B"],
+      "explanation": "The STLC phases run in this order: requirement analysis, test planning, test case development, environment setup, test execution, and finally test cycle closure."
+    },
+    {
+      "id": "q13",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which of these ATF test steps can be configured without any scripting?",
+      "choices": [
+        { "key": "A", "text": "Performing a JavaScript unit test against server logic" },
+        { "key": "B", "text": "Running a custom test script with an output assertion" },
+        { "key": "C", "text": "Opening a new form and setting field values on it" },
+        { "key": "D", "text": "Asserting on the body of a previously parsed REST response" }
+      ],
+      "correct": ["C"],
+      "explanation": "Steps such as Impersonate, Open a new form, Set field values, Validate field values, and Submit the form require no scripting. Unit tests, test scripts, and server-side asserts are the scripted/server-side examples."
+    },
+    {
+      "id": "q14",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "How is the output of an ATF test step referenced in a later step?",
+      "choices": [
+        { "key": "A", "text": "Through a variable, using a syntax that resembles an Angular expression" },
+        { "key": "B", "text": "Through the ${field_name} dollar-sign-and-brace substitution syntax" },
+        { "key": "C", "text": "By calling gs.getProperty() with the prior step's name as the key" },
+        { "key": "D", "text": "By dot-walking from the current object as in a server-side script" }
+      ],
+      "correct": ["A"],
+      "explanation": "Each step's output is available in a variable, and the reference syntax looks more like an Angular expression than the ${ } substitution syntax used elsewhere in the platform. No JavaScript is required, though it can be added."
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Which capability does the ATF Test Runner provide?",
+      "choices": [
+        { "key": "A", "text": "Multi-browser testing of client-side test steps" },
+        { "key": "B", "text": "Automatic correction of defects found in the code" },
+        { "key": "C", "text": "Permanent storage of all records created by a test" },
+        { "key": "D", "text": "Scheduling of business rules to run on a calendar" }
+      ],
+      "correct": ["A"],
+      "explanation": "The Test Runner enables multi-browser testing of the client-side steps in a test; tests with client-side steps open in a separate Client Test Runner window."
+    },
+    {
+      "id": "q16",
+      "type": "multi",
+      "difficulty": "easy",
+      "prompt": "Which roles are associated with the Automated Test Framework? (Choose 2)",
+      "choices": [
+        { "key": "A", "text": "atf_test_admin" },
+        { "key": "B", "text": "atf_test_designer" },
+        { "key": "C", "text": "tm_test_manager" },
+        { "key": "D", "text": "script_debugger" }
+      ],
+      "correct": ["A", "B"],
+      "explanation": "ATF uses the atf_test_admin and atf_test_designer roles. The tm_ roles belong to Test Management, and script_debugger belongs to the Script Debugger."
+    }
+  ]
+}
