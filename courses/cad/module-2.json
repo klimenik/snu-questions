@@ -39,8 +39,8 @@
       "prompt": "When planning inputs, what does the \"coalesce\" consideration address?",
       "choices": [
         { "key": "A", "text": "How frequently the data is received." },
-        { "key": "B", "text": "What makes a record unique, so duplicate data can be matched and updated rather than re-inserted." },
-        { "key": "C", "text": "Which role is allowed to submit the input." },
+        { "key": "B", "text": "What makes a record unique, so duplicates are matched and updated, not re-inserted." },
+        { "key": "C", "text": "Which specific user role is permitted to submit this particular input data record." },
         { "key": "D", "text": "The visual layout of the input form." }
       ],
       "correct": ["B"],
@@ -80,8 +80,8 @@
       "difficulty": "hard",
       "prompt": "To represent people in a new application without breaking existing relationships, what approach is recommended?",
       "choices": [
-        { "key": "A", "text": "Extend the user table directly so the new app inherits all user fields." },
-        { "key": "B", "text": "Create a custom table whose name/reference field points to the existing user table, preserving existing many-to-many relationships such as users-groups and users-roles." },
+        { "key": "A", "text": "Extend the user table directly so that the new application automatically inherits all of its user fields." },
+        { "key": "B", "text": "Create a custom table that references the existing user table, preserving its many-to-many links." },
         { "key": "C", "text": "Duplicate all user records into a new standalone table." },
         { "key": "D", "text": "Store people as comma-separated values in a single string field." }
       ],
@@ -150,9 +150,9 @@
       "difficulty": "hard",
       "prompt": "An application administrator will need a way to adjust application settings after go-live without code changes. What should the developer do about this?",
       "choices": [
-        { "key": "A", "text": "Nothing; settings can always be added instantly at the end of development." },
-        { "key": "B", "text": "Plan for it during design, for example by including a properties/options module so settings are configurable." },
-        { "key": "C", "text": "Hard-code all settings and require a new deployment to change them." },
+        { "key": "A", "text": "Nothing at all; configurable settings can always be added instantly at the very end of development." },
+        { "key": "B", "text": "Plan for it during design, e.g. include a properties module so settings stay configurable." },
+        { "key": "C", "text": "Hard-code all of the settings and require a brand-new deployment in order to change any of them." },
         { "key": "D", "text": "Store settings only in client-side scripts." }
       ],
       "correct": ["B"],

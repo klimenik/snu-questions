@@ -52,7 +52,7 @@
       "difficulty": "easy",
       "prompt": "After creating a new field on a table, where does it appear automatically?",
       "choices": [
-        { "key": "A", "text": "On both the form and every list view of the table." },
+        { "key": "A", "text": "On both the form's layout and in every single list view that exists for that table." },
         { "key": "B", "text": "On the form's available fields (to drag onto the form), but not in any list view." },
         { "key": "C", "text": "In all list views, but not on the form." },
         { "key": "D", "text": "Nowhere; it must be added manually to both forms and lists." }
@@ -66,9 +66,9 @@
       "difficulty": "easy",
       "prompt": "When do tabs appear on a form?",
       "choices": [
-        { "key": "A", "text": "Only when the form has related lists." },
+        { "key": "A", "text": "Only when the form has one or more related lists attached at the bottom." },
         { "key": "B", "text": "When the form has two or more sections (tabbed layout is the baseline)." },
-        { "key": "C", "text": "Only when a developer enables them in system properties." },
+        { "key": "C", "text": "Only when a developer explicitly enables them in the instance's system properties." },
         { "key": "D", "text": "On every form, regardless of sections." }
       ],
       "correct": ["B"],
@@ -95,9 +95,9 @@
       "prompt": "What is a view in ServiceNow?",
       "choices": [
         { "key": "A", "text": "A copy of a table's data for reporting." },
-        { "key": "B", "text": "A saved version of a configured form or list defining which fields appear and in what order." },
+        { "key": "B", "text": "A saved layout of a form or list defining which fields appear and in what order." },
         { "key": "C", "text": "A role that grants read-only access." },
-        { "key": "D", "text": "A scheduled job that refreshes form layouts." }
+        { "key": "D", "text": "A scheduled job that periodically refreshes cached form layouts." }
       ],
       "correct": ["B"],
       "explanation": "A view is a saved layout of a form or list. It lets the same record be displayed in different ways for different audiences (for example ESS, ITIL, mobile)."
@@ -109,7 +109,7 @@
       "prompt": "A view has the database Name \"ess\" but is shown to users as \"Self Service\". What is \"Self Service\" in this case?",
       "choices": [
         { "key": "A", "text": "The view's Title (friendly, human-readable name)." },
-        { "key": "B", "text": "The role required to see the view." },
+        { "key": "B", "text": "The name of the role a user must hold in order to see the view." },
         { "key": "C", "text": "The table the view applies to." },
         { "key": "D", "text": "The column name the view sorts by." }
       ],
@@ -136,9 +136,9 @@
       "difficulty": "hard",
       "prompt": "What makes a View Rule different from forcing a view via a module configuration or a URL parameter?",
       "choices": [
-        { "key": "A", "text": "A View Rule applies only to list views, never forms." },
-        { "key": "B", "text": "A View Rule forces the view from the server and cannot be overridden by query strings in the URL." },
-        { "key": "C", "text": "A View Rule can only use the condition builder, never script." },
+        { "key": "A", "text": "A View Rule applies only to list views and never to forms in any circumstance whatsoever." },
+        { "key": "B", "text": "A View Rule forces the view from the server and can't be overridden by URL query strings." },
+        { "key": "C", "text": "A View Rule can only ever use the condition builder to match records, and never any custom script." },
         { "key": "D", "text": "A View Rule runs on the client and is therefore faster." }
       ],
       "correct": ["B"],
@@ -150,7 +150,7 @@
       "difficulty": "medium",
       "prompt": "In a scripted View Rule, how do you specify which view to force?",
       "choices": [
-        { "key": "A", "text": "Return the view's Title from the script." },
+        { "key": "A", "text": "Return the view's friendly Title string directly from the view rule script." },
         { "key": "B", "text": "Set the variable named \"answer\" to the system name of the view." },
         { "key": "C", "text": "Call g_form.setView() with the view name." },
         { "key": "D", "text": "Set current.view to the desired view." }
@@ -192,10 +192,10 @@
       "difficulty": "medium",
       "prompt": "In a UI Policy, what must be enabled for the \"Execute if false\" script to run?",
       "choices": [
-        { "key": "A", "text": "The Global checkbox." },
+        { "key": "A", "text": "The Global checkbox on the policy." },
         { "key": "B", "text": "The \"Reverse if false\" option." },
-        { "key": "C", "text": "The Inherit checkbox." },
-        { "key": "D", "text": "The On load option." }
+        { "key": "C", "text": "The Inherit from parent checkbox option." },
+        { "key": "D", "text": "The On load form trigger option." }
       ],
       "correct": ["B"],
       "explanation": "The Execute if false script only runs when \"Reverse if false\" is selected. The platform can't infer the inverse of arbitrary script, which is why separate true/false scripts (and this toggle) exist."
@@ -206,10 +206,10 @@
       "difficulty": "medium",
       "prompt": "A UI Policy can hide an entire form section, but a UI Policy Action cannot. What enables hiding a section?",
       "choices": [
-        { "key": "A", "text": "Setting the section field to read-only." },
+        { "key": "A", "text": "Setting the form section's container field itself to read-only on load." },
         { "key": "B", "text": "Scripting in the UI Policy's advanced view (Run scripts)." },
         { "key": "C", "text": "A Data Policy." },
-        { "key": "D", "text": "The Order field." }
+        { "key": "D", "text": "The Order field on the UI Policy record itself controls this." }
       ],
       "correct": ["B"],
       "explanation": "UI Policy Actions can hide individual fields but not sections. Hiding/showing a whole section requires scripting in the UI Policy's advanced view."
@@ -290,10 +290,10 @@
       "difficulty": "medium",
       "prompt": "From a scoped client script you need data from another table. GlideRecord is blocked client-side. What is the recommended replacement?",
       "choices": [
-        { "key": "A", "text": "jQuery AJAX to a REST endpoint" },
+        { "key": "A", "text": "A jQuery AJAX request sent directly to a REST endpoint" },
         { "key": "B", "text": "GlideAjax (calling a server-side Script Include)" },
-        { "key": "C", "text": "GlideSystem on the client" },
-        { "key": "D", "text": "g_form.getReference() only" }
+        { "key": "C", "text": "Calling GlideSystem (gs) directly on the client side" },
+        { "key": "D", "text": "Using only g_form.getReference() to fetch the data" }
       ],
       "correct": ["B"],
       "explanation": "GlideAjax is the supported way to reach the server from a client script when client-side GlideRecord is unavailable. Server-side queries should run in server scripts."
@@ -304,7 +304,7 @@
       "difficulty": "medium",
       "prompt": "On a Business Rule record, on what does a Business Rule trigger?",
       "choices": [
-        { "key": "A", "text": "A user clicking a UI widget." },
+        { "key": "A", "text": "A user clicking a UI widget or button." },
         { "key": "B", "text": "Database access operations (Insert/Update/Delete/Query)." },
         { "key": "C", "text": "A schedule." },
         { "key": "D", "text": "An event being generated." }
@@ -402,10 +402,10 @@
       "difficulty": "medium",
       "prompt": "Why does impersonating another user affect the result of a g_user call in a client script?",
       "choices": [
-        { "key": "A", "text": "g_user caches the admin's roles permanently." },
+        { "key": "A", "text": "g_user permanently caches the original admin user's roles in the browser session." },
         { "key": "B", "text": "g_user executes client-side and reflects the impersonated session's user." },
-        { "key": "C", "text": "g_user can only be used by the admin role." },
-        { "key": "D", "text": "Impersonation rewrites the server-side GlideSystem object." }
+        { "key": "C", "text": "g_user may only ever be invoked by users who currently hold the admin role." },
+        { "key": "D", "text": "Impersonation rewrites the server-side GlideSystem (gs) object and its role cache." }
       ],
       "correct": ["B"],
       "explanation": "Because g_user runs client-side and reflects the current (impersonated) session, role and identity checks return the impersonated user's values."

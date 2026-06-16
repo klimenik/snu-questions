@@ -26,8 +26,8 @@
       "choices": [
         { "key": "A", "text": "Each user must install an executable client module." },
         { "key": "B", "text": "The customer is responsible for hosting the hardware." },
-        { "key": "C", "text": "There is nothing to install; it is delivered over the internet and accessed through a web browser." },
-        { "key": "D", "text": "It can only be accessed through a dedicated ServiceNow desktop app." }
+        { "key": "C", "text": "Nothing to install; it is delivered over the internet and used through a web browser." },
+        { "key": "D", "text": "It can only ever be accessed through a dedicated ServiceNow desktop application client." }
       ],
       "correct": ["C"],
       "explanation": "Cloud-based: nothing to install, delivered over the internet via a browser; ServiceNow manages the hardware."
@@ -52,7 +52,7 @@
       "difficulty": "medium",
       "prompt": "A team wants to build an application whose core feature is streaming live video with a real-time multiplayer graphics engine. Why is this a **bad** technical fit for ServiceNow?",
       "choices": [
-        { "key": "A", "text": "ServiceNow cannot store any binary data at all." },
+        { "key": "A", "text": "ServiceNow is fundamentally incapable of storing binary data such as large video files." },
         { "key": "B", "text": "The data is unstructured and the app requires a graphics engine, with no clear process flow." },
         { "key": "C", "text": "ServiceNow does not support JavaScript." },
         { "key": "D", "text": "ServiceNow applications cannot use forms." }
@@ -66,10 +66,10 @@
       "difficulty": "hard",
       "prompt": "A developer saves a new custom application record with a chosen scope. The next day they want to move that application from its private scope into the global scope. What is true?",
       "choices": [
-        { "key": "A", "text": "They can change the scope at any time from the application record." },
+        { "key": "A", "text": "They are free to change the application's scope at any time from the application record itself." },
         { "key": "B", "text": "An application's scope cannot be changed once the record is saved to the database." },
-        { "key": "C", "text": "They can change scope only if they have the admin role." },
-        { "key": "D", "text": "Scope can be changed, but only within the first 24 hours after creation." }
+        { "key": "C", "text": "They can only change the scope if they currently hold the platform admin role on the instance." },
+        { "key": "D", "text": "Scope can be changed, but only within the first 24 hours immediately after the app's creation." }
       ],
       "correct": ["B"],
       "explanation": "Scope cannot be changed once the record is saved; there is no migration path."
@@ -136,9 +136,9 @@
       "difficulty": "medium",
       "prompt": "In the **baseline** configuration, what database access does one custom (scoped) application have to another custom application's table records?",
       "choices": [
-        { "key": "A", "text": "Full read and write access" },
-        { "key": "B", "text": "Read access only; no other database operations without explicit configuration" },
-        { "key": "C", "text": "No access of any kind" },
+        { "key": "A", "text": "By default it has full read and write access to all of the other app's records" },
+        { "key": "B", "text": "Read access only; no other DB operations without explicit configuration" },
+        { "key": "C", "text": "No database access of any kind at all without explicit cross-scope configuration first" },
         { "key": "D", "text": "Write access only" }
       ],
       "correct": ["B"],
@@ -249,8 +249,8 @@
       "prompt": "What is the key difference between the ServiceNow **Store** and the **Developer Share** site?",
       "choices": [
         { "key": "A", "text": "The Store is free, while Developer Share apps always cost money." },
-        { "key": "B", "text": "Store apps are vetted and come with support; Developer Share apps are free and are not vetted by ServiceNow." },
-        { "key": "C", "text": "Developer Share apps are vetted by ServiceNow; Store apps are not." },
+        { "key": "B", "text": "Store apps are vetted and supported (may cost money); Developer Share apps are free, unvetted." },
+        { "key": "C", "text": "Developer Share apps are vetted by ServiceNow first, while Store apps are not vetted." },
         { "key": "D", "text": "Both are vetted identically; the only difference is the URL." }
       ],
       "correct": ["B"],
@@ -263,8 +263,8 @@
       "prompt": "Which statement best captures the **philosophy of scoped apps**?",
       "choices": [
         { "key": "A", "text": "Scope makes applications run faster by caching their records in memory." },
-        { "key": "B", "text": "Scope protects an application from being damaged by, or causing damage to, other applications, and an app must be explicitly configured to let out-of-scope apps act on its records." },
-        { "key": "C", "text": "Scope automatically grants every application admin-level access to all tables." },
+        { "key": "B", "text": "Scope protects an app from damaging or being damaged by others; out-of-scope access must be explicitly configured." },
+        { "key": "C", "text": "Scope automatically grants every single application full admin-level access to all of the tables on the entire instance." },
         { "key": "D", "text": "Scope removes the need for access controls within an application." }
       ],
       "correct": ["B"],
@@ -276,8 +276,8 @@
       "difficulty": "medium",
       "prompt": "What does the term **artifact** refer to in the context of a scoped application?",
       "choices": [
-        { "key": "A", "text": "A deprecated application file that should be deleted." },
-        { "key": "B", "text": "Any of the application files comprising an application (e.g. Access Controls, Business Rules, Script Includes, Tables, Client Scripts), existing within the app's scope." },
+        { "key": "A", "text": "A deprecated, leftover application file that is no longer in use and should be deleted soon." },
+        { "key": "B", "text": "Any of the application files that make up an app (ACLs, business rules, tables), within its scope." },
         { "key": "C", "text": "A backup copy of the application stored in the repository." },
         { "key": "D", "text": "A record that exists only in the global scope." }
       ],

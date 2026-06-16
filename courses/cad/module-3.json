@@ -10,9 +10,9 @@
       "difficulty": "easy",
       "prompt": "How is the scope (namespace) prefix of a new scoped application constructed?",
       "choices": [
-        { "key": "A", "text": "x_ + the company code from glide.appcreator.company.code + a truncated form of the application name" },
+        { "key": "A", "text": "x_ + the glide.appcreator.company.code value + a truncated application name" },
         { "key": "B", "text": "The full application name, lowercased, with spaces replaced by underscores" },
-        { "key": "C", "text": "global_ + the developer's user ID + the application name" },
+        { "key": "C", "text": "global_ followed by the developer's user ID and then the full application name" },
         { "key": "D", "text": "A random GUID assigned at creation time" }
       ],
       "correct": ["A"],
@@ -25,7 +25,7 @@
       "prompt": "Which statement about the glide.appcreator.company.code system property is correct?",
       "choices": [
         { "key": "A", "text": "It is set by ServiceNow and is not user-changeable, and is typically 2 to 5 characters long" },
-        { "key": "B", "text": "Developers should change it for each new application to avoid scope collisions" },
+        { "key": "B", "text": "Developers are expected to change it for each new application to avoid scope collisions entirely" },
         { "key": "C", "text": "It is always exactly the same as the application's sys_id" },
         { "key": "D", "text": "It only applies to applications built in the global scope" }
       ],
@@ -179,8 +179,8 @@
       "prompt": "The 'Can read/create/update/delete' Application Access options control access for which callers?",
       "choices": [
         { "key": "A", "text": "Scripts from OTHER application scopes; they never apply to the application's own scope" },
-        { "key": "B", "text": "Only users who hold the application's admin role" },
-        { "key": "C", "text": "All users regardless of scope or role" },
+        { "key": "B", "text": "Access is limited only to users who currently hold the application's own admin role here" },
+        { "key": "C", "text": "Absolutely all users on the instance, regardless of their scope or role assignments anywhere" },
         { "key": "D", "text": "Only scheduled jobs running in the global scope" }
       ],
       "correct": ["A"],
@@ -221,8 +221,8 @@
       "prompt": "On a module record, what happens if the Roles field is left blank?",
       "choices": [
         { "key": "A", "text": "The application's roles are inherited and the module is visible to all users who have them" },
-        { "key": "B", "text": "The module is hidden from everyone, including admins" },
-        { "key": "C", "text": "Only the system administrator can see the module" },
+        { "key": "B", "text": "The module becomes hidden from absolutely everyone, including every system administrator here" },
+        { "key": "C", "text": "Only a full system administrator account is able to see this module in the navigator at all" },
         { "key": "D", "text": "The module is automatically deleted" }
       ],
       "correct": ["A"],
@@ -234,9 +234,9 @@
       "difficulty": "hard",
       "prompt": "What is the purpose of the 'Override application menu roles' option on a module?",
       "choices": [
-        { "key": "A", "text": "It lets users access the module even without permission to view the containing application menu, though they must still meet the module's own role requirements" },
+        { "key": "A", "text": "It lets users open the module even without access to the containing menu, subject to the module's own roles." },
         { "key": "B", "text": "It removes all role requirements from the module entirely" },
-        { "key": "C", "text": "It hides the module from the application menu but keeps it accessible by URL only" },
+        { "key": "C", "text": "It hides the module from the application menu entirely, but keeps it accessible only through a direct URL." },
         { "key": "D", "text": "It grants the module's roles to the parent application menu" }
       ],
       "correct": ["A"],
@@ -263,9 +263,9 @@
       "prompt": "In the main ServiceNow window, what does a red ring around the scope selection (globe) icon indicate?",
       "choices": [
         { "key": "A", "text": "You are NOT in the global scope (you are in a custom application scope)" },
-        { "key": "B", "text": "An error has occurred with the current application" },
-        { "key": "C", "text": "The current update set is complete and locked" },
-        { "key": "D", "text": "Domain separation is disabled" }
+        { "key": "B", "text": "An error has occurred with the current application or its configuration somewhere" },
+        { "key": "C", "text": "The current update set has been completed and is now fully locked from editing" },
+        { "key": "D", "text": "Domain separation is currently disabled on this instance for all users here" }
       ],
       "correct": ["A"],
       "explanation": "A red ring around the globe means you are working in a custom (non-global) application scope, a visual reminder to confirm you are creating records in the intended scope."
@@ -291,9 +291,9 @@
       "prompt": "Which capability does ServiceNow Studio NOT provide, requiring a different mechanism?",
       "choices": [
         { "key": "A", "text": "Pushing application files to an external source control repository" },
-        { "key": "B", "text": "Cross-scope development across global and custom scopes" },
-        { "key": "C", "text": "Code search across application files" },
-        { "key": "D", "text": "Deployment through update sets" }
+        { "key": "B", "text": "Cross-scope development spanning both the global and custom application scopes here" },
+        { "key": "C", "text": "Full code search running across all of the application's files at once" },
+        { "key": "D", "text": "Deployment to other target instances through standard update set files" }
       ],
       "correct": ["A"],
       "explanation": "Studio cannot push to external source control; update sets are used instead. It also does not provide script intellectual-property protection. It does support cross-scope development, code search, and deployment via update sets or the internal application repository."
@@ -304,8 +304,8 @@
       "difficulty": "easy",
       "prompt": "What is an update set?",
       "choices": [
-        { "key": "A", "text": "A container that captures customizations (configuration changes) and can be exported as XML" },
-        { "key": "B", "text": "A backup of the instance's table data only" },
+        { "key": "A", "text": "A container capturing customizations (config changes), exportable as XML" },
+        { "key": "B", "text": "A scheduled backup of the instance's table data and all record contents only" },
         { "key": "C", "text": "A scheduled job that applies patches automatically" },
         { "key": "D", "text": "A role that grants deployment permissions" }
       ],
@@ -319,9 +319,9 @@
       "prompt": "By default, what does an update set capture?",
       "choices": [
         { "key": "A", "text": "Customizations and configurations, but not data" },
-        { "key": "B", "text": "Both customizations and all table data" },
-        { "key": "C", "text": "Only data records, not configuration" },
-        { "key": "D", "text": "Only the application's roles" }
+        { "key": "B", "text": "Both the customizations and all of the table's data records" },
+        { "key": "C", "text": "Only the actual data records themselves, never any configuration" },
+        { "key": "D", "text": "Only the application's roles and nothing else at all here" }
       ],
       "correct": ["A"],
       "explanation": "By default an update set captures customizations and configurations; data is not included unless specifically arranged."
@@ -332,9 +332,9 @@
       "difficulty": "hard",
       "prompt": "What does the 'Publish to Update Set' action on an application do?",
       "choices": [
-        { "key": "A", "text": "Packages the entire current application into a new, Completed update set (a full snapshot, not just recent changes)" },
-        { "key": "B", "text": "Captures only the files changed since the last update set was completed" },
-        { "key": "C", "text": "Permanently deletes the application after exporting it" },
+        { "key": "A", "text": "Packages the whole current app into a new Completed update set (a full snapshot, not a delta)" },
+        { "key": "B", "text": "Captures only the application files that have changed since the last update set was marked completed" },
+        { "key": "C", "text": "Permanently deletes the entire application from the instance right after it has been exported to XML" },
         { "key": "D", "text": "Publishes the application directly to the ServiceNow Store" }
       ],
       "correct": ["A"],
@@ -346,8 +346,8 @@
       "difficulty": "hard",
       "prompt": "Which statement best describes the relationship between application scope and update sets?",
       "choices": [
-        { "key": "A", "text": "Update sets are subservient to application scope; a single scope can contain several update sets" },
-        { "key": "B", "text": "Each update set can span multiple application scopes simultaneously" },
+        { "key": "A", "text": "Update sets are subservient to scope; one scope can contain several update sets" },
+        { "key": "B", "text": "Each individual update set can span across multiple application scopes simultaneously at once" },
         { "key": "C", "text": "An application scope can belong to only one update set at a time" },
         { "key": "D", "text": "Scope and update set are two names for the same container" }
       ],
@@ -402,9 +402,9 @@
       "difficulty": "hard",
       "prompt": "What is the guidance on moving update sets between instances running different family releases?",
       "choices": [
-        { "key": "A", "text": "Loading an older-release update set onto a newer-release instance is always allowed, but loading a newer-release set onto an older-release instance needs extra compatibility testing and can risk outages or data loss" },
-        { "key": "B", "text": "Update sets can only be moved between instances on the exact same family release" },
-        { "key": "C", "text": "Newer-to-older transfers are always safe; older-to-newer transfers are blocked" },
+        { "key": "A", "text": "Older-to-newer loads are always fine, but newer-to-older loads need extra testing and risk outages or data loss." },
+        { "key": "B", "text": "Update sets can only ever be moved between instances running the exact same family release version, never otherwise." },
+        { "key": "C", "text": "Newer-to-older transfers are always perfectly safe, while older-to-newer transfers are blocked entirely by the platform" },
         { "key": "D", "text": "Family release has no bearing on update set compatibility" }
       ],
       "correct": ["A"],
@@ -416,9 +416,9 @@
       "difficulty": "medium",
       "prompt": "What is the application repository used for?",
       "choices": [
-        { "key": "A", "text": "A central repository that distributes an organization's published scoped apps between its own instances (e.g. dev to test to prod)" },
+        { "key": "A", "text": "A central store distributing an org's published scoped apps between its own instances (dev, test, prod)" },
         { "key": "B", "text": "A public marketplace for selling apps to any company" },
-        { "key": "C", "text": "An external Git service for source-controlling application files" },
+        { "key": "C", "text": "An external Git-based service used for source-controlling all of an application's files and metadata over time" },
         { "key": "D", "text": "A backup location for table data only" }
       ],
       "correct": ["A"],
@@ -445,8 +445,8 @@
       "prompt": "Why can a personal developer instance (PDI) not connect to the application repository?",
       "choices": [
         { "key": "A", "text": "It lacks the valid subscription, matching scope, and network access the repository requires" },
-        { "key": "B", "text": "PDIs do not support scoped applications" },
-        { "key": "C", "text": "PDIs cannot create update sets" },
+        { "key": "B", "text": "A standalone PDI simply does not support scoped applications in the first place at all anywhere" },
+        { "key": "C", "text": "Personal developer instances are completely unable to create update sets of any kind at all" },
         { "key": "D", "text": "The repository only accepts global-scope applications" }
       ],
       "correct": ["A"],
@@ -458,8 +458,8 @@
       "difficulty": "medium",
       "prompt": "What is the difference between rolling back and uninstalling an application deployed via the application repository?",
       "choices": [
-        { "key": "A", "text": "Roll back reverts to the previous installed version (without affecting the global application record); uninstall removes the app from the instance but leaves it in the repository for reinstall" },
-        { "key": "B", "text": "Roll back deletes the app from the repository; uninstall only hides it" },
+        { "key": "A", "text": "Roll back reverts to the previous version; uninstall removes the app from the instance but leaves it in the repository." },
+        { "key": "B", "text": "Roll back permanently deletes the app from the central repository, whereas uninstall only hides it from view temporarily" },
         { "key": "C", "text": "They are identical operations with different names" },
         { "key": "D", "text": "Roll back removes the app permanently; uninstall cannot be undone" }
       ],
@@ -487,8 +487,8 @@
       "prompt": "Which statement about publishing to the ServiceNow Store is correct?",
       "choices": [
         { "key": "A", "text": "Apps are reviewed and certified by ServiceNow before becoming available, not published directly" },
-        { "key": "B", "text": "Apps appear in the Store instantly with no review" },
-        { "key": "C", "text": "Only free apps may be published to the Store" },
+        { "key": "B", "text": "Submitted apps appear in the ServiceNow Store instantly with no review or certification at all" },
+        { "key": "C", "text": "Only applications that are completely free of charge may ever be published to the ServiceNow Store" },
         { "key": "D", "text": "ServiceNow assumes all testing responsibility on the buyer's behalf" }
       ],
       "correct": ["A"],
@@ -528,10 +528,10 @@
       "difficulty": "medium",
       "prompt": "How does App Engine Studio (AES) differ from ServiceNow Studio?",
       "choices": [
-        { "key": "A", "text": "AES is a guided low-code tool that requires an App Engine subscription, whereas Studio is a centralized pro-code IDE" },
-        { "key": "B", "text": "AES is the only tool that can create scoped applications" },
+        { "key": "A", "text": "AES is a guided low-code tool needing an App Engine subscription; Studio is a centralized pro-code IDE" },
+        { "key": "B", "text": "App Engine Studio is the only available tool that is able to create new scoped applications on the platform" },
         { "key": "C", "text": "Studio is low-code and AES is pro-code" },
-        { "key": "D", "text": "AES runs only on personal developer instances" }
+        { "key": "D", "text": "App Engine Studio is only ever able to run on personal developer instances and on nowhere else at all really" }
       ],
       "correct": ["A"],
       "explanation": "App Engine Studio is a guided, low-code development tool that requires an App Engine subscription (or a product packaged with one). ServiceNow Studio is the centralized integrated tool for pro-code/traditional application development."
