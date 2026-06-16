@@ -377,10 +377,10 @@
         { "key": "A", "text": "Call response.getStatusCode() and index into it" },
         { "key": "B", "text": "Pass the body to new XMLDocument2() and parse it" },
         { "key": "C", "text": "Parse the body with JSON.parse(response.getBody()) and dot-walk into the resulting object" },
-        { "key": "D", "text": "The test automatically extracts the values for you" }
+        { "key": "D", "text": "No parsing is needed; ServiceNow returns the values already extracted into variables" }
       ],
       "correct": ["C"],
-      "explanation": "For JSON, parse the body with JSON.parse(response.getBody()) and then navigate the object (e.g. obj.result[0].fieldName). XMLDocument2 is for XML responses. You must understand the response structure to extract values; the test does not extract them."
+      "explanation": "For JSON, parse the body with JSON.parse(response.getBody()) and then navigate the object (e.g. obj.result[0].fieldName). XMLDocument2 is for XML responses. You must understand the response structure to extract values; ServiceNow does not extract them for you (neither the Test link nor the generated stub code does)."
     },
     {
       "id": "q28",
