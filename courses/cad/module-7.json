@@ -1,0 +1,414 @@
+{
+  "id": "cad-module-7",
+  "course": "cad",
+  "title": "Module 7: Importing and Integrating",
+  "description": "Bringing external data into ServiceNow with Import Sets (staging tables and Transform Maps) and integrating via web services (REST/SOAP, ServiceNow as consumer and provider, the Table API, and the REST API Explorer).",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "When data is brought in using an import set, where does it land first?",
+      "choices": [
+        { "key": "A", "text": "Directly in the destination production table" },
+        { "key": "B", "text": "In a temporary staging table called the import set table" },
+        { "key": "C", "text": "In a read-only audit table that is reviewed and then permanently archived" },
+        { "key": "D", "text": "In an attachment record on the importing user" }
+      ],
+      "correct": ["B"],
+      "explanation": "Import sets load source data into a temporary staging table (the import set table) rather than straight into the target. The staging step converts the data into GlideRecords and lets you validate it before transforming it into the destination table."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is the correct sequence for importing data with an import set?",
+      "choices": [
+        { "key": "A", "text": "Run Transform, then Load Data, then Create Transform Map" },
+        { "key": "B", "text": "Create Transform Map, then Run Transform, then Load Data" },
+        { "key": "C", "text": "Load Data, then Create Transform Map, then Run Transform" },
+        { "key": "D", "text": "Load Data, then Run Transform, then Create Transform Map" }
+      ],
+      "correct": ["C"],
+      "explanation": "First load the source data into the import set table, then create (or reuse) a Transform Map that maps the staging fields to the target fields, then run the transform to copy the data into the destination table."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is a Transform Map?",
+      "choices": [
+        { "key": "A", "text": "A scheduled job that periodically reloads data from the source file" },
+        { "key": "B", "text": "A set of field maps defining the relationships between import-set fields and target-table fields" },
+        { "key": "C", "text": "A security rule that controls who may run an import" },
+        { "key": "D", "text": "A staging table that temporarily stores the imported rows" }
+      ],
+      "correct": ["B"],
+      "explanation": "A Transform Map is a set of field map records that determine how fields in the import set table relate to fields in an existing target table. Once defined it can be reused, and multiple maps can be stacked for more complex transformations."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "The \"Auto map matching fields\" utility can map fields automatically under which condition?",
+      "choices": [
+        { "key": "A", "text": "When the source field names match the target field names" },
+        { "key": "B", "text": "When the target table extends the Task table" },
+        { "key": "C", "text": "When the import set contains exactly two columns" },
+        { "key": "D", "text": "When the source file is provided in CSV format with a defined header row" }
+      ],
+      "correct": ["A"],
+      "explanation": "Auto map matching fields works when the import-set field names are identical to the target-table field names; one click then creates the field maps. Any mismatches can be corrected afterward with the Mapping Assist utility."
+    },
+    {
+      "id": "q5",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which capability is unique to the Mapping Assist utility compared with auto-mapping?",
+      "choices": [
+        { "key": "A", "text": "It runs business rules during the transform" },
+        { "key": "B", "text": "It automatically cleans and corrects invalid data in the staging table before the import runs" },
+        { "key": "C", "text": "It can map a single source field to multiple destination fields" },
+        { "key": "D", "text": "It skips records that already exist in the target" }
+      ],
+      "correct": ["C"],
+      "explanation": "Mapping Assist provides a visual environment for specifying field maps manually, including mapping one source field to several destination fields. Auto-mapping only pairs fields whose names already match exactly."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "By default (with Enforce mandatory fields left off), how does a transform handle a row whose value for a normally-mandatory target field is empty?",
+      "choices": [
+        { "key": "A", "text": "It still inserts the record even though the mandatory field is empty" },
+        { "key": "B", "text": "It deletes the corresponding record from the target table" },
+        { "key": "C", "text": "It halts the entire transform and raises an error until a value is supplied for the field" },
+        { "key": "D", "text": "It substitutes a system default value into the field" }
+      ],
+      "correct": ["A"],
+      "explanation": "Imports can insert records even when normally-mandatory fields are empty. The Enforce mandatory fields option exists precisely to make the transform enforce mandatory-ness (as if the record were submitted from a form) when that stricter behavior is wanted."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What does enabling \"Run business rules\" on a Transform Map do?",
+      "choices": [
+        { "key": "A", "text": "It validates the source file before loading it into the staging table" },
+        { "key": "B", "text": "It restricts the transform to administrators only" },
+        { "key": "C", "text": "It runs business rules, workflows, approvals, auditing, and field normalization as records are inserted or updated into the target table" },
+        { "key": "D", "text": "It forces all field maps to be created automatically" }
+      ],
+      "correct": ["C"],
+      "explanation": "When selected, the transformation triggers business rules, workflows/flows, approval engines, auditing, and field normalization as it writes to the target table, rather than performing a silent data load."
+    },
+    {
+      "id": "q8",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What does the import process do when the data being imported is the same as the data already in the instance?",
+      "choices": [
+        { "key": "A", "text": "It duplicates the record so both copies are kept" },
+        { "key": "B", "text": "It skips the record" },
+        { "key": "C", "text": "It raises a transform error and stops" },
+        { "key": "D", "text": "It moves the existing record to an archive table" }
+      ],
+      "correct": ["B"],
+      "explanation": "The import process skips records when the incoming data matches what is already in the instance, avoiding redundant inserts or updates."
+    },
+    {
+      "id": "q9",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "As a web service provider, which mechanisms does the Now Platform support? (Choose 3)",
+      "choices": [
+        { "key": "A", "text": "Direct web services" },
+        { "key": "B", "text": "Web service import set" },
+        { "key": "C", "text": "Scripted web services" },
+        { "key": "D", "text": "Outbound REST message" }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "As a provider, ServiceNow supports direct web services (access to table structures), web service import sets (input-only, invoking Transform Maps), and scripted web services (custom JavaScript). An outbound REST message is how ServiceNow acts as a consumer, not a provider."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "To consume a third-party web service from ServiceNow, what do you create?",
+      "choices": [
+        { "key": "A", "text": "A new inbound web service" },
+        { "key": "B", "text": "A new scripted REST resource" },
+        { "key": "C", "text": "A new Outbound REST Message" },
+        { "key": "D", "text": "A new Transform Map" }
+      ],
+      "correct": ["C"],
+      "explanation": "When ServiceNow is the consumer, you create an Outbound REST Message that defines the provider's endpoint and authentication. Inbound and scripted REST resources are used when ServiceNow is the provider."
+    },
+    {
+      "id": "q11",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which statement about REST and SOAP is correct?",
+      "choices": [
+        { "key": "A", "text": "ServiceNow can act as a SOAP provider but never as a SOAP consumer" },
+        { "key": "B", "text": "SOAP is generally stricter and supports capabilities such as batch processing that REST does not" },
+        { "key": "C", "text": "REST stands for Reliable External Service Transport" },
+        { "key": "D", "text": "REST always requires the exchange of SSL certificates for authentication, whereas SOAP cannot use any security at all" }
+      ],
+      "correct": ["B"],
+      "explanation": "SOAP (Simple Object Access Protocol) is older and stricter and offers things like batch processing and additional WS-Security; REST (REpresentational State Transfer) is the common modern framework. ServiceNow supports SOAP as both consumer and provider."
+    },
+    {
+      "id": "q12",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which HTTP method corresponds to reading/retrieving data?",
+      "choices": [
+        { "key": "A", "text": "POST" },
+        { "key": "B", "text": "PUT" },
+        { "key": "C", "text": "GET" },
+        { "key": "D", "text": "DELETE" }
+      ],
+      "correct": ["C"],
+      "explanation": "GET retrieves (reads) data from the endpoint. POST creates, PUT/PATCH update, and DELETE removes."
+    },
+    {
+      "id": "q13",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the difference between the PUT and PATCH HTTP methods?",
+      "choices": [
+        { "key": "A", "text": "PUT replaces the entire record/resource, while PATCH applies a partial update" },
+        { "key": "B", "text": "PUT applies a partial update to selected fields, while PATCH replaces the entire record" },
+        { "key": "C", "text": "PUT creates a record, while PATCH deletes one" },
+        { "key": "D", "text": "PUT reads a record, while PATCH writes one" }
+      ],
+      "correct": ["A"],
+      "explanation": "Both are updates, but PUT is a complete overwrite/replacement of the resource, whereas PATCH modifies only part of it. (In ServiceNow's own database an update is just an update; the distinction is at the HTTP level.)"
+    },
+    {
+      "id": "q14",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which server-side JavaScript class does the generated outbound REST stub use to send a request?",
+      "choices": [
+        { "key": "A", "text": "GlideRecord" },
+        { "key": "B", "text": "sn_ws.RESTMessageV2" },
+        { "key": "C", "text": "GlideAjax" },
+        { "key": "D", "text": "XMLDocument2" }
+      ],
+      "correct": ["B"],
+      "explanation": "Outbound REST requests in script use the RESTMessageV2 class (sn_ws.RESTMessageV2), with methods such as setStringParameterNoEscape(), execute(), getBody(), and getStatusCode(). XMLDocument2 is used to parse an XML response, not to send the request."
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "In an HTTP Query Parameter value on a REST method, what does enclosing the value in ${ } accomplish?",
+      "choices": [
+        { "key": "A", "text": "It comments the value out so that it is completely ignored when the request executes at runtime" },
+        { "key": "B", "text": "It URL-encodes the value automatically" },
+        { "key": "C", "text": "It marks the value as a variable for which a dynamic value is substituted at runtime" },
+        { "key": "D", "text": "It declares the parameter as required by the provider" }
+      ],
+      "correct": ["C"],
+      "explanation": "The ${ } syntax turns the value into a variable; at request time a dynamically determined value is substituted in. Hard-coded values are allowed too, but variables make the request reusable."
+    },
+    {
+      "id": "q16",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Before you can use the Test link on a REST method that uses variables, what must you configure?",
+      "choices": [
+        { "key": "A", "text": "A Variable Substitution value for each required HTTP query parameter" },
+        { "key": "B", "text": "A business rule on the target table" },
+        { "key": "C", "text": "An OAuth 2.0 authentication profile, even when the provider requires no authentication at all" },
+        { "key": "D", "text": "A scheduled job to fire the request" }
+      ],
+      "correct": ["A"],
+      "explanation": "You cannot test with empty variables, so there must be a Variable Substitution providing a test value for every required HTTP query parameter. These live in a related list on the method record."
+    },
+    {
+      "id": "q17",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "An HTTP GET test returns a status code of 200. What can you conclude?",
+      "choices": [
+        { "key": "A", "text": "A connection was made, but you should still verify the results are what you expected" },
+        { "key": "B", "text": "The request failed and must be resent" },
+        { "key": "C", "text": "Authentication was rejected by the provider" },
+        { "key": "D", "text": "The correct data is guaranteed to have been returned exactly as the provider documented" }
+      ],
+      "correct": ["A"],
+      "explanation": "A 200 indicates the connection succeeded, but it does not guarantee the right data came back, so you should always inspect the actual response."
+    },
+    {
+      "id": "q18",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why might the HTTP Methods related list not appear on a new REST Message record?",
+      "choices": [
+        { "key": "A", "text": "The methods only appear after the record is saved for the first time" },
+        { "key": "B", "text": "The application scope must be set to Global" },
+        { "key": "C", "text": "Mutual authentication has not been enabled" },
+        { "key": "D", "text": "The endpoint has not yet successfully returned a 200 status code from a test run" }
+      ],
+      "correct": ["A"],
+      "explanation": "HTTP method records do not show on the REST Message form until the record has been saved once. After saving, ServiceNow provides a default method to build from."
+    },
+    {
+      "id": "q19",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "On a table's Application Access tab, the \"Allow access to this table via web services\" option is only selectable under what condition?",
+      "choices": [
+        { "key": "A", "text": "When \"Accessible from\" is set to All application scopes" },
+        { "key": "B", "text": "When the table extends the Task table" },
+        { "key": "C", "text": "When Can create and Can delete are both checked" },
+        { "key": "D", "text": "When at least one access control rule has already been defined for the table" }
+      ],
+      "correct": ["A"],
+      "explanation": "The web services access option becomes selectable only when Accessible from is set to All application scopes; otherwise the table cannot be exposed as a web service provider."
+    },
+    {
+      "id": "q20",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When ServiceNow is the web service provider, how is an inbound request authorized?",
+      "choices": [
+        { "key": "A", "text": "All inbound requests are trusted automatically once web service access is enabled" },
+        { "key": "B", "text": "The consumer authenticates as a ServiceNow user, and that user's roles are evaluated by the table's ACLs" },
+        { "key": "C", "text": "Authorization is handled solely by the Transform Map" },
+        { "key": "D", "text": "Only requests from the same instance are permitted" }
+      ],
+      "correct": ["B"],
+      "explanation": "The consumer must authenticate with a ServiceNow user record, and that user's roles are evaluated against the table's access control rules. A user can be flagged Web Service Access Only for this purpose."
+    },
+    {
+      "id": "q21",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What important warning applies to the REST API Explorer?",
+      "choices": [
+        { "key": "A", "text": "It can only issue GET requests, never writes" },
+        { "key": "B", "text": "It requires a separate Integration Hub subscription before it can be opened and explored" },
+        { "key": "C", "text": "It impacts real records, so it should not be used on a production instance" },
+        { "key": "D", "text": "It works only with tables in the Global scope" }
+      ],
+      "correct": ["C"],
+      "explanation": "The REST API Explorer actually executes requests against the instance database (including creates, updates, and deletes), so it must not be used to practice on a production instance."
+    },
+    {
+      "id": "q22",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which API is the default in the REST API Explorer and lets you query, create, update, and delete a table's records?",
+      "choices": [
+        { "key": "A", "text": "Import Set API" },
+        { "key": "B", "text": "Attachment API" },
+        { "key": "C", "text": "Table API" },
+        { "key": "D", "text": "Aggregate API" }
+      ],
+      "correct": ["C"],
+      "explanation": "The Table API is the default and most widely used API; it performs CRUD operations on a table's records. The instance URL can't be changed while exploring, but it can be in the generated script."
+    },
+    {
+      "id": "q23",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What does the sysparm_fields query parameter do in a Table API request?",
+      "choices": [
+        { "key": "A", "text": "It sets the maximum number of records returned per page" },
+        { "key": "B", "text": "It limits the response to a comma-separated list of specified fields" },
+        { "key": "C", "text": "It provides an encoded query string that filters which rows are returned in the result" },
+        { "key": "D", "text": "It chooses the UI view used to render the response" }
+      ],
+      "correct": ["B"],
+      "explanation": "sysparm_fields restricts the response to only the listed fields (effectively an ad-hoc view). Filtering rows is sysparm_query, paging is sysparm_limit, and rendering by a named view is sysparm_view."
+    },
+    {
+      "id": "q24",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "You need a complex encoded query for sysparm_query but don't want to write it by hand. What is the recommended approach?",
+      "choices": [
+        { "key": "A", "text": "Build the filter on a list, right-click the breadcrumb, choose Copy Query, and paste it into sysparm_query" },
+        { "key": "B", "text": "Export the table to Excel and copy the column headers" },
+        { "key": "C", "text": "Enable mutual authentication to auto-generate the query" },
+        { "key": "D", "text": "Set sysparm_view and ServiceNow will build the query for you" }
+      ],
+      "correct": ["A"],
+      "explanation": "Use the Filter Condition Builder on a table's list to construct the filter, run it, then right-click the breadcrumb and Copy Query. Paste the resulting encoded query string into sysparm_query."
+    },
+    {
+      "id": "q25",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When placing a server-side REST script inside an email notification, what two adjustments are required?",
+      "choices": [
+        { "key": "A", "text": "Wrap the code in <mail_script> tags and replace logging/printing calls with template.print()" },
+        { "key": "B", "text": "Wrap the code in <script> tags and call gs.info() so that the output is written into the email body" },
+        { "key": "C", "text": "Convert the script into a client script and use g_form.addInfoMessage()" },
+        { "key": "D", "text": "Place the code in a UI policy and use alert()" }
+      ],
+      "correct": ["A"],
+      "explanation": "Email notification scripts must be enclosed in <mail_script> </mail_script> tags, and any logging/printing method (gs.info, gs.log, etc.) must be changed to template.print(), whose output goes into the email body."
+    },
+    {
+      "id": "q26",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which statement about Notification Email Scripts is correct?",
+      "choices": [
+        { "key": "A", "text": "They are reusable and are not stored inside the notification itself" },
+        { "key": "B", "text": "They are stored inline within each notification record" },
+        { "key": "C", "text": "They can be unit-tested directly in the script editor without ever generating an email" },
+        { "key": "D", "text": "They run on the client side when the email is opened" }
+      ],
+      "correct": ["A"],
+      "explanation": "Notification Email Scripts are reusable, are stored separately (not inside the notification), and have required syntax auto-inserted. There is no way to test them except by generating email, so developing the logic first as a business rule is recommended."
+    },
+    {
+      "id": "q27",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "A REST response arrives as JSON. How do you begin extracting values from it in a server-side script?",
+      "choices": [
+        { "key": "A", "text": "Call response.getStatusCode() and index into it" },
+        { "key": "B", "text": "Pass the body to new XMLDocument2() and parse it" },
+        { "key": "C", "text": "Parse the body with JSON.parse(response.getBody()) and dot-walk into the resulting object" },
+        { "key": "D", "text": "The test automatically extracts the values for you" }
+      ],
+      "correct": ["C"],
+      "explanation": "For JSON, parse the body with JSON.parse(response.getBody()) and then navigate the object (e.g. obj.result[0].fieldName). XMLDocument2 is for XML responses. You must understand the response structure to extract values; the test does not extract them."
+    },
+    {
+      "id": "q28",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is the recommended practice before importing external data into ServiceNow?",
+      "choices": [
+        { "key": "A", "text": "Understand and clean the data first, correcting or removing inaccurate rows" },
+        { "key": "B", "text": "Import everything immediately and then clean it up afterward inside the target table" },
+        { "key": "C", "text": "Always import directly into the production target table" },
+        { "key": "D", "text": "Disable all access control rules during the import" }
+      ],
+      "correct": ["A"],
+      "explanation": "Time spent understanding the data's format and contents and cleaning it (correcting inaccurate data, deleting undesired rows) before import prevents problems later. ServiceNow has no automatic data-cleaning button."
+    },
+    {
+      "id": "q29",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "From which areas of the platform can ServiceNow invoke an outbound web service (consume)?",
+      "choices": [
+        { "key": "A", "text": "Only from the REST API Explorer testing tool, and never from any server-side script" },
+        { "key": "B", "text": "Business Rules, UI Actions, Client Scripts, Workflow, and Flow Designer" },
+        { "key": "C", "text": "Only from a Transform Map" },
+        { "key": "D", "text": "Only from client-side scripts" }
+      ],
+      "correct": ["B"],
+      "explanation": "A consumed web service can be invoked from many server-side contexts, including business rules, UI actions, client scripts, workflow, and Flow Designer, as well as other server-side scripts."
+    }
+  ]
+}

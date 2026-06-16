@@ -43,6 +43,12 @@
           "title": "Module 6: Automating Work",
           "path": "courses/cad/module-6.json",
           "questionCount": 34
+        },
+        {
+          "id": "cad-module-7",
+          "title": "Module 7: Importing and Integrating",
+          "path": "courses/cad/module-7.json",
+          "questionCount": 29
         }
       ]
     }

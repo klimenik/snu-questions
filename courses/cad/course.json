@@ -33,6 +33,11 @@
       "id": "cad-module-6",
       "title": "Module 6: Automating Work",
       "quizPath": "courses/cad/module-6.json"
+    },
+    {
+      "id": "cad-module-7",
+      "title": "Module 7: Importing and Integrating",
+      "quizPath": "courses/cad/module-7.json"
     }
   ]
 }
