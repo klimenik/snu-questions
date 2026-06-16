@@ -43,6 +43,11 @@
       "id": "cad-module-8",
       "title": "Module 8: Test with Automated Test Framework (ATF)",
       "quizPath": "courses/cad/module-8.json"
+    },
+    {
+      "id": "cad-module-9",
+      "title": "Module 9: Additional App Development Topics",
+      "quizPath": "courses/cad/module-9.json"
     }
   ]
 }

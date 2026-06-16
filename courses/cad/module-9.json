@@ -1,0 +1,330 @@
+{
+  "id": "cad-module-9",
+  "course": "cad",
+  "title": "Module 9: Additional App Development Topics",
+  "description": "The Service Catalog and record producers as a friendly application interface (catalog UI policies, catalog client scripts, and server-side producer scripting), plus ServiceNow developer resources.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "How is the Service Catalog best described?",
+      "choices": [
+        { "key": "A", "text": "A categorical listing of things that can be ordered or requested" },
+        { "key": "B", "text": "A scheduled background job that imports data from external source files" },
+        { "key": "C", "text": "A tool for debugging server-side business rule scripts" },
+        { "key": "D", "text": "A framework for running automated regression tests" }
+      ],
+      "correct": ["A"],
+      "explanation": "The Service Catalog is a categorical listing of items and services users can order or request, presented as a user-friendly, e-commerce-like replacement for forms. It is part of the Self-Service application."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What license is required to use the Service Catalog?",
+      "choices": [
+        { "key": "A", "text": "A separate Service Catalog subscription must be purchased" },
+        { "key": "B", "text": "No license is required; it is part of the Self-Service application" },
+        { "key": "C", "text": "An Integration Hub subscription is required before the catalog can be enabled" },
+        { "key": "D", "text": "A per-user catalog license is required for each requester" }
+      ],
+      "correct": ["B"],
+      "explanation": "No license is required to use the Service Catalog. It is part of the ServiceNow Self-Service application."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the outcome of submitting a record producer (as opposed to a standard catalog item)?",
+      "choices": [
+        { "key": "A", "text": "A request with requested items and catalog tasks is generated" },
+        { "key": "B", "text": "A record is inserted into a table chosen by the developer" },
+        { "key": "C", "text": "An approval workflow is started for the requested service" },
+        { "key": "D", "text": "An email notification is queued for the fulfillment group" }
+      ],
+      "correct": ["B"],
+      "explanation": "A record producer inserts a record directly into a table chosen by the developer, with no request (REQ), requested items (RITM), or catalog tasks. The REQ/RITM/task outcome belongs to standard catalog items."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When a standard catalog item is ordered, how do the resulting records relate?",
+      "choices": [
+        { "key": "A", "text": "Each task is the parent of its request, which contains the items" },
+        { "key": "B", "text": "Each requested item is a child of a request and references a catalog item" },
+        { "key": "C", "text": "The request and the requested item are stored in the same single record" },
+        { "key": "D", "text": "The catalog item is a child of the task generated to fulfill it" }
+      ],
+      "correct": ["B"],
+      "explanation": "Ordering a catalog item creates a request (REQ) containing one or more requested items (RITM). Each RITM is a child of the REQ and references the catalog item it was ordered from; RITMs may then spawn catalog tasks."
+    },
+    {
+      "id": "q5",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "How does closure roll up for a standard catalog request?",
+      "choices": [
+        { "key": "A", "text": "Closing the request automatically closes all of its requested items and tasks" },
+        { "key": "B", "text": "Each requested item must be closed manually after its request is closed" },
+        { "key": "C", "text": "When a requested item's tasks all close it closes, and when all items close the request auto-closes" },
+        { "key": "D", "text": "Tasks remain open until an administrator closes the parent request" }
+      ],
+      "correct": ["C"],
+      "explanation": "Closure rolls up from the bottom: when all of a requested item's tasks close, the RITM closes; once all RITMs are closed, the request (REQ) auto-closes."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is a record producer?",
+      "choices": [
+        { "key": "A", "text": "A special type of Service Catalog item that creates a record in a database table" },
+        { "key": "B", "text": "A background script that periodically generates summary records" },
+        { "key": "C", "text": "A business rule that runs after a catalog request is approved" },
+        { "key": "D", "text": "A reporting widget that produces charts and dashboards from catalog request data over time" }
+      ],
+      "correct": ["A"],
+      "explanation": "A record producer is a special type of Service Catalog item that is an alternative to the traditional form; both create a new record in a database table. Users answer questions that populate fields on the new record."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which requirement points toward using a classic form rather than a Service Catalog record producer?",
+      "choices": [
+        { "key": "A", "text": "Users place an order by answering a few simple questions" },
+        { "key": "B", "text": "Users need access to lists and the ability to edit existing records" },
+        { "key": "C", "text": "The interface should include rich HTML, hyperlinks, images, and other graphics" },
+        { "key": "D", "text": "The users of the interface are not highly technical" }
+      ],
+      "correct": ["B"],
+      "explanation": "Classic forms are the better choice when users need access to lists and context menus, the ability to personalize the UI, and the ability to edit existing records. The catalog suits ordering via simple questions for non-technical users."
+    },
+    {
+      "id": "q8",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On a record producer, what are the input controls (the things that look like form fields) actually called?",
+      "choices": [
+        { "key": "A", "text": "Columns" },
+        { "key": "B", "text": "Dictionary entries" },
+        { "key": "C", "text": "Variables" },
+        { "key": "D", "text": "Attributes" }
+      ],
+      "correct": ["C"],
+      "explanation": "On a catalog item or record producer, the inputs are variables (stored in a catalog variable table with their own special types), not table columns. They map to fields on the produced record."
+    },
+    {
+      "id": "q9",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which related link on a table record is used to create a record producer?",
+      "choices": [
+        { "key": "A", "text": "Show Schema Map" },
+        { "key": "B", "text": "Add to Service Catalog" },
+        { "key": "C", "text": "Explore REST API" },
+        { "key": "D", "text": "Force to Update Set" }
+      ],
+      "correct": ["B"],
+      "explanation": "The Add to Service Catalog related link on a table record creates a record producer; the records it produces are created in that open table."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "In a server-side record producer script, what does the producer object represent?",
+      "choices": [
+        { "key": "A", "text": "The new record that is currently being inserted into the chosen target table" },
+        { "key": "B", "text": "The variables (answers) entered on the record producer form" },
+        { "key": "C", "text": "The previous version of the record before it was changed" },
+        { "key": "D", "text": "The catalog category the item was submitted from" }
+      ],
+      "correct": ["B"],
+      "explanation": "In a record producer script, producer represents the variables on the producer form (accessed as producer.<variableName>), while current represents the new record being produced on the target table."
+    },
+    {
+      "id": "q11",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Why should you NOT call current.update() in a record producer script?",
+      "choices": [
+        { "key": "A", "text": "Because the record is inserted automatically when the script finishes" },
+        { "key": "B", "text": "Because current is read-only inside a record producer script" },
+        { "key": "C", "text": "Because update() is not part of the scoped application API" },
+        { "key": "D", "text": "Because doing so would redirect the user away from the catalog interface entirely" }
+      ],
+      "correct": ["A"],
+      "explanation": "The record producer inserts the current record automatically once the script completes, so calling current.update() (or current.insert()) is unnecessary and should be avoided."
+    },
+    {
+      "id": "q12",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the purpose of the producer.redirect property?",
+      "choices": [
+        { "key": "A", "text": "It validates all of the variable values on the form before the record is saved" },
+        { "key": "B", "text": "It sets where the user is sent after submitting the record producer" },
+        { "key": "C", "text": "It copies producer variables onto the current record" },
+        { "key": "D", "text": "It restricts which roles can open the record producer" }
+      ],
+      "correct": ["B"],
+      "explanation": "producer.redirect takes a relative path that determines where the user goes after submitting. Because catalogs have no lists, a redirect script is auto-created so the user lands on a chosen page rather than a list view."
+    },
+    {
+      "id": "q13",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which pair of variable types defines the sections used to build a multi-column record producer layout?",
+      "choices": [
+        { "key": "A", "text": "Section Open and Section Close" },
+        { "key": "B", "text": "Layout Begin and Layout Finish" },
+        { "key": "C", "text": "Container Start and Container End" },
+        { "key": "D", "text": "Row Header and Row Footer" }
+      ],
+      "correct": ["C"],
+      "explanation": "Columns are defined with Container Start and Container End variable types; the Container Start specifies the column layout for that section, and the Order column positions them."
+    },
+    {
+      "id": "q14",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What can a Catalog UI Policy do without any scripting?",
+      "choices": [
+        { "key": "A", "text": "Make a variable visible, read-only, or mandatory" },
+        { "key": "B", "text": "Send an outbound REST request to an external web service provider" },
+        { "key": "C", "text": "Insert a related record into another table" },
+        { "key": "D", "text": "Generate an event in the event queue" }
+      ],
+      "correct": ["A"],
+      "explanation": "Catalog UI Policy Actions can make a variable visible, read-only, or mandatory with no scripting. A client-side script can optionally be added by enabling Run Scripts and using the Execute if true/false fields."
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "To what can a Catalog Client Script be applied?",
+      "choices": [
+        { "key": "A", "text": "Only to a single database table at a time" },
+        { "key": "B", "text": "An individual catalog item or a variable set" },
+        { "key": "C", "text": "Only to the global Service Catalog as a whole" },
+        { "key": "D", "text": "Any server-side business rule on the target table" }
+      ],
+      "correct": ["B"],
+      "explanation": "Catalog Client Scripts can be applied to an individual catalog item or to a variable set, and the variables available to them come from the questions on the form."
+    },
+    {
+      "id": "q16",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "On which side(s) do Service Catalog item scripts execute?",
+      "choices": [
+        { "key": "A", "text": "On the client side only" },
+        { "key": "B", "text": "On the server side only" },
+        { "key": "C", "text": "On both the client and server sides" },
+        { "key": "D", "text": "Only inside the MID Server process" }
+      ],
+      "correct": ["C"],
+      "explanation": "Service Catalog item scripts execute on both the client side (catalog client scripts, catalog UI policies) and the server side (record producer scripts)."
+    },
+    {
+      "id": "q17",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When configuring a record producer, what does the Short description field control?",
+      "choices": [
+        { "key": "A", "text": "The text shown in a pop-up when the user hovers over the item" },
+        { "key": "B", "text": "The name that is displayed for the item throughout the Service Catalog" },
+        { "key": "C", "text": "The category the item is placed into" },
+        { "key": "D", "text": "The list of variables that appear on the form" }
+      ],
+      "correct": ["A"],
+      "explanation": "Short description is the text shown in a pop-up when a user hovers over the item. Name is the item's displayed text, Category is where it appears, and the selected variables are the form fields."
+    },
+    {
+      "id": "q18",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Which link type and argument are used to make a navigator module open a record producer?",
+      "choices": [
+        { "key": "A", "text": "Link type Map Page, configured with the record producer's name set as the target page" },
+        { "key": "B", "text": "Link type URL (from Arguments), with sysparm_id set to the record producer sys_id" },
+        { "key": "C", "text": "Link type List of Records, filtered to the catalog item table" },
+        { "key": "D", "text": "Link type Separator, with the category name as the argument" }
+      ],
+      "correct": ["B"],
+      "explanation": "The module uses Link type URL (from Arguments) with com.glideapp.servicecatalog_cat_item_view.do?v=1&sysparm_id=<record producer sys_id>. The sys_id is obtained by right-clicking the record producer header and choosing Copy sys_id."
+    },
+    {
+      "id": "q19",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which category field is used to build a hierarchy of sub-categories?",
+      "choices": [
+        { "key": "A", "text": "Location" },
+        { "key": "B", "text": "Homepage renderer" },
+        { "key": "C", "text": "Parent" },
+        { "key": "D", "text": "Header icon" }
+      ],
+      "correct": ["C"],
+      "explanation": "The Parent field designates a category's parent, allowing a hierarchy of sub-categories. Roles control who may order, and the various icon fields control graphics."
+    },
+    {
+      "id": "q20",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why might a newly created category not appear in the Service Catalog?",
+      "choices": [
+        { "key": "A", "text": "Categories only become visible after a full instance cache flush is performed" },
+        { "key": "B", "text": "A category with no items or record producers assigned does not appear" },
+        { "key": "C", "text": "Categories require a separate license before they are visible" },
+        { "key": "D", "text": "Categories are hidden until an approval workflow completes" }
+      ],
+      "correct": ["B"],
+      "explanation": "A category that has no record producers or catalog items assigned to it will not appear in the catalog list."
+    },
+    {
+      "id": "q21",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which statement about applications on the ServiceNow Developer Share site is correct?",
+      "choices": [
+        { "key": "A", "text": "They are certified by ServiceNow and available for a fee" },
+        { "key": "B", "text": "They are not vetted by ServiceNow and are available at no cost" },
+        { "key": "C", "text": "They are reviewed by ServiceNow and installable on any instance" },
+        { "key": "D", "text": "They require joining the Partner Program before download" }
+      ],
+      "correct": ["B"],
+      "explanation": "Developer Share applications are not vetted by ServiceNow and are all available at no cost. Certification and review apply to ServiceNow Store apps, not Developer Share."
+    },
+    {
+      "id": "q22",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which statement about applications on the ServiceNow Store is correct?",
+      "choices": [
+        { "key": "A", "text": "They are all free, because the Store does not support paid apps" },
+        { "key": "B", "text": "They are uploaded without review by any ServiceNow process" },
+        { "key": "C", "text": "They are certified by ServiceNow, and some are free while others are fee-based" },
+        { "key": "D", "text": "They can only ever be installed on the same instance that originally created them" }
+      ],
+      "correct": ["C"],
+      "explanation": "ServiceNow Store apps are certified for compliance with best practices and, after review and approval, can be installed on any instance running a supported version. Some are free and some are fee-based; developers distribute them via the Partner Program."
+    },
+    {
+      "id": "q23",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Where do you obtain a Personal Developer Instance (PDI) and the JavaScript API documentation?",
+      "choices": [
+        { "key": "A", "text": "The Developer portal at developer.servicenow.com" },
+        { "key": "B", "text": "The ServiceNow Store at store.servicenow.com" },
+        { "key": "C", "text": "The product documentation at docs.servicenow.com" },
+        { "key": "D", "text": "The instance's own System Definition module" }
+      ],
+      "correct": ["A"],
+      "explanation": "The Developer portal (developer.servicenow.com) provides the JavaScript API documentation, the Developer Share site, and Personal Developer Instances. docs.servicenow.com hosts product documentation and release notes."
+    }
+  ]
+}
