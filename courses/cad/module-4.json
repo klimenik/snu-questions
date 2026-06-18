@@ -507,6 +507,48 @@
       ],
       "correct": ["A"],
       "explanation": "The method that attaches a message to an individual field is showFieldMsg() (paired with hideFieldMsg()), abbreviated as Msg. The form-level banner methods addInfoMessage() and addErrorMessage() spell out Message and appear at the top of the form rather than under a field. A showFieldMessage() method does not exist."
+    },
+    {
+      "id": "q37",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which pair of Business Rule actions can be configured WITHOUT writing a script?",
+      "choices": [
+        { "key": "A", "text": "Set field values and add a message." },
+        { "key": "B", "text": "Set field values and generate an event." },
+        { "key": "C", "text": "Set field values and write to the system log." },
+        { "key": "D", "text": "Set field values and query the database." }
+      ],
+      "correct": ["A"],
+      "explanation": "The declarative Business Rule actions are Set field values (to a value, same as another field, or dynamically) and Add message, which posts text at the top of the page. Generating an event, writing to the log, or running a query all require code in the Script field."
+    },
+    {
+      "id": "q38",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which of the following is NOT a method of the client-side GlideUser (g_user) object?",
+      "choices": [
+        { "key": "A", "text": "userName()" },
+        { "key": "B", "text": "hasRole()" },
+        { "key": "C", "text": "hasRoleExactly()" },
+        { "key": "D", "text": "getFullName()" }
+      ],
+      "correct": ["A"],
+      "explanation": "userName is a property accessed as g_user.userName, so there is no userName() method. hasRole(), hasRoleExactly(), and getFullName() are all real methods. getFullName() is a method because it computes a value (first plus last name) rather than exposing a stored attribute."
+    },
+    {
+      "id": "q39",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On the client side, how do you read the sys_id of the currently logged-in user, and how does that differ from the server side?",
+      "choices": [
+        { "key": "A", "text": "g_user.userID is a property on the client; gs.getUserID() is a method on the server." },
+        { "key": "B", "text": "g_user.getUserID() is a method on the client; gs.userID is a property on the server." },
+        { "key": "C", "text": "g_user.userID() is a method on both the client and the server." },
+        { "key": "D", "text": "gs.getUserID() works on both the client and the server." }
+      ],
+      "correct": ["A"],
+      "explanation": "Client-side, the user's sys_id is exposed as the property g_user.userID (no parentheses). Server-side, it is returned by the method gs.getUserID(). The client identity values (userName, userID, firstName, lastName) are bare properties, while the server GlideSystem equivalents are method calls."
     }
   ]
 }

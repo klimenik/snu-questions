@@ -563,6 +563,20 @@
       ],
       "correct": ["A"],
       "explanation": "The auto-generated module opens a list view showing all records in the table, not a new-record form. The wording can mislead, because creating a module is about adding a navigation entry, not about creating a record. Pointing the module at a new-record form, a homepage, or a help page would all require additional configuration."
+    },
+    {
+      "id": "q41",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which applications appear in the Application Picker that a developer uses to set their current scope context?",
+      "choices": [
+        { "key": "A", "text": "All custom application scopes plus the Global scope." },
+        { "key": "B", "text": "Every application on the instance, including baseline apps such as Incident." },
+        { "key": "C", "text": "Only custom applications the developer has created." },
+        { "key": "D", "text": "Only applications downloaded and installed from the Store." }
+      ],
+      "correct": ["A"],
+      "explanation": "The Application Picker lists the custom application scopes plus Global, which is what a developer selects to set the scope their changes apply to. It is not a way to launch or browse every app on the instance, so baseline applications, a custom-only filter, or a downloaded-only filter do not describe it."
     }
   ]
 }

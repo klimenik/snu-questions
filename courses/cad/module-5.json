@@ -437,6 +437,34 @@
       ],
       "correct": ["A", "B", "C"],
       "explanation": "A matching rule grants access only when its condition is true, its script is true (or sets answer to true), and the user has one of the required roles (an empty role list passes automatically). The requirement about another rule on the same table is wrong: when several rules match at the same level, they are OR'd, so only one needs to pass. The AND relationship applies across levels instead, where the matching table-level and field-level rules must both succeed for a field operation."
+    },
+    {
+      "id": "q32",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which records track cross-scope applications and scripts that request access to a resource in another application scope?",
+      "choices": [
+        { "key": "A", "text": "Restricted Caller Access records" },
+        { "key": "B", "text": "Caller Tracking records" },
+        { "key": "C", "text": "Cross-scope Access records" },
+        { "key": "D", "text": "Access Control records" }
+      ],
+      "correct": ["A"],
+      "explanation": "Cross-scope access requests are stored in the Restricted Caller Access table (sys_restricted_caller_access). Caller Tracking is a value of the Caller Access field, not a separate record type. Cross-scope Access is not a table, and Access Controls govern user permissions on records, not cross-scope script calls."
+    },
+    {
+      "id": "q33",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "On an application resource, what is the difference between setting the Caller Access field to Caller Tracking versus Caller Restriction?",
+      "choices": [
+        { "key": "A", "text": "Caller Tracking auto-approves cross-scope calls and logs them as Allowed; Caller Restriction denies calls until they are manually approved (logged as Requested)." },
+        { "key": "B", "text": "Caller Tracking blocks all cross-scope calls; Caller Restriction allows all cross-scope calls automatically." },
+        { "key": "C", "text": "Both block cross-scope calls; they differ only in whether an email notification is sent to the resource owner." },
+        { "key": "D", "text": "Caller Tracking applies only to REST calls, while Caller Restriction applies only to script calls." }
+      ],
+      "correct": ["A"],
+      "explanation": "Caller Tracking automatically approves cross-scope calls and records them in the Restricted Caller Access table with a status of Allowed, giving visibility without friction. Caller Restriction denies calls by default and requires manual approval, recording them with a status of Requested until granted. The None option instead defers entirely to the resource's Accessible from setting."
     }
   ]
 }
