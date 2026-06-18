@@ -549,6 +549,20 @@
       ],
       "correct": ["A"],
       "explanation": "Marking a table as extensible is what allows other tables, including those in different scopes, to inherit from it as a parent. The extends-table setting works in the opposite direction: it is where a child table selects the parent it inherits from. A scriptable table cannot be extended at all, so that setting is mutually exclusive with extension. The application-access settings govern cross-scope create, read, update, and delete operations, not whether a table can serve as a parent."
+    },
+    {
+      "id": "q40",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "When you create a new table and leave the option that also creates a module enabled, what does that generated module display by default?",
+      "choices": [
+        { "key": "A", "text": "A list of all records in the table." },
+        { "key": "B", "text": "An empty form ready to create a new record." },
+        { "key": "C", "text": "An empty application homepage." },
+        { "key": "D", "text": "A help page describing how to configure the module." }
+      ],
+      "correct": ["A"],
+      "explanation": "The auto-generated module opens a list view showing all records in the table, not a new-record form. The wording can mislead, because creating a module is about adding a navigation entry, not about creating a record. Pointing the module at a new-record form, a homepage, or a help page would all require additional configuration."
     }
   ]
 }

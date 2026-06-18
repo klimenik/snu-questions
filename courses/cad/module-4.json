@@ -437,6 +437,76 @@
       ],
       "correct": ["A"],
       "explanation": "GlideForm (g_form) and GlideUser (g_user) are client-side and not available server-side. Server scripts use classes like GlideSystem (gs)."
+    },
+    {
+      "id": "q32",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Of the following script types, which one does NOT always run on the server?",
+      "choices": [
+        { "key": "A", "text": "UI Action" },
+        { "key": "B", "text": "Business Rule" },
+        { "key": "C", "text": "Script Include" },
+        { "key": "D", "text": "Script Action" }
+      ],
+      "correct": ["A"],
+      "explanation": "A UI Action can execute on the client or on the server depending on how it is configured, for example when the Client checkbox is set and an onclick function runs in the browser. Business Rules, Script Includes, and Script Actions always execute server-side."
+    },
+    {
+      "id": "q33",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "A GlideRecord query needs to match records where priority is 1 OR priority is 2. How is the OR condition added?",
+      "choices": [
+        { "key": "A", "text": "Capture the object returned by addQuery() and call addOrCondition() on it." },
+        { "key": "B", "text": "Call addOrQuery() with both field values as arguments." },
+        { "key": "C", "text": "Call addQuery() twice; multiple addQuery() calls are automatically OR'd." },
+        { "key": "D", "text": "Pass an array of values to addQuery() to broaden the match." }
+      ],
+      "correct": ["A"],
+      "explanation": "addQuery() returns a GlideQueryCondition, and calling addOrCondition() on that object ORs an alternative value into the query. There is no addOrQuery() method. Successive addQuery() calls are AND'd together, not OR'd, so calling it twice would require both conditions to be true."
+    },
+    {
+      "id": "q34",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which variables are NOT guaranteed to be available in every Business Rule? (Choose 2.)",
+      "choices": [
+        { "key": "A", "text": "previous" },
+        { "key": "B", "text": "g_scratchpad" },
+        { "key": "C", "text": "current" },
+        { "key": "D", "text": "the GlideSystem object" }
+      ],
+      "correct": ["A", "B"],
+      "explanation": "previous is not populated on insert operations because there is no prior version of the record, so it is not always available. g_scratchpad exists only to pass data from a Display Business Rule to client scripts, so it is not present in other Business Rules. The current record and the GlideSystem object are available in all Business Rules."
+    },
+    {
+      "id": "q35",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When configuring an Async Business Rule, which database operation is NOT available as a trigger?",
+      "choices": [
+        { "key": "A", "text": "Query" },
+        { "key": "B", "text": "Insert" },
+        { "key": "C", "text": "Update" },
+        { "key": "D", "text": "Delete" }
+      ],
+      "correct": ["A"],
+      "explanation": "An Async Business Rule can be triggered on Insert, Update, or Delete, but not on Query. Async rules are scheduled to run after the database transaction completes, so there is no read-time (Query) trigger for them, unlike a synchronous before/after rule."
+    },
+    {
+      "id": "q36",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which client-side method displays a message directly beneath a specific field on a form?",
+      "choices": [
+        { "key": "A", "text": "g_form.showFieldMsg()" },
+        { "key": "B", "text": "g_form.showFieldMessage()" },
+        { "key": "C", "text": "g_form.addInfoMessage()" },
+        { "key": "D", "text": "g_form.addErrorMessage()" }
+      ],
+      "correct": ["A"],
+      "explanation": "The method that attaches a message to an individual field is showFieldMsg() (paired with hideFieldMsg()), abbreviated as Msg. The form-level banner methods addInfoMessage() and addErrorMessage() spell out Message and appear at the top of the form rather than under a field. A showFieldMessage() method does not exist."
     }
   ]
 }
