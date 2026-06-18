@@ -535,6 +535,20 @@
       ],
       "correct": ["A"],
       "explanation": "App Engine Studio is a guided, low-code development tool that requires an App Engine subscription (or a product packaged with one). ServiceNow Studio is the centralized integrated tool for pro-code/traditional application development."
+    },
+    {
+      "id": "q39",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "You created a table and want other tables, including some in different application scopes, to be able to extend it. Which table setting makes this possible?",
+      "choices": [
+        { "key": "A", "text": "Extensible" },
+        { "key": "B", "text": "Extends table" },
+        { "key": "C", "text": "Scriptable Table" },
+        { "key": "D", "text": "Application Access" }
+      ],
+      "correct": ["A"],
+      "explanation": "Marking a table as extensible is what allows other tables, including those in different scopes, to inherit from it as a parent. The extends-table setting works in the opposite direction: it is where a child table selects the parent it inherits from. A scriptable table cannot be extended at all, so that setting is mutually exclusive with extension. The application-access settings govern cross-scope create, read, update, and delete operations, not whether a table can serve as a parent."
     }
   ]
 }

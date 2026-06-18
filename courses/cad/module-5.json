@@ -423,6 +423,20 @@
       ],
       "correct": ["C"],
       "explanation": "Protected = logic is not viewable. Read-only = viewable but not editable. --None-- = viewable and editable. Protection policies apply to artifacts such as UI Actions and Script Includes."
+    },
+    {
+      "id": "q31",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "A single access control rule matches an operation a user is attempting. Which requirements must ALL be satisfied before that rule grants the operation? (Choose 3.)",
+      "choices": [
+        { "key": "A", "text": "The condition defined on the access control evaluates to true." },
+        { "key": "B", "text": "The script defined on the access control evaluates to true, or sets the answer variable to true." },
+        { "key": "C", "text": "The user holds at least one role from the rule's required roles list, or that list is empty." },
+        { "key": "D", "text": "At least one other matching access control on the same table also evaluates to true." }
+      ],
+      "correct": ["A", "B", "C"],
+      "explanation": "A matching rule grants access only when its condition is true, its script is true (or sets answer to true), and the user has one of the required roles (an empty role list passes automatically). The requirement about another rule on the same table is wrong: when several rules match at the same level, they are OR'd, so only one needs to pass. The AND relationship applies across levels instead, where the matching table-level and field-level rules must both succeed for a field operation."
     }
   ]
 }

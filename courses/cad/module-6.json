@@ -479,6 +479,20 @@
       ],
       "correct": ["B"],
       "explanation": "A class-based Utils Script Include (e.g. named with the Utils convention) groups related methods into one reusable library. Classless functions are single on-demand functions; extending AbstractAjaxProcessor is for GlideAjax."
+    },
+    {
+      "id": "q35",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "In the Message HTML field of a notification, which syntax inserts the value of the short_description field from the record that triggered the notification?",
+      "choices": [
+        { "key": "A", "text": "${short_description}" },
+        { "key": "B", "text": "${current.short_description}" },
+        { "key": "C", "text": "gs.getValue('short_description')" },
+        { "key": "D", "text": "<%= current.short_description %>" }
+      ],
+      "correct": ["A"],
+      "explanation": "Notification message and subject fields use template syntax that wraps the bare field name in dollar-brace delimiters, so the field is referenced directly without a current prefix. Prefixing with current is server-script syntax, not notification template syntax. The getValue call and the JSP-style tag are not how notifications resolve field values. Dot-walking to a related record (such as assigned_to.email) and event parameters (event.parm1) use the same bare delimiter form."
     }
   ]
 }

@@ -24,7 +24,7 @@
           "id": "cad-module-3",
           "title": "Module 3: Create Application and Modules",
           "path": "courses/cad/module-3.json",
-          "questionCount": 38
+          "questionCount": 39
         },
         {
           "id": "cad-module-4",
@@ -36,13 +36,13 @@
           "id": "cad-module-5",
           "title": "Module 5: Controlling Access",
           "path": "courses/cad/module-5.json",
-          "questionCount": 30
+          "questionCount": 31
         },
         {
           "id": "cad-module-6",
           "title": "Module 6: Automating Work",
           "path": "courses/cad/module-6.json",
-          "questionCount": 34
+          "questionCount": 35
         },
         {
           "id": "cad-module-7",
