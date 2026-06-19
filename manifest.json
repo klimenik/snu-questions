@@ -61,6 +61,24 @@
           "title": "Module 9: Additional App Development Topics",
           "path": "courses/cad/module-9.json",
           "questionCount": 23
+        },
+        {
+          "id": "cad-mock-1",
+          "title": "CAD Mock Exam 1 (cross-module, 30 Q)",
+          "path": "courses/cad/mock-exam-1.json",
+          "questionCount": 30
+        },
+        {
+          "id": "cad-mock-2",
+          "title": "CAD Mock Exam 2 (cross-module, 30 Q)",
+          "path": "courses/cad/mock-exam-2.json",
+          "questionCount": 30
+        },
+        {
+          "id": "cad-mock-3",
+          "title": "CAD Mock Exam 3 (cross-module, 30 Q)",
+          "path": "courses/cad/mock-exam-3.json",
+          "questionCount": 30
         }
       ]
     }

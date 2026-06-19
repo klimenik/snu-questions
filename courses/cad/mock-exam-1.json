@@ -1,0 +1,854 @@
+{
+  "id": "cad-mock-1",
+  "course": "cad",
+  "title": "CAD Mock Exam 1 (cross-module, 30 Q)",
+  "description": "Exam-style mixed set sampled across all 9 CAD modules, weighted toward the core scripting/security/data/automation domains. Local practice file.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which records track cross-scope applications and scripts that request access to a resource in another application scope?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Restricted Caller Access records"
+        },
+        {
+          "key": "B",
+          "text": "Caller Tracking records"
+        },
+        {
+          "key": "C",
+          "text": "Cross-scope Access records"
+        },
+        {
+          "key": "D",
+          "text": "Access Control records"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Cross-scope access requests are stored in the Restricted Caller Access table (sys_restricted_caller_access). Caller Tracking is a value of the Caller Access field, not a separate record type. Cross-scope Access is not a table, and Access Controls govern user permissions on records, not cross-scope script calls."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the **default** JavaScript mode for new server-side scripts in current ServiceNow releases?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Compatibility Mode"
+        },
+        {
+          "key": "B",
+          "text": "ES5 Standards Mode"
+        },
+        {
+          "key": "C",
+          "text": "ECMAScript 2021 (ES12)"
+        },
+        {
+          "key": "D",
+          "text": "ECMAScript 5.1 Legacy Mode"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "ECMAScript 2021 (ES12) is the default mode."
+    },
+    {
+      "id": "q3",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which elements make up a flow in Flow Designer? (Choose 3)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A trigger that initiates the flow."
+        },
+        {
+          "key": "B",
+          "text": "One or more actions (operations executed by the system)."
+        },
+        {
+          "key": "C",
+          "text": "Data exposed as pills in the Data Panel."
+        },
+        {
+          "key": "D",
+          "text": "A mandatory client script attached to each action that runs in the flow."
+        }
+      ],
+      "correct": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "A flow consists of a trigger, action(s), and the data collected/created (shown as pills in the Data Panel), and may include conditions. Flows can be built with no JavaScript at all; no client script is required."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "How does App Engine Studio (AES) differ from ServiceNow Studio?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AES is a guided low-code tool needing an App Engine subscription; Studio is a centralized pro-code IDE"
+        },
+        {
+          "key": "B",
+          "text": "App Engine Studio is the only available tool that is able to create new scoped applications on the platform"
+        },
+        {
+          "key": "C",
+          "text": "Studio is low-code and AES is pro-code"
+        },
+        {
+          "key": "D",
+          "text": "App Engine Studio is only ever able to run on personal developer instances and on nowhere else at all really"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "App Engine Studio is a guided, low-code development tool that requires an App Engine subscription (or a product packaged with one). ServiceNow Studio is the centralized integrated tool for pro-code/traditional application development."
+    },
+    {
+      "id": "q5",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Which client script type fires when a record is submitted/saved?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "onLoad()"
+        },
+        {
+          "key": "B",
+          "text": "onChange()"
+        },
+        {
+          "key": "C",
+          "text": "onSubmit()"
+        },
+        {
+          "key": "D",
+          "text": "onCellEdit()"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "onSubmit() fires on submit/save, onLoad() when the form loads, onChange() when a specified field changes, and onCellEdit() from a list."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "The \"Auto map matching fields\" utility can map fields automatically under which condition?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "When the source field names match the target field names"
+        },
+        {
+          "key": "B",
+          "text": "When the target table extends the Task table"
+        },
+        {
+          "key": "C",
+          "text": "When the import set contains exactly two columns"
+        },
+        {
+          "key": "D",
+          "text": "When the source file is provided in CSV format with a defined header row"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Auto map matching fields works when the import-set field names are identical to the target-table field names; one click then creates the field maps. Any mismatches can be corrected afterward with the Mapping Assist utility."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the outcome of submitting a record producer (as opposed to a standard catalog item)?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A request with requested items and catalog tasks is generated"
+        },
+        {
+          "key": "B",
+          "text": "A record is inserted into a table chosen by the developer"
+        },
+        {
+          "key": "C",
+          "text": "An approval workflow is started for the requested service"
+        },
+        {
+          "key": "D",
+          "text": "An email notification is queued for the fulfillment group"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "A record producer inserts a record directly into a table chosen by the developer, with no request (REQ), requested items (RITM), or catalog tasks. The REQ/RITM/task outcome belongs to standard catalog items."
+    },
+    {
+      "id": "q8",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "In a server-side record producer script, what does the producer object represent?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "The new record that is currently being inserted into the chosen target table"
+        },
+        {
+          "key": "B",
+          "text": "The variables (answers) entered on the record producer form"
+        },
+        {
+          "key": "C",
+          "text": "The previous version of the record before it was changed"
+        },
+        {
+          "key": "D",
+          "text": "The catalog category the item was submitted from"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "In a record producer script, producer represents the variables on the producer form (accessed as producer.<variableName>), while current represents the new record being produced on the target table."
+    },
+    {
+      "id": "q9",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "A user passes the table.None rule but fails the relevant field ACL. What happens?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "They are denied access to the entire table and all of the records in it."
+        },
+        {
+          "key": "B",
+          "text": "They can access the record but not that particular field."
+        },
+        {
+          "key": "C",
+          "text": "The field rule is ignored entirely because the table-level rule already passed for them."
+        },
+        {
+          "key": "D",
+          "text": "They get full access because table rules take priority."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Passing the table rule but failing a field rule means the user can interact with the record but cannot access the field described by that field ACL. Failing the table rule, by contrast, denies all fields."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Which statement about a ServiceNow cloud-based application is correct?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Each user must install an executable client module."
+        },
+        {
+          "key": "B",
+          "text": "The customer is responsible for hosting the hardware."
+        },
+        {
+          "key": "C",
+          "text": "Nothing to install; it is delivered over the internet and used through a web browser."
+        },
+        {
+          "key": "D",
+          "text": "It can only ever be accessed through a dedicated ServiceNow desktop application client."
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "Cloud-based: nothing to install, delivered over the internet via a browser; ServiceNow manages the hardware."
+    },
+    {
+      "id": "q11",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "What is the relationship between system properties and system property categories?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Strict parent-child relationship: each property belongs to exactly one category and no others."
+        },
+        {
+          "key": "B",
+          "text": "Many-to-many: a property can be in multiple categories, each association carrying an Order value."
+        },
+        {
+          "key": "C",
+          "text": "One-to-one: each category has exactly one property."
+        },
+        {
+          "key": "D",
+          "text": "There is no real relationship; categories are purely cosmetic groupings."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Properties and categories have a many-to-many relationship via a join table whose rows each carry an Order value. A property can be in multiple categories, and a module can include multiple categories."
+    },
+    {
+      "id": "q12",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On which type of instance should ATF tests be run?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Only on the production instance, after a change is live"
+        },
+        {
+          "key": "B",
+          "text": "On any instance, since ATF never modifies real data"
+        },
+        {
+          "key": "C",
+          "text": "On development, test, and other non-production instances"
+        },
+        {
+          "key": "D",
+          "text": "Only on instances that have the Test Management plugin active"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "Tests should be run only on development, test, and other non-production instances. Running them on production risks data corruption and outages, which is why the run property defaults to disabled."
+    },
+    {
+      "id": "q13",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why can a personal developer instance (PDI) not connect to the application repository?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "It lacks the valid subscription, matching scope, and network access the repository requires"
+        },
+        {
+          "key": "B",
+          "text": "A standalone PDI simply does not support scoped applications in the first place at all anywhere"
+        },
+        {
+          "key": "C",
+          "text": "Personal developer instances are completely unable to create update sets of any kind at all"
+        },
+        {
+          "key": "D",
+          "text": "The repository only accepts global-scope applications"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "The application repository requires a valid subscription, matching application scope, and network access. A standalone PDI does not meet these requirements, so it cannot connect."
+    },
+    {
+      "id": "q14",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which capability is unique to the Mapping Assist utility compared with auto-mapping?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "It runs business rules during the transform"
+        },
+        {
+          "key": "B",
+          "text": "It automatically cleans and corrects invalid data in the staging table before the import runs"
+        },
+        {
+          "key": "C",
+          "text": "It can map a single source field to multiple destination fields"
+        },
+        {
+          "key": "D",
+          "text": "It skips records that already exist in the target"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "Mapping Assist provides a visual environment for specifying field maps manually, including mapping one source field to several destination fields. Auto-mapping only pairs fields whose names already match exactly."
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "Which ACL type controls access at the row/record level and must be passed before any field can be accessed?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "table.field"
+        },
+        {
+          "key": "B",
+          "text": "table.*"
+        },
+        {
+          "key": "C",
+          "text": "table.None"
+        },
+        {
+          "key": "D",
+          "text": "*.*"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "A table.None rule governs the table's rows. You must pass it to see the table's list/forms at all; if the table-level check is denied, no field-level rule can grant access."
+    },
+    {
+      "id": "q16",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which of the following are examples of foundation data that is shared by many different applications? (Choose 3)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "user"
+        },
+        {
+          "key": "B",
+          "text": "cmdb_ci"
+        },
+        {
+          "key": "C",
+          "text": "task"
+        },
+        {
+          "key": "D",
+          "text": "A custom application-specific table"
+        }
+      ],
+      "correct": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "user, cmdb_ci, and task are foundation data shared by many applications. Application-specific tables are unique to a given app."
+    },
+    {
+      "id": "q17",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "What is the correct order of the software testing lifecycle (STLC) phases?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Test planning, Requirement analysis, Environment setup, Test case development, Test execution, Test cycle closure"
+        },
+        {
+          "key": "B",
+          "text": "Requirement analysis, Test planning, Test case development, Environment setup, Test execution, Test cycle closure"
+        },
+        {
+          "key": "C",
+          "text": "Requirement analysis, Environment setup, Test planning, Test execution, Test case development, Test cycle closure"
+        },
+        {
+          "key": "D",
+          "text": "Test case development, Requirement analysis, Test planning, Environment setup, Test cycle closure, Test execution"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "The STLC phases run in this order: requirement analysis, test planning, test case development, environment setup, test execution, and finally test cycle closure."
+    },
+    {
+      "id": "q18",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Of the following script types, which one does NOT always run on the server?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "UI Action"
+        },
+        {
+          "key": "B",
+          "text": "Business Rule"
+        },
+        {
+          "key": "C",
+          "text": "Script Include"
+        },
+        {
+          "key": "D",
+          "text": "Script Action"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "A UI Action can execute on the client or on the server depending on how it is configured, for example when the Client checkbox is set and an onclick function runs in the browser. Business Rules, Script Includes, and Script Actions always execute server-side."
+    },
+    {
+      "id": "q19",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the relationship between application access and Access Control rules?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Application access completely replaces ACLs for scoped applications across the board."
+        },
+        {
+          "key": "B",
+          "text": "Application access is evaluated in addition to ACLs and is configured per table."
+        },
+        {
+          "key": "C",
+          "text": "Application access only applies to the UI layer, never to any server-side scripts or queries."
+        },
+        {
+          "key": "D",
+          "text": "ACLs only apply when application access is set to None."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Application access is evaluated in addition to ACLs and is configured on a table-by-table basis via the Application Access tab. It governs cross-scope CRUD, web service, and script access."
+    },
+    {
+      "id": "q20",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is a view in ServiceNow?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A copy of a table's data for reporting."
+        },
+        {
+          "key": "B",
+          "text": "A saved layout of a form or list defining which fields appear and in what order."
+        },
+        {
+          "key": "C",
+          "text": "A role that grants read-only access."
+        },
+        {
+          "key": "D",
+          "text": "A scheduled job that periodically refreshes cached form layouts."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "A view is a saved layout of a form or list. It lets the same record be displayed in different ways for different audiences (for example ESS, ITIL, mobile)."
+    },
+    {
+      "id": "q21",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which pair of Business Rule actions can be configured WITHOUT writing a script?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Set field values and add a message."
+        },
+        {
+          "key": "B",
+          "text": "Set field values and generate an event."
+        },
+        {
+          "key": "C",
+          "text": "Set field values and write to the system log."
+        },
+        {
+          "key": "D",
+          "text": "Set field values and query the database."
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "The declarative Business Rule actions are Set field values (to a value, same as another field, or dynamically) and Add message, which posts text at the top of the page. Generating an event, writing to the log, or running a query all require code in the Script field."
+    },
+    {
+      "id": "q22",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "The system property glide.update_set.auto_preview is set to true. What happens after an update set is retrieved on the target instance?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "The preview process starts automatically"
+        },
+        {
+          "key": "B",
+          "text": "The update set is committed automatically without preview"
+        },
+        {
+          "key": "C",
+          "text": "The update set is rejected and must be re-retrieved"
+        },
+        {
+          "key": "D",
+          "text": "The update set is exported back to the source instance"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "If glide.update_set.auto_preview is true, the preview starts automatically after retrieval. If false, you must start the preview manually. Preview never auto-commits."
+    },
+    {
+      "id": "q23",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which statement about applications on the ServiceNow Developer Share site is correct?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "They are certified by ServiceNow and available for a fee"
+        },
+        {
+          "key": "B",
+          "text": "They are not vetted by ServiceNow and are available at no cost"
+        },
+        {
+          "key": "C",
+          "text": "They are reviewed by ServiceNow and installable on any instance"
+        },
+        {
+          "key": "D",
+          "text": "They require joining the Partner Program before download"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Developer Share applications are not vetted by ServiceNow and are all available at no cost. Certification and review apply to ServiceNow Store apps, not Developer Share."
+    },
+    {
+      "id": "q24",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "An application administrator will need a way to adjust application settings after go-live without code changes. What should the developer do about this?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Nothing at all; configurable settings can always be added instantly at the very end of development."
+        },
+        {
+          "key": "B",
+          "text": "Plan for it during design, e.g. include a properties module so settings stay configurable."
+        },
+        {
+          "key": "C",
+          "text": "Hard-code all of the settings and require a brand-new deployment in order to change any of them."
+        },
+        {
+          "key": "D",
+          "text": "Store settings only in client-side scripts."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Conveniences like a properties module for configurable settings must be planned for during design; they cannot simply be snapped into place at the end of the development cycle."
+    },
+    {
+      "id": "q25",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which of the following are characteristics of a process that is a **good** technical fit for a ServiceNow application? (Choose 3)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "The process follows a \"request-fulfill\" pattern."
+        },
+        {
+          "key": "B",
+          "text": "The data is primarily unstructured streaming media."
+        },
+        {
+          "key": "C",
+          "text": "The data can be modeled in a relational database."
+        },
+        {
+          "key": "D",
+          "text": "The process needs workflows/flows to manage it and reporting capability."
+        }
+      ],
+      "correct": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A request-fulfill pattern, relational-modelable data, and the need for flows/reporting are all good-fit signs. Unstructured streaming media is a bad-fit characteristic."
+    },
+    {
+      "id": "q26",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Under what condition is the Class field (sys_class_name) added to a table?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "When the table is marked Extensible"
+        },
+        {
+          "key": "B",
+          "text": "On every table by default"
+        },
+        {
+          "key": "C",
+          "text": "Only when the table has auto-numbering enabled"
+        },
+        {
+          "key": "D",
+          "text": "Only on database view tables"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "If a table is extensible, a Class (sys_class_name) field is added to indicate which child table actually contains each record. It is not one of the six standard default fields."
+    },
+    {
+      "id": "q27",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "In an email notification body, what does ${URI_REF} produce?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "The literal word LINK rendered as a hyperlink that opens the triggering record."
+        },
+        {
+          "key": "B",
+          "text": "The record's display name as a clickable link."
+        },
+        {
+          "key": "C",
+          "text": "The raw 32-character sys_id string of the triggering record."
+        },
+        {
+          "key": "D",
+          "text": "The value stored in the event's parm1 parameter."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "${URI_REF} renders the display name as a link to the triggering record, while ${URI} renders the word LINK. Reference-field variants (${field.URI}, ${field.URI_REF}) link to related records."
+    },
+    {
+      "id": "q28",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Must email notification recipients be ServiceNow user records?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Yes; only sys_user records can ever receive notifications."
+        },
+        {
+          "key": "B",
+          "text": "No; recipients can also be groups, field-referenced users, or any valid email address."
+        },
+        {
+          "key": "C",
+          "text": "No, but only if the notification is triggered by an event."
+        },
+        {
+          "key": "D",
+          "text": "Yes, unless the notification is subscribable."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Recipients can be specific users, any valid email address, groups, users/groups referenced in a field, the event creator, or recipients carried in event parm1/parm2. They do not have to be ServiceNow users."
+    },
+    {
+      "id": "q29",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "You need a complex encoded query for sysparm_query but don't want to write it by hand. What is the recommended approach?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Build the filter on a list, right-click the breadcrumb, choose Copy Query, and paste it into sysparm_query"
+        },
+        {
+          "key": "B",
+          "text": "Export the table to Excel and copy the column headers"
+        },
+        {
+          "key": "C",
+          "text": "Enable mutual authentication to auto-generate the query"
+        },
+        {
+          "key": "D",
+          "text": "Set sysparm_view and ServiceNow will build the query for you"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Use the Filter Condition Builder on a table's list to construct the filter, run it, then right-click the breadcrumb and Copy Query. Paste the resulting encoded query string into sysparm_query."
+    },
+    {
+      "id": "q30",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "On which side(s) do Service Catalog item scripts execute?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "On the client side only"
+        },
+        {
+          "key": "B",
+          "text": "On the server side only"
+        },
+        {
+          "key": "C",
+          "text": "On both the client and server sides"
+        },
+        {
+          "key": "D",
+          "text": "Only inside the MID Server process"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "Service Catalog item scripts execute on both the client side (catalog client scripts, catalog UI policies) and the server side (record producer scripts)."
+    }
+  ]
+}

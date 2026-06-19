@@ -1,0 +1,851 @@
+{
+  "id": "cad-mock-2",
+  "course": "cad",
+  "title": "CAD Mock Exam 2 (cross-module, 30 Q)",
+  "description": "Exam-style mixed set sampled across all 9 CAD modules, core-weighted. Local practice file.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "How does App Engine Studio (AES) differ from ServiceNow Studio?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AES is a guided low-code tool needing an App Engine subscription; Studio is a centralized pro-code IDE"
+        },
+        {
+          "key": "B",
+          "text": "App Engine Studio is the only available tool that is able to create new scoped applications on the platform"
+        },
+        {
+          "key": "C",
+          "text": "Studio is low-code and AES is pro-code"
+        },
+        {
+          "key": "D",
+          "text": "App Engine Studio is only ever able to run on personal developer instances and on nowhere else at all really"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "App Engine Studio is a guided, low-code development tool that requires an App Engine subscription (or a product packaged with one). ServiceNow Studio is the centralized integrated tool for pro-code/traditional application development."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Which statement best captures the **philosophy of scoped apps**?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Scope makes applications run faster by caching their records in memory."
+        },
+        {
+          "key": "B",
+          "text": "Scope protects an app from damaging or being damaged by others; out-of-scope access must be explicitly configured."
+        },
+        {
+          "key": "C",
+          "text": "Scope automatically grants every single application full admin-level access to all of the tables on the entire instance."
+        },
+        {
+          "key": "D",
+          "text": "Scope removes the need for access controls within an application."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Scope shields apps from each other; out-of-scope access must be explicitly configured."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "A team wants to build an application whose core feature is streaming live video with a real-time multiplayer graphics engine. Why is this a **bad** technical fit for ServiceNow?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ServiceNow is fundamentally incapable of storing binary data such as large video files."
+        },
+        {
+          "key": "B",
+          "text": "The data is unstructured and the app requires a graphics engine, with no clear process flow."
+        },
+        {
+          "key": "C",
+          "text": "ServiceNow does not support JavaScript."
+        },
+        {
+          "key": "D",
+          "text": "ServiceNow applications cannot use forms."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Unstructured data + graphics engine + no process flow are all bad-fit indicators."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What primarily triggers a Scheduled Script Execution?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A user manually updating or inserting a record that the script is configured to watch for."
+        },
+        {
+          "key": "B",
+          "text": "A defined schedule (time-based), never a user action or record change."
+        },
+        {
+          "key": "C",
+          "text": "An ACL evaluation."
+        },
+        {
+          "key": "D",
+          "text": "A client script onLoad."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "A Scheduled Script Execution runs server-side JavaScript on a schedule and is never triggered by user actions or record changes."
+    },
+    {
+      "id": "q5",
+      "type": "multi",
+      "difficulty": "hard",
+      "prompt": "Client scripts and UI policies both run client-side. Which capabilities belong ONLY to client scripts (not UI policies)? (Choose 3)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Execute on form submit/save."
+        },
+        {
+          "key": "B",
+          "text": "Access to a field's prior value."
+        },
+        {
+          "key": "C",
+          "text": "Access to the Condition Builder."
+        },
+        {
+          "key": "D",
+          "text": "Execute on a list field value change (onCellEdit)."
+        }
+      ],
+      "correct": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "Only client scripts run on submit, can access a field's prior value, and run from a list. The Condition Builder belongs to UI policies, which also resolve after client scripts and require no scripting."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "An application administrator will need a way to adjust application settings after go-live without code changes. What should the developer do about this?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Nothing at all; configurable settings can always be added instantly at the very end of development."
+        },
+        {
+          "key": "B",
+          "text": "Plan for it during design, e.g. include a properties module so settings stay configurable."
+        },
+        {
+          "key": "C",
+          "text": "Hard-code all of the settings and require a brand-new deployment in order to change any of them."
+        },
+        {
+          "key": "D",
+          "text": "Store settings only in client-side scripts."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Conveniences like a properties module for configurable settings must be planned for during design; they cannot simply be snapped into place at the end of the development cycle."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "In an email notification body, what does ${URI_REF} produce?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "The literal word LINK rendered as a hyperlink that opens the triggering record."
+        },
+        {
+          "key": "B",
+          "text": "The record's display name as a clickable link."
+        },
+        {
+          "key": "C",
+          "text": "The raw 32-character sys_id string of the triggering record."
+        },
+        {
+          "key": "D",
+          "text": "The value stored in the event's parm1 parameter."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "${URI_REF} renders the display name as a link to the triggering record, while ${URI} renders the word LINK. Reference-field variants (${field.URI}, ${field.URI_REF}) link to related records."
+    },
+    {
+      "id": "q8",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is at the core/foundation of the ServiceNow platform?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A NoSQL document store"
+        },
+        {
+          "key": "B",
+          "text": "A relational database"
+        },
+        {
+          "key": "C",
+          "text": "A graphics rendering engine"
+        },
+        {
+          "key": "D",
+          "text": "A file-based storage system"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "ServiceNow is an aPaaS built on a relational database at its core."
+    },
+    {
+      "id": "q9",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Application files visible in an app's 'Application files' related list are records on which table?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "sys_metadata"
+        },
+        {
+          "key": "B",
+          "text": "sys_app"
+        },
+        {
+          "key": "C",
+          "text": "sys_update_xml"
+        },
+        {
+          "key": "D",
+          "text": "sys_user"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Application files are records on the sys_metadata table, shown filtered to the app's scope. The app record itself lives on sys_app, and update set contents live on sys_update_xml."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which records track cross-scope applications and scripts that request access to a resource in another application scope?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Restricted Caller Access records"
+        },
+        {
+          "key": "B",
+          "text": "Caller Tracking records"
+        },
+        {
+          "key": "C",
+          "text": "Cross-scope Access records"
+        },
+        {
+          "key": "D",
+          "text": "Access Control records"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Cross-scope access requests are stored in the Restricted Caller Access table (sys_restricted_caller_access). Caller Tracking is a value of the Caller Access field, not a separate record type. Cross-scope Access is not a table, and Access Controls govern user permissions on records, not cross-scope script calls."
+    },
+    {
+      "id": "q11",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "What makes a View Rule different from forcing a view via a module configuration or a URL parameter?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A View Rule applies only to list views and never to forms in any circumstance whatsoever."
+        },
+        {
+          "key": "B",
+          "text": "A View Rule forces the view from the server and can't be overridden by URL query strings."
+        },
+        {
+          "key": "C",
+          "text": "A View Rule can only ever use the condition builder to match records, and never any custom script."
+        },
+        {
+          "key": "D",
+          "text": "A View Rule runs on the client and is therefore faster."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "View Rules force a view from the server-side and cannot be fooled by injecting query strings into the URL, unlike views set via a module or a URL parameter."
+    },
+    {
+      "id": "q12",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which input method is suggested for loading data that arrives as a spreadsheet file?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A custom Service Portal widget"
+        },
+        {
+          "key": "B",
+          "text": "An Import Set"
+        },
+        {
+          "key": "C",
+          "text": "A Business Rule"
+        },
+        {
+          "key": "D",
+          "text": "A Scheduled Report"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Spreadsheet input is retrieved via an Import Set."
+    },
+    {
+      "id": "q13",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which HTTP method corresponds to reading/retrieving data?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "POST"
+        },
+        {
+          "key": "B",
+          "text": "PUT"
+        },
+        {
+          "key": "C",
+          "text": "GET"
+        },
+        {
+          "key": "D",
+          "text": "DELETE"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "GET retrieves (reads) data from the endpoint. POST creates, PUT/PATCH update, and DELETE removes."
+    },
+    {
+      "id": "q14",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When placing a server-side REST script inside an email notification, what two adjustments are required?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Wrap the code in <mail_script> tags and replace logging/printing calls with template.print()"
+        },
+        {
+          "key": "B",
+          "text": "Wrap the code in <script> tags and call gs.info() so that the output is written into the email body"
+        },
+        {
+          "key": "C",
+          "text": "Convert the script into a client script and use g_form.addInfoMessage()"
+        },
+        {
+          "key": "D",
+          "text": "Place the code in a UI policy and use alert()"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Email notification scripts must be enclosed in <mail_script> </mail_script> tags, and any logging/printing method (gs.info, gs.log, etc.) must be changed to template.print(), whose output goes into the email body."
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which Script Include flavor is the recommended way to build a reusable library of related server-side functions?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A classless, on-demand function that contains a single reusable routine."
+        },
+        {
+          "key": "B",
+          "text": "A class (Utils) Script Include whose properties are methods."
+        },
+        {
+          "key": "C",
+          "text": "A Script Include that extends the AbstractAjaxProcessor class for GlideAjax."
+        },
+        {
+          "key": "D",
+          "text": "A client script attached to the table."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "A class-based Utils Script Include (e.g. named with the Utils convention) groups related methods into one reusable library. Classless functions are single on-demand functions; extending AbstractAjaxProcessor is for GlideAjax."
+    },
+    {
+      "id": "q16",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On a record producer, what are the input controls (the things that look like form fields) actually called?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Columns"
+        },
+        {
+          "key": "B",
+          "text": "Dictionary entries"
+        },
+        {
+          "key": "C",
+          "text": "Variables"
+        },
+        {
+          "key": "D",
+          "text": "Attributes"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "On a catalog item or record producer, the inputs are variables (stored in a catalog variable table with their own special types), not table columns. They map to fields on the produced record."
+    },
+    {
+      "id": "q17",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "An application menu's Roles field is left empty. Who can see that menu?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "No one until a role is added."
+        },
+        {
+          "key": "B",
+          "text": "Only admins."
+        },
+        {
+          "key": "C",
+          "text": "Everyone."
+        },
+        {
+          "key": "D",
+          "text": "Only users who can see at least one of its modules."
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "An application menu with no role listed is visible to everyone (this is how the Self-Service menu works). If roles are listed, a user needs at least one of them."
+    },
+    {
+      "id": "q18",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "A UI Policy's condition is NOT re-evaluated when a field value changes through which of the following?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A user manually changing a field on the form."
+        },
+        {
+          "key": "B",
+          "text": "An onChange that updates a field the user typed in."
+        },
+        {
+          "key": "C",
+          "text": "An Import Set, web service, UI Action, or the List Editor."
+        },
+        {
+          "key": "D",
+          "text": "A user editing the field and tabbing out."
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "UI Policy conditions are only re-checked when a user manually changes a field on a form. Changes made via UI Action, context menu, Import Set, web services, or the List Editor do not re-evaluate them. To enforce mandatory/read-only for non-form changes, use Data Policies (which are not scriptable)."
+    },
+    {
+      "id": "q19",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Application Access settings on a table primarily provide what kind of protection?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Runtime protection governing access from scripts in other scopes and from web service calls"
+        },
+        {
+          "key": "B",
+          "text": "Design-time protection preventing other developers from opening the table in Studio"
+        },
+        {
+          "key": "C",
+          "text": "Encryption of the table's data at rest"
+        },
+        {
+          "key": "D",
+          "text": "Row-level security based on the logged-in user's group membership"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Application Access provides runtime protection of application tables against read/write/create/delete operations coming from scripts and web service calls, and governs cross-scope and integration access. It is distinct from ACL/role-based record security."
+    },
+    {
+      "id": "q20",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "On which side(s) do Service Catalog item scripts execute?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "On the client side only"
+        },
+        {
+          "key": "B",
+          "text": "On the server side only"
+        },
+        {
+          "key": "C",
+          "text": "On both the client and server sides"
+        },
+        {
+          "key": "D",
+          "text": "Only inside the MID Server process"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "Service Catalog item scripts execute on both the client side (catalog client scripts, catalog UI policies) and the server side (record producer scripts)."
+    },
+    {
+      "id": "q21",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "You need a complex encoded query for sysparm_query but don't want to write it by hand. What is the recommended approach?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Build the filter on a list, right-click the breadcrumb, choose Copy Query, and paste it into sysparm_query"
+        },
+        {
+          "key": "B",
+          "text": "Export the table to Excel and copy the column headers"
+        },
+        {
+          "key": "C",
+          "text": "Enable mutual authentication to auto-generate the query"
+        },
+        {
+          "key": "D",
+          "text": "Set sysparm_view and ServiceNow will build the query for you"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Use the Filter Condition Builder on a table's list to construct the filter, run it, then right-click the breadcrumb and Copy Query. Paste the resulting encoded query string into sysparm_query."
+    },
+    {
+      "id": "q22",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "On an application resource, what is the difference between setting the Caller Access field to Caller Tracking versus Caller Restriction?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Caller Tracking auto-approves cross-scope calls and logs them as Allowed; Caller Restriction denies calls until they are manually approved (logged as Requested)."
+        },
+        {
+          "key": "B",
+          "text": "Caller Tracking blocks all cross-scope calls; Caller Restriction allows all cross-scope calls automatically."
+        },
+        {
+          "key": "C",
+          "text": "Both block cross-scope calls; they differ only in whether an email notification is sent to the resource owner."
+        },
+        {
+          "key": "D",
+          "text": "Caller Tracking applies only to REST calls, while Caller Restriction applies only to script calls."
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Caller Tracking automatically approves cross-scope calls and records them in the Restricted Caller Access table with a status of Allowed, giving visibility without friction. Caller Restriction denies calls by default and requires manual approval, recording them with a status of Requested until granted. The None option instead defers entirely to the resource's Accessible from setting."
+    },
+    {
+      "id": "q23",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which applications appear in the Application Picker that a developer uses to set their current scope context?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "All custom application scopes plus the Global scope."
+        },
+        {
+          "key": "B",
+          "text": "Every application on the instance, including baseline apps such as Incident."
+        },
+        {
+          "key": "C",
+          "text": "Only custom applications the developer has created."
+        },
+        {
+          "key": "D",
+          "text": "Only applications downloaded and installed from the Store."
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "The Application Picker lists the custom application scopes plus Global, which is what a developer selects to set the scope their changes apply to. It is not a way to launch or browse every app on the instance, so baseline applications, a custom-only filter, or a downloaded-only filter do not describe it."
+    },
+    {
+      "id": "q24",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which of the following is NOT a method of the client-side GlideUser (g_user) object?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "userName()"
+        },
+        {
+          "key": "B",
+          "text": "hasRole()"
+        },
+        {
+          "key": "C",
+          "text": "hasRoleExactly()"
+        },
+        {
+          "key": "D",
+          "text": "getFullName()"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "userName is a property accessed as g_user.userName, so there is no userName() method. hasRole(), hasRoleExactly(), and getFullName() are all real methods. getFullName() is a method because it computes a value (first plus last name) rather than exposing a stored attribute."
+    },
+    {
+      "id": "q25",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What role must a user elevate to in order to create or edit Access Control rules?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "admin"
+        },
+        {
+          "key": "B",
+          "text": "security_admin"
+        },
+        {
+          "key": "C",
+          "text": "view_changer"
+        },
+        {
+          "key": "D",
+          "text": "itil_admin"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Editing/creating ACLs requires elevating to the security_admin role from the user menu. Not all admins have this elevated role, and if Studio still blocks you after elevating, saving any application file refreshes its permissions."
+    },
+    {
+      "id": "q26",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Three notifications are triggered for the same record and recipients with weights 0, 10, and 20. Which are sent?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Only the highest-weight notification, which is the weight 20 one."
+        },
+        {
+          "key": "B",
+          "text": "The weight 0 and the weight 20 notifications."
+        },
+        {
+          "key": "C",
+          "text": "All three notifications are sent to the recipients."
+        },
+        {
+          "key": "D",
+          "text": "Only the weight 0 notification."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Weight 0 always sends. Among non-zero weights, only the highest sends (ties all send). So the 0 and the 20 go out; the 10 is skipped."
+    },
+    {
+      "id": "q27",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What is the Automated Test Framework (ATF) used for?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Creating and running automated tests inside a ServiceNow instance"
+        },
+        {
+          "key": "B",
+          "text": "Managing manual user acceptance testing on a Test Board"
+        },
+        {
+          "key": "C",
+          "text": "Monitoring production performance and system uptime metrics"
+        },
+        {
+          "key": "D",
+          "text": "Migrating application code and update sets between two separate ServiceNow instances"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "ATF is a built-in application for creating and running automated tests within a ServiceNow instance, used for regression testing, test-driven development, and confirming the instance still works after a change."
+    },
+    {
+      "id": "q28",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When configuring a record producer, what does the Short description field control?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "The text shown in a pop-up when the user hovers over the item"
+        },
+        {
+          "key": "B",
+          "text": "The name that is displayed for the item throughout the Service Catalog"
+        },
+        {
+          "key": "C",
+          "text": "The category the item is placed into"
+        },
+        {
+          "key": "D",
+          "text": "The list of variables that appear on the form"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Short description is the text shown in a pop-up when a user hovers over the item. Name is the item's displayed text, Category is where it appears, and the selected variables are the form fields."
+    },
+    {
+      "id": "q29",
+      "type": "multi",
+      "difficulty": "easy",
+      "prompt": "Which roles are associated with the Automated Test Framework? (Choose 2)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "atf_test_admin"
+        },
+        {
+          "key": "B",
+          "text": "atf_test_designer"
+        },
+        {
+          "key": "C",
+          "text": "tm_test_manager"
+        },
+        {
+          "key": "D",
+          "text": "script_debugger"
+        }
+      ],
+      "correct": [
+        "A",
+        "B"
+      ],
+      "explanation": "ATF uses the atf_test_admin and atf_test_designer roles. The tm_ roles belong to Test Management, and script_debugger belongs to the Script Debugger."
+    },
+    {
+      "id": "q30",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which requirement points toward using a classic form rather than a Service Catalog record producer?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Users place an order by answering a few simple questions"
+        },
+        {
+          "key": "B",
+          "text": "Users need access to lists and the ability to edit existing records"
+        },
+        {
+          "key": "C",
+          "text": "The interface should include rich HTML, hyperlinks, images, and other graphics"
+        },
+        {
+          "key": "D",
+          "text": "The users of the interface are not highly technical"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Classic forms are the better choice when users need access to lists and context menus, the ability to personalize the UI, and the ability to edit existing records. The catalog suits ordering via simple questions for non-technical users."
+    }
+  ]
+}

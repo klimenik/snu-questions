@@ -1,0 +1,851 @@
+{
+  "id": "cad-mock-3",
+  "course": "cad",
+  "title": "CAD Mock Exam 3 (cross-module, 30 Q)",
+  "description": "Exam-style mixed set sampled across all 9 CAD modules, core-weighted. Local practice file.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On a module record, what happens if the Roles field is left blank?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "The application's roles are inherited and the module is visible to all users who have them"
+        },
+        {
+          "key": "B",
+          "text": "The module becomes hidden from absolutely everyone, including every system administrator here"
+        },
+        {
+          "key": "C",
+          "text": "Only a full system administrator account is able to see this module in the navigator at all"
+        },
+        {
+          "key": "D",
+          "text": "The module is automatically deleted"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "If Roles is blank, the module inherits the application's roles. Populating Roles restricts the module to those specific roles."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "By convention, what should you pass for parm1 and parm2 in gs.eventQueue() when you don't otherwise need them?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "The literal values null and undefined, respectively, for the two parameters."
+        },
+        {
+          "key": "B",
+          "text": "gs.getUserID() and gs.getUserName()"
+        },
+        {
+          "key": "C",
+          "text": "current.sys_id and current.number as the two parameters"
+        },
+        {
+          "key": "D",
+          "text": "Two empty strings passed as placeholders"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "The convention is to pass gs.getUserID() as parm1 and gs.getUserName() as parm2 when those parameters aren't otherwise used. parm1/parm2 are optional string parameters."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which two client-side classes are auto-instantiated for managing forms and the current user?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "GlideRecord and GlideSystem"
+        },
+        {
+          "key": "B",
+          "text": "GlideForm (g_form) and GlideUser (g_user)"
+        },
+        {
+          "key": "C",
+          "text": "GlideAjax and GlideQuery"
+        },
+        {
+          "key": "D",
+          "text": "GlideSystem (gs) and GlideElement"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "g_form (GlideForm) manages form fields/values and g_user (GlideUser) exposes current-user info and role checks. Both are client-side and auto-instantiated; GlideSystem (gs) is server-side."
+    },
+    {
+      "id": "q4",
+      "type": "multi",
+      "difficulty": "medium",
+      "prompt": "Which of the following are examples of foundation data that is shared by many different applications? (Choose 3)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "user"
+        },
+        {
+          "key": "B",
+          "text": "cmdb_ci"
+        },
+        {
+          "key": "C",
+          "text": "task"
+        },
+        {
+          "key": "D",
+          "text": "A custom application-specific table"
+        }
+      ],
+      "correct": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "user, cmdb_ci, and task are foundation data shared by many applications. Application-specific tables are unique to a given app."
+    },
+    {
+      "id": "q5",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "When configuring a record producer, what does the Short description field control?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "The text shown in a pop-up when the user hovers over the item"
+        },
+        {
+          "key": "B",
+          "text": "The name that is displayed for the item throughout the Service Catalog"
+        },
+        {
+          "key": "C",
+          "text": "The category the item is placed into"
+        },
+        {
+          "key": "D",
+          "text": "The list of variables that appear on the form"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Short description is the text shown in a pop-up when a user hovers over the item. Name is the item's displayed text, Category is where it appears, and the selected variables are the form fields."
+    },
+    {
+      "id": "q6",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why should you choose a field's data type carefully when first creating it?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "The data type cannot be changed once any record exists."
+        },
+        {
+          "key": "B",
+          "text": "Changing the type later can result in data loss."
+        },
+        {
+          "key": "C",
+          "text": "The data type determines the field's column name."
+        },
+        {
+          "key": "D",
+          "text": "Only the first field on a table is allowed to have a non-string type."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Field types can be changed, but doing so after data exists can cause data loss, so the type should be chosen carefully up front. Use date/date-time fields for dates and reference/choice fields rather than free-form strings."
+    },
+    {
+      "id": "q7",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "On an application resource, what is the difference between setting the Caller Access field to Caller Tracking versus Caller Restriction?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Caller Tracking auto-approves cross-scope calls and logs them as Allowed; Caller Restriction denies calls until they are manually approved (logged as Requested)."
+        },
+        {
+          "key": "B",
+          "text": "Caller Tracking blocks all cross-scope calls; Caller Restriction allows all cross-scope calls automatically."
+        },
+        {
+          "key": "C",
+          "text": "Both block cross-scope calls; they differ only in whether an email notification is sent to the resource owner."
+        },
+        {
+          "key": "D",
+          "text": "Caller Tracking applies only to REST calls, while Caller Restriction applies only to script calls."
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Caller Tracking automatically approves cross-scope calls and records them in the Restricted Caller Access table with a status of Allowed, giving visibility without friction. Caller Restriction denies calls by default and requires manual approval, recording them with a status of Requested until granted. The None option instead defers entirely to the resource's Accessible from setting."
+    },
+    {
+      "id": "q8",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which category field is used to build a hierarchy of sub-categories?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Location"
+        },
+        {
+          "key": "B",
+          "text": "Homepage renderer"
+        },
+        {
+          "key": "C",
+          "text": "Parent"
+        },
+        {
+          "key": "D",
+          "text": "Header icon"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "The Parent field designates a category's parent, allowing a hierarchy of sub-categories. Roles control who may order, and the various icon fields control graphics."
+    },
+    {
+      "id": "q9",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is the outcome of submitting a record producer (as opposed to a standard catalog item)?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A request with requested items and catalog tasks is generated"
+        },
+        {
+          "key": "B",
+          "text": "A record is inserted into a table chosen by the developer"
+        },
+        {
+          "key": "C",
+          "text": "An approval workflow is started for the requested service"
+        },
+        {
+          "key": "D",
+          "text": "An email notification is queued for the fulfillment group"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "A record producer inserts a record directly into a table chosen by the developer, with no request (REQ), requested items (RITM), or catalog tasks. The REQ/RITM/task outcome belongs to standard catalog items."
+    },
+    {
+      "id": "q10",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "On the client side, how do you read the sys_id of the currently logged-in user, and how does that differ from the server side?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "g_user.userID is a property on the client; gs.getUserID() is a method on the server."
+        },
+        {
+          "key": "B",
+          "text": "g_user.getUserID() is a method on the client; gs.userID is a property on the server."
+        },
+        {
+          "key": "C",
+          "text": "g_user.userID() is a method on both the client and the server."
+        },
+        {
+          "key": "D",
+          "text": "gs.getUserID() works on both the client and the server."
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Client-side, the user's sys_id is exposed as the property g_user.userID (no parentheses). Server-side, it is returned by the method gs.getUserID(). The client identity values (userName, userID, firstName, lastName) are bare properties, while the server GlideSystem equivalents are method calls."
+    },
+    {
+      "id": "q11",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "There are several separate read ACLs for the same table and operation (for example incident.None read). What does having multiple such ACLs mean?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Access is more locked down, because the user is now required to pass every single one of these ACLs to get in."
+        },
+        {
+          "key": "B",
+          "text": "Each ACL is a separate case; passing any one grants access (like multiple keys for one lock)."
+        },
+        {
+          "key": "C",
+          "text": "Only the single most recently created ACL for that operation is ever actually evaluated at runtime."
+        },
+        {
+          "key": "D",
+          "text": "The ACLs cancel each other out."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Multiple ACLs for the same operation each represent a separate context in which a user might pass (OR logic). More ACLs means more ways to be granted access, not a tighter lock. This is contextual security."
+    },
+    {
+      "id": "q12",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What does the term **artifact** refer to in the context of a scoped application?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A deprecated, leftover application file that is no longer in use and should be deleted soon."
+        },
+        {
+          "key": "B",
+          "text": "Any of the application files that make up an app (ACLs, business rules, tables), within its scope."
+        },
+        {
+          "key": "C",
+          "text": "A backup copy of the application stored in the repository."
+        },
+        {
+          "key": "D",
+          "text": "A record that exists only in the global scope."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Artifacts are the application files that make up an app, living within its scope."
+    },
+    {
+      "id": "q13",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Application files visible in an app's 'Application files' related list are records on which table?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "sys_metadata"
+        },
+        {
+          "key": "B",
+          "text": "sys_app"
+        },
+        {
+          "key": "C",
+          "text": "sys_update_xml"
+        },
+        {
+          "key": "D",
+          "text": "sys_user"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Application files are records on the sys_metadata table, shown filtered to the app's scope. The app record itself lives on sys_app, and update set contents live on sys_update_xml."
+    },
+    {
+      "id": "q14",
+      "type": "multi",
+      "difficulty": "easy",
+      "prompt": "Which roles are associated with the Automated Test Framework? (Choose 2)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "atf_test_admin"
+        },
+        {
+          "key": "B",
+          "text": "atf_test_designer"
+        },
+        {
+          "key": "C",
+          "text": "tm_test_manager"
+        },
+        {
+          "key": "D",
+          "text": "script_debugger"
+        }
+      ],
+      "correct": [
+        "A",
+        "B"
+      ],
+      "explanation": "ATF uses the atf_test_admin and atf_test_designer roles. The tm_ roles belong to Test Management, and script_debugger belongs to the Script Debugger."
+    },
+    {
+      "id": "q15",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is ServiceNow's default access posture, and what does it imply for new tables?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Allow by default, so ACLs are only ever needed in order to restrict access."
+        },
+        {
+          "key": "B",
+          "text": "Deny by default, so an ACL must grant access or it is refused."
+        },
+        {
+          "key": "C",
+          "text": "Allow for admins only, while all other access must be explicitly scripted."
+        },
+        {
+          "key": "D",
+          "text": "Access is determined solely by the roles set on the application menu itself."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "ServiceNow denies access by default; an ACL must grant it. This is why four basic CRUD ACLs are generated automatically when a table is created with a role."
+    },
+    {
+      "id": "q16",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "On a system property, what role does the Description field play when the property is exposed on a properties page?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "It becomes the property's label shown on the properties page."
+        },
+        {
+          "key": "B",
+          "text": "It sets the default value the property uses when no value is configured."
+        },
+        {
+          "key": "C",
+          "text": "It determines the property's data type."
+        },
+        {
+          "key": "D",
+          "text": "It is the snake_case variable name that scripts use to reference the property's value."
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "The Description appears as the property's label on the properties page. Without it, the property shows as an unlabeled field. The Suffix/Name (snake_case) is what scripts reference."
+    },
+    {
+      "id": "q17",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "In an email notification body, what does ${URI_REF} produce?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "The literal word LINK rendered as a hyperlink that opens the triggering record."
+        },
+        {
+          "key": "B",
+          "text": "The record's display name as a clickable link."
+        },
+        {
+          "key": "C",
+          "text": "The raw 32-character sys_id string of the triggering record."
+        },
+        {
+          "key": "D",
+          "text": "The value stored in the event's parm1 parameter."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "${URI_REF} renders the display name as a link to the triggering record, while ${URI} renders the word LINK. Reference-field variants (${field.URI}, ${field.URI_REF}) link to related records."
+    },
+    {
+      "id": "q18",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Most approval workflow activities work only on which tables?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Tables that extend the Task table"
+        },
+        {
+          "key": "B",
+          "text": "Any table in any scope"
+        },
+        {
+          "key": "C",
+          "text": "Only the global cmdb_ci table"
+        },
+        {
+          "key": "D",
+          "text": "Only tables created from scratch (not extended)"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "All approval activities except the User Approval activity work only on tables that extend Task. The User Approval activity works with all tables. This is a key reason to extend Task when modeling assignable work."
+    },
+    {
+      "id": "q19",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "In Test Management terminology, what is a test suite?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A repository that holds a group of test cases"
+        },
+        {
+          "key": "B",
+          "text": "A single condition checked during execution"
+        },
+        {
+          "key": "C",
+          "text": "The instance where testing will take place"
+        },
+        {
+          "key": "D",
+          "text": "The tasks describing how a feature is to be tested"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "A test suite is a repository of test cases. A test case is a collection of related tests, a test is a collection of conditions/steps, the test environment is the instance, and a test plan describes how testing is done."
+    },
+    {
+      "id": "q20",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "Application access controls cross-scope access. To which scripts does it NOT apply?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Scripts running in the same scope as the table."
+        },
+        {
+          "key": "B",
+          "text": "Scripts running in the global (cross-scope) application scope on the instance."
+        },
+        {
+          "key": "C",
+          "text": "Business rules on the table."
+        },
+        {
+          "key": "D",
+          "text": "Any server-side script."
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Application access applies to all server-side scripts but does not apply to scripts executing in the same scope as the table. An app can always reach its own tables."
+    },
+    {
+      "id": "q21",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": "What does the import process do when the data being imported is the same as the data already in the instance?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "It duplicates the record so both copies are kept"
+        },
+        {
+          "key": "B",
+          "text": "It skips the record"
+        },
+        {
+          "key": "C",
+          "text": "It raises a transform error and stops"
+        },
+        {
+          "key": "D",
+          "text": "It moves the existing record to an archive table"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "The import process skips records when the incoming data matches what is already in the instance, avoiding redundant inserts or updates."
+    },
+    {
+      "id": "q22",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which business rule type behaves like a scheduled job, running in the background so it doesn't delay returning control to the user?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Before"
+        },
+        {
+          "key": "B",
+          "text": "Async"
+        },
+        {
+          "key": "C",
+          "text": "Display"
+        },
+        {
+          "key": "D",
+          "text": "Query"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "An Async Business Rule runs in parallel in the background when the server gets to it, similar to a scheduled job. It suits slow work like web-service integrations. The other four types are synchronous."
+    },
+    {
+      "id": "q23",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "On a table's Application Access tab, the \"Allow access to this table via web services\" option is only selectable under what condition?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "When \"Accessible from\" is set to All application scopes"
+        },
+        {
+          "key": "B",
+          "text": "When the table extends the Task table"
+        },
+        {
+          "key": "C",
+          "text": "When Can create and Can delete are both checked"
+        },
+        {
+          "key": "D",
+          "text": "When at least one access control rule has already been defined for the table"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "The web services access option becomes selectable only when Accessible from is set to All application scopes; otherwise the table cannot be exposed as a web service provider."
+    },
+    {
+      "id": "q24",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "A team wants to build an application whose core feature is streaming live video with a real-time multiplayer graphics engine. Why is this a **bad** technical fit for ServiceNow?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ServiceNow is fundamentally incapable of storing binary data such as large video files."
+        },
+        {
+          "key": "B",
+          "text": "The data is unstructured and the app requires a graphics engine, with no clear process flow."
+        },
+        {
+          "key": "C",
+          "text": "ServiceNow does not support JavaScript."
+        },
+        {
+          "key": "D",
+          "text": "ServiceNow applications cannot use forms."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Unstructured data + graphics engine + no process flow are all bad-fit indicators."
+    },
+    {
+      "id": "q25",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "What is a record producer?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A special type of Service Catalog item that creates a record in a database table"
+        },
+        {
+          "key": "B",
+          "text": "A background script that periodically generates summary records"
+        },
+        {
+          "key": "C",
+          "text": "A business rule that runs after a catalog request is approved"
+        },
+        {
+          "key": "D",
+          "text": "A reporting widget that produces charts and dashboards from catalog request data over time"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "A record producer is a special type of Service Catalog item that is an alternative to the traditional form; both create a new record in a database table. Users answer questions that populate fields on the new record."
+    },
+    {
+      "id": "q26",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "In the **baseline** configuration, what database access does one custom (scoped) application have to another custom application's table records?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "By default it has full read and write access to all of the other app's records"
+        },
+        {
+          "key": "B",
+          "text": "Read access only; no other DB operations without explicit configuration"
+        },
+        {
+          "key": "C",
+          "text": "No database access of any kind at all without explicit cross-scope configuration first"
+        },
+        {
+          "key": "D",
+          "text": "Write access only"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Baseline: read access to other apps' table records only; no other DB operations without explicit configuration."
+    },
+    {
+      "id": "q27",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Which artifact provides a single location for reusable server-side functions, reducing maintenance effort?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Client Script"
+        },
+        {
+          "key": "B",
+          "text": "UI Policy"
+        },
+        {
+          "key": "C",
+          "text": "Script Include"
+        },
+        {
+          "key": "D",
+          "text": "Notification"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "Script Includes provide a single location for reusable functions, reducing maintenance and time-to-completion."
+    },
+    {
+      "id": "q28",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "The \"Auto map matching fields\" utility can map fields automatically under which condition?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "When the source field names match the target field names"
+        },
+        {
+          "key": "B",
+          "text": "When the target table extends the Task table"
+        },
+        {
+          "key": "C",
+          "text": "When the import set contains exactly two columns"
+        },
+        {
+          "key": "D",
+          "text": "When the source file is provided in CSV format with a defined header row"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Auto map matching fields works when the import-set field names are identical to the target-table field names; one click then creates the field maps. Any mismatches can be corrected afterward with the Mapping Assist utility."
+    },
+    {
+      "id": "q29",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": "What is the purpose of the 'Override application menu roles' option on a module?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "It lets users open the module even without access to the containing menu, subject to the module's own roles."
+        },
+        {
+          "key": "B",
+          "text": "It removes all role requirements from the module entirely"
+        },
+        {
+          "key": "C",
+          "text": "It hides the module from the application menu entirely, but keeps it accessible only through a direct URL."
+        },
+        {
+          "key": "D",
+          "text": "It grants the module's roles to the parent application menu"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "Override application menu roles allows a user to open the module even if they cannot see the containing menu. The user must still satisfy the module's own Roles requirement."
+    },
+    {
+      "id": "q30",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": "Why should the 'Ignore cache' checkbox be selected on application properties?",
+      "choices": [
+        {
+          "key": "A",
+          "text": "To improve runtime performance by caching the property's value indefinitely across requests."
+        },
+        {
+          "key": "B",
+          "text": "To ensure the application uses the current property value rather than a cached one."
+        },
+        {
+          "key": "C",
+          "text": "To prevent admins from editing the property."
+        },
+        {
+          "key": "D",
+          "text": "To allow the property to be a reference field."
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "Ignore cache ensures the app reads the current property value instead of a cached value, so changes take effect immediately."
+    }
+  ]
+}
